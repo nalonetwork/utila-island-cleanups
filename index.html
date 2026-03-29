@@ -1,59 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Utila Island Cleanups</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta name="description" content="Utila Island Cleanups protects Utila's beaches through weekly cleanups and responsible waste management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #f5f8f9;
+      --card: #ffffff;
+      --text: #0f1720;
+      --muted: #546170;
+      --brand: #0f766e;
+      --brand-dark: #0b5d56;
+      --accent: #d9f3ef;
+      --border: #e3e8ee;
+      --shadow: 0 10px 24px rgba(15, 23, 32, 0.08);
+      --radius: 14px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    /* Header / Nav */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: saturate(160%) blur(8px);
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .nav-links a {
+      color: #1f2a37;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-links a:hover {
+      background: #eef3f6;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 84px 0 56px;
+      background:
+        radial-gradient(1100px 280px at 20% -10%, #d8f6f1, transparent 65%),
+        radial-gradient(900px 260px at 100% -20%, #dbeeff, transparent 65%);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brand-dark);
+      background: var(--accent);
+      border: 1px solid #bfe7df;
+      padding: 8px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4.2vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .slogan {
+      margin: 14px 0 0;
+      color: #18313a;
+      font-weight: 600;
+    }
+
+    .slogan span {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+
+    .mission {
+      margin-top: 18px;
+      color: #20303c;
+      max-width: 980px;
+    }
+
+    .actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #12313a;
+      border-color: #cad6e1;
+    }
+
+    .btn-secondary:hover {
+      background: #f8fbfd;
+      border-color: #b9c8d6;
+    }
+
+    /* Sections */
+    section {
+      padding: 26px 0 64px;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(1.35rem, 2.5vw, 1.8rem);
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Wednesday info */
+    .info-list {
+      margin: 0;
+      padding: 8px;
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 10px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid #e8edf2;
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .info-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    .info-text {
+      color: #20303c;
+      font-size: 0.95rem;
+    }
+
+    /* Impact */
+    .impact-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .impact-card {
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #e2e8ef;
+      background: #fff;
+    }
+
+    .impact-label {
+      margin: 0 0 6px;
+      color: #4c5b69;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .impact-value {
+      margin: 0;
+      font-size: clamp(1.5rem, 3.3vw, 2rem);
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0b3b48;
+    }
+
+    .impact-note {
+      margin: 14px 0 0;
+      font-size: 0.86rem;
+      color: #607080;
+    }
+
+    /* CTA */
+    .cta {
+      margin-top: 10px;
+      padding: 30px;
+      background: linear-gradient(180deg, #ffffff, #f3f8f8);
+    }
+
+    .cta h3 {
+      margin: 0 0 8px;
+      font-size: 1.4rem;
+    }
+
+    .cta p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 20px 0;
+      color: #637383;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 720px) {
+      .nav { padding: 10px 0; }
+      .hero { padding-top: 64px; }
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Utila Island Cleanups</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <h1>Utila Island Cleanups</h1>
-  <p class="slogan">
-    Creating awareness one cleanup at a time<br>
-    <span>Creamos consciencia ambiental una limpieza de playa a la vez</span>
-  </p>
-</header>
+  <main>
+    <!-- Mission / Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <span class="badge">Community + Conservation</span>
+        <h1>Protecting Utila’s Beaches Through Weekly Action</h1>
+        <p class="slogan">
+          Creating awareness one cleanup at a time
+          <span>(Creamos consciencia ambiental una limpieza de playa a la vez)</span>
+        </p>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="impact.html">Impact</a>
-  <a href="get-involved.html">Get Involved</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="contact.html">Contact</a>
-</nav>
+        <p class="mission">
+          Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
+          <br><br>
+          Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, como las tortugas marinas y la iguana endémica Swamper.
+        </p>
 
-<section class="mission">
-  <p>
-    Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management.
-  </p>
-  <a class="btn" href="about.html">Learn More</a>
-</section>
+        <div class="actions">
+          <a class="btn btn-primary" href="about.html">Learn more</a>
+          <a class="btn btn-secondary" href="get-involved.html">Join a cleanup</a>
+        </div>
+      </div>
+    </section>
 
-<section class="info">
-  <h2>Weekly Cleanup Info</h2>
-  <ul>
-    <li>📅 Every Wednesday / Todos los miércoles</li>
-    <li>⏰ 7:00am - 8:45am</li>
-    <li>📍 Circle K meeting point</li>
-    <li>🚐 Transportation, water, fruit & materials provided</li>
-    <li>🤝 Organized by Off the Dock Adventures, Elmer Funes & Reef Matters</li>
-  </ul>
-</section>
+    <!-- Wednesday Cleanup Info -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Wednesday Cleanup Info</h2>
+        <p class="section-sub">Everything you need to join us each week.</p>
 
-<section class="impact">
-  <h2>Our Impact</h2>
-  <div id="stats">
-    <p>Plastic Bottles Collected: <span id="bottles">Loading...</span></p>
-    <p>Total Trash Collected: <span id="weight">Loading...</span></p>
-  </div>
-</section>
+        <div class="card">
+          <ul class="info-list">
+            <li class="info-item">
+              <span class="info-icon">🗓️</span>
+              <div class="info-text">Every Wednesday / Todos los miércoles</div>
+            </li>
+            <li class="info-item">
+              <span class="info-icon">⏰</span>
+              <div class="info-text">7:00am – 8:45am</div>
+            </li>
+            <li class="info-item">
+              <span class="info-icon">📍</span>
+              <div class="info-text">Meet up at CircleK / Punto de encuentro CircleK</div>
+            </li>
+            <li class="info-item">
+              <span class="info-icon">🛺</span>
+              <div class="info-text">Transportation, water, fruit, and materials provided / Proveemos transporte, agua, fruta, y materiales</div>
+            </li>
+            <li class="info-item" style="grid-column: 1 / -1;">
+              <span class="info-icon">🌟</span>
+              <div class="info-text">Organized by / Organizado por: Off the Dock Adventures, Elmer Funes & Reef Matters</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<section class="cta">
-  <a class="btn" href="get-involved.html">Join a Cleanup</a>
-</section>
+    <!-- Impact -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Impact Numbers</h2>
+        <p class="section-sub">Live data connected to spreadsheet (from collection start date to today).</p>
 
-<script src="js/script.js"></script>
+        <div class="impact-wrap">
+          <article class="impact-card">
+            <p class="impact-label">Data collection period</p>
+            <p class="impact-value" id="dateRange">Loading...</p>
+          </article>
+
+          <article class="impact-card">
+            <p class="impact-label">Plastic bottles collected <small>(excluding bottles with liquid)</small></p>
+            <p class="impact-value" id="bottleCount">Loading...</p>
+          </article>
+
+          <article class="impact-card">
+            <p class="impact-label">Total trash collected</p>
+            <p class="impact-value" id="weightTotal">Loading...</p>
+          </article>
+        </div>
+
+        <p class="impact-note">
+          If data is unavailable, placeholders will be shown until the sheet connection is active.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+        <div class="card cta">
+          <h3>Ready to help protect Utila?</h3>
+          <p>Join a cleanup or contact us to volunteer, partner, or support future actions.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="get-involved.html">Join</a>
+            <a class="btn btn-secondary" href="contact.html">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Utila Island Cleanups</div>
+  </footer>
+
+  <script>
+    // ---- LIVE DATA CONFIG ----
+    // Replace with your Google Sheets JSON endpoint (Apps Script Web App, Sheet.best, etc.)
+    const DATA_ENDPOINT = "PASTE_YOUR_LIVE_DATA_ENDPOINT_HERE";
+
+    // Expected JSON shape from endpoint:
+    // {
+    //   "startDate": "2025-01-01",
+    //   "plasticBottles": 1250,
+    //   "totalWeightKg": 320.4
+    // }
+
+    const fmtNumber = (n) => new Intl.NumberFormat("en-US").format(Number(n || 0));
+    const fmtDate = (d) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+    function setFallback() {
+      const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+      document.getElementById("dateRange").textContent = `Start date → ${today}`;
+      document.getElementById("bottleCount").textContent = "--";
+      document.getElementById("weightTotal").textContent = "-- kg / -- lbs";
+    }
+
+    async function loadImpactData() {
+      if (!DATA_ENDPOINT || DATA_ENDPOINT.includes("PASTE_YOUR_LIVE_DATA_ENDPOINT_HERE")) {
+        setFallback();
+        return;
+      }
+
+      try {
+        const res = await fetch(DATA_ENDPOINT, { cache: "no-store" });
+        if (!res.ok) throw new Error("Request failed");
+
+        const data = await res.json();
+
+        const startDate = data.startDate || "2025-01-01";
+        const bottles = Number(data.plasticBottles || 0);
+        const kg = Number(data.totalWeightKg || 0);
+        const lbs = kg * 2.2046226218;
+
+        const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+
+        document.getElementById("dateRange").textContent = `${fmtDate(startDate)} → ${today}`;
+        document.getElementById("bottleCount").textContent = fmtNumber(bottles);
+        document.getElementById("weightTotal").textContent = `${fmtNumber(kg.toFixed(1))} kg / ${fmtNumber(lbs.toFixed(1))} lbs`;
+      } catch (err) {
+        setFallback();
+      }
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+    loadImpactData();
+  </script>
 </body>
 </html>
