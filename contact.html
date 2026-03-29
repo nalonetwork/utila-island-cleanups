@@ -8,157 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f5f8f9;
-      --card: #ffffff;
-      --text: #0f1720;
-      --muted: #546170;
-      --brand: #0f766e;
-      --brand-dark: #0b5d56;
-      --border: #e3e8ee;
-      --shadow: 0 10px 24px rgba(15, 23, 32, 0.08);
-      --radius: 14px;
-      --max: 1120px;
-    }
-
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-    }
-
-    .container { width: min(92%, var(--max)); margin: 0 auto; }
-
-    .site-header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(255,255,255,.88);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav {
-      min-height: 72px;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
-    .brand {
-      text-decoration: none; color: var(--text);
-      font-weight: 800; letter-spacing: -0.02em;
-    }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 12px; }
-    .nav-links a {
-      text-decoration: none; color: #1f2a37; font-weight: 500;
-      padding: 8px 10px; border-radius: 8px;
-    }
-    .nav-links a:hover { background: #eef3f6; }
-
-    .hero {
-      padding: 72px 0 24px;
-      background: radial-gradient(900px 220px at 20% -10%, #d8f6f1, transparent 65%);
-    }
-    .eyebrow {
-      display: inline-block;
-      font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-      color: var(--brand-dark); background: #d9f3ef; border: 1px solid #bfe7df;
-      padding: 7px 11px; border-radius: 999px;
-    }
-    h1 { margin: 14px 0 10px; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.02em; }
-    .lead { color: #20303c; max-width: 900px; }
-
-    section { padding: 16px 0 40px; }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: 16px;
-    }
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px;
-    }
-
-    .card h2, .card h3 { margin-top: 0; margin-bottom: 10px; }
-    .muted { color: var(--muted); }
-
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 10px;
-    }
-    .contact-item {
-      border: 1px solid #e8edf2;
-      border-radius: 10px;
-      padding: 12px;
-      background: #fff;
-    }
-    .label {
-      display: block;
-      font-size: .8rem;
-      color: #607080;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      margin-bottom: 3px;
-      font-weight: 700;
-    }
-    .value { color: #172635; font-weight: 600; }
-
-    form {
-      display: grid;
-      gap: 12px;
-    }
-    label {
-      font-weight: 600;
-      font-size: .92rem;
-      color: #233341;
-    }
-    input, textarea {
-      width: 100%;
-      border: 1px solid #cad6e1;
-      border-radius: 10px;
-      padding: 11px 12px;
-      font: inherit;
-      background: #fff;
-      color: #0f1720;
-    }
-    textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      text-decoration: none; border-radius: 10px; padding: 11px 16px; font-weight: 600;
-      border: 1px solid transparent;
-      cursor: pointer;
-    }
-    .btn-primary { background: var(--brand); color: #fff; }
-    .btn-primary:hover { background: var(--brand-dark); }
-
-    .note {
-      font-size: .86rem;
-      color: #607080;
-      margin-top: 8px;
-    }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: #fff;
-      color: #637383;
-      font-size: .9rem;
-      padding: 18px 0;
-      margin-top: 12px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header class="site-header">
@@ -170,7 +20,7 @@
         <a href="impact.html">Impact</a>
         <a href="get-involved.html">Get Involved</a>
         <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
+        <a class="active" href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -178,20 +28,20 @@
   <main>
     <section class="hero">
       <div class="container">
-        <span class="eyebrow">Contact</span>
+        <span class="badge">Contact</span>
         <h1>Get in touch</h1>
-        <p class="lead">
+        <p class="section-sub">
           Want to join a Wednesday cleanup, volunteer, collaborate, or support the project?
           Send us a message and we’ll get back to you.
         </p>
       </div>
     </section>
 
-    <section>
-      <div class="container layout">
-        <article class="card">
+    <section class="section">
+      <div class="container layout-2">
+        <article class="card form-card">
           <h2>Send a message</h2>
-          <p class="muted">Use this form for volunteer signups, partnership requests, and general questions.</p>
+          <p class="section-sub">Use this form for volunteer signups, partnerships, and general questions.</p>
 
           <form action="https://formspree.io/f/your-form-id" method="POST">
             <div>
@@ -219,7 +69,7 @@
           </form>
         </article>
 
-        <aside class="card">
+        <aside class="card info-card">
           <h3>Contact details</h3>
           <ul class="contact-list">
             <li class="contact-item">
@@ -232,17 +82,14 @@
             </li>
             <li class="contact-item">
               <span class="label">Weekly cleanup</span>
-              <span class="value">Wednesdays, 7:00am – 8:45am</span>
+              <span class="value">Wednesdays, 7:00am–8:45am</span>
             </li>
             <li class="contact-item">
               <span class="label">Meeting point</span>
               <span class="value">CircleK, Utila</span>
             </li>
           </ul>
-
-          <p class="note" style="margin-top:14px;">
-            Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters.
-          </p>
+          <p class="note">Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters.</p>
         </aside>
       </div>
     </section>
@@ -252,8 +99,6 @@
     <div class="container">© <span id="year"></span> Utila Island Cleanups</div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="js/site.js"></script>
 </body>
 </html>
