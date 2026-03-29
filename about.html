@@ -1,32 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Us</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Utila Island Cleanups</title>
+  <meta name="description" content="Learn more about Utila Island Cleanups, our mission, and why weekly beach cleanups matter." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f5f8f9;
+      --card: #ffffff;
+      --text: #0f1720;
+      --muted: #546170;
+      --brand: #0f766e;
+      --brand-dark: #0b5d56;
+      --border: #e3e8ee;
+      --shadow: 0 10px 24px rgba(15, 23, 32, 0.08);
+      --radius: 14px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .container { width: min(92%, var(--max)); margin: 0 auto; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .brand {
+      text-decoration: none; color: var(--text);
+      font-weight: 800; letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .nav-links a {
+      text-decoration: none; color: #1f2a37; font-weight: 500;
+      padding: 8px 10px; border-radius: 8px;
+    }
+    .nav-links a:hover { background: #eef3f6; }
+
+    .hero {
+      padding: 72px 0 28px;
+      background: radial-gradient(900px 220px at 20% -10%, #d8f6f1, transparent 65%);
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--brand-dark); background: #d9f3ef; border: 1px solid #bfe7df;
+      padding: 7px 11px; border-radius: 999px;
+    }
+    h1 { margin: 14px 0 10px; font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.02em; }
+    .lead { color: #20303c; max-width: 900px; }
+
+    section { padding: 18px 0 40px; }
+    .grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+    }
+    .card h3 { margin-top: 0; margin-bottom: 8px; font-size: 1.05rem; }
+    .card p { margin: 0; color: #2a3a47; }
+
+    .mission-block {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .mission-block p { margin: 0 0 14px; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; border-radius: 10px; padding: 11px 16px; font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-secondary { background: #fff; color: #163944; border-color: #cad6e1; }
+    .btn-secondary:hover { background: #f8fbfd; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      color: #637383;
+      font-size: .9rem;
+      padding: 18px 0;
+      margin-top: 12px;
+    }
+  </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">Utila Island Cleanups</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="impact.html">Impact</a>
+        <a href="get-involved.html">Get Involved</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<h1>About Utila Island Cleanups</h1>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">About Us</span>
+        <h1>Community-led coastal protection in Utila</h1>
+        <p class="lead">
+          We organize weekly beach cleanups to reduce pollution, protect local ecosystems,
+          and strengthen environmental awareness through action.
+        </p>
+      </div>
+    </section>
 
-<section>
-  <p>
-    Utila Island Cleanups is dedicated to protecting the natural beauty and ecological health of Utila through weekly beach cleanups.
-  </p>
+    <section>
+      <div class="container">
+        <div class="mission-block">
+          <h2>Our Mission</h2>
+          <p>
+            Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management.
+            Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them,
+            including sea turtles and the endemic Swamper iguana.
+          </p>
+          <p>
+            Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos.
+            Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos,
+            como las tortugas marinas y la iguana endémica Swamper.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <p>
-    We ensure collected waste is transported off the island and processed responsibly by Recycle Honduras.
-  </p>
+    <section>
+      <div class="container grid">
+        <article class="card">
+          <h3>Why this work matters</h3>
+          <p>
+            Cleaner beaches help keep trash out of the ocean, reduce harm to marine life,
+            and protect fragile coastal habitats around Utila.
+          </p>
+        </article>
 
-  <h2>Why It Matters</h2>
-  <p>
-    Clean beaches are essential for sea turtles, the endemic Swamper iguana, and overall ecosystem balance.
-  </p>
+        <article class="card">
+          <h3>How we do it</h3>
+          <p>
+            We coordinate weekly cleanups, provide materials and logistics,
+            and track measurable impact over time through transparent reporting.
+          </p>
+        </article>
 
-  <p>
-    Removing trash prevents it from returning to the ocean and harming marine life.
-  </p>
-</section>
+        <article class="card">
+          <h3>Who we work with</h3>
+          <p>
+            Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters,
+            with support from volunteers and partners across the community.
+          </p>
+        </article>
+      </div>
 
+      <div class="container">
+        <div class="actions">
+          <a class="btn btn-primary" href="get-involved.html">Join a Cleanup</a>
+          <a class="btn btn-secondary" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="year"></span> Utila Island Cleanups</div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
