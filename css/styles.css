@@ -412,11 +412,12 @@ footer {
   }
 }
 
-/* If the overall page is set to 'es', hide English. If 'en', hide Spanish. */
+/* Hide English when page is Spanish */
 [lang="es"] .lang-en { 
   display: none !important; 
 }
 
+/* Hide Spanish when page is English */
 [lang="en"] .lang-es { 
   display: none !important; 
 }
