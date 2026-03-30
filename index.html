@@ -13,36 +13,46 @@
 </head>
 <body>
     <!-- NAVBAR -->
-  <header class="site-header" class="navbar">
-      <div class="container nav">
-          <a class="brand" href="index.html"></a>
-          <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-          <nav class="nav-links" aria-label="Primary navigation">
-            <a class="active" href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="impact.html">Impact</a>
-            <a href="get-involved.html">Get Involved</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-          </nav>
-        </div>
+  <header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
+    </a>
     
-              <nav class="nav-links" aria-label="Primary navigation">
-                  <a class="active" href="index.html">
-                    <span class="lang-en">Home</span>
-                    <span class="lang-es">Inicio</span>
-                  </a>
-                  <a href="about.html">
-                    <span class="lang-en">About</span>
-                    <span class="lang-es">Nosotros</span>
-                  </a>
-                  <div class="lang-switch">
-                    <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
-                    <span class="separator">/</span>
-                    <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
-            </div>
-          </nav>
-      </header>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a class="active" href="index.html">
+        <span class="lang-en">Home</span>
+        <span class="lang-es">Inicio</span>
+      </a>
+      <a href="about.html">
+        <span class="lang-en">About</span>
+        <span class="lang-es">Nosotros</span>
+      </a>
+      <a href="impact.html">
+        <span class="lang-en">Impact</span>
+        <span class="lang-es">Impacto</span>
+      </a>
+      <a href="get-involved.html">
+        <span class="lang-en">Get Involved</span>
+        <span class="lang-es">Participar</span>
+      </a>
+      <a href="gallery.html">
+        <span class="lang-en">Gallery</span>
+        <span class="lang-es">Galería</span>
+      </a>
+      <a href="contact.html">
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </a>
+
+      <div class="lang-switch">
+        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <span class="separator">/</span>
+        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="hero">
@@ -51,8 +61,8 @@
         <h1>Protecting Utila’s Beaches Through Weekly Action</h1>
 
         <p class="slogan">
-          Creating awareness one cleanup at a time
-          <span>(Creamos consciencia ambiental una limpieza de playa a la vez)</span>
+          <span class="lang-en">Creating awareness one cleanup at a time</span>
+          <span class="lang-es">(Creamos consciencia ambiental una limpieza de playa a la vez)</span>
         </p>
 
         <p class="mission">
