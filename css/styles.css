@@ -411,3 +411,12 @@ footer {
     margin-top: 10px;
   }
 }
+
+/* If the overall page is set to 'es', hide English. If 'en', hide Spanish. */
+[lang="es"] .lang-en { 
+  display: none !important; 
+}
+
+[lang="en"] .lang-es { 
+  display: none !important; 
+}
