@@ -73,6 +73,15 @@ body {
   background: #eef3f6;
 }
 
+.logo {
+            position: flex; 
+            flex-wrap: wrap;
+            align-items: left;
+            width: 100px;       /* Set a suitable width for your logo */
+            height: auto;       /* Maintain aspect ratio */
+            margin: 10px;       /* Optional: Add a small margin for spacing from the corner */
+        }
+
 /* Shared hero */
 .hero {
   padding: 78px 0 36px;
@@ -346,11 +355,4 @@ footer {
   .hero { padding-top: 64px; }
 }
 
-  .logo {
-            position: absolute; /* Position relative to the nearest positioned ancestor (or body if none) */
-            top: 1;             /* Align to the top edge */
-            left: 1;            /* Align to the left edge */
-            width: 100px;       /* Set a suitable width for your logo */
-            height: auto;       /* Maintain aspect ratio */
-            margin: 10px;       /* Optional: Add a small margin for spacing from the corner */
-        }
+ 
