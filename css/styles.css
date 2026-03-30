@@ -35,35 +35,56 @@ body {
   margin: 0 auto;
 }
 
-/* The sliding image container */
-.header-banner {
+.hero-wrapper {
+  position: relative;
   width: 100%;
-  height: 200px; /* Adjust based on how much you want to see before scrolling */
+}
+
+.header-banner {
+  position: relative;
+  width: 100%;
+  height: 60vh; /* This makes the banner 60% of the screen height - nice and large! */
   overflow: hidden;
-  background: var(--logo-bg); /* Matches your logo background */
 }
 
 .banner-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Keeps the image from looking stretched */
+  object-fit: cover;
 }
 
-/* The sticky Navigation */
+/* Optional: Darkens the image slightly so the white text/logo is easier to see */
+.banner-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .site-header {
-  position: sticky;
-  top: 0; /* This tells it to stop at the very top of the browser */
+  position: absolute; /* Starts on top of the image */
+  top: 0;
+  width: 100%;
   z-index: 1000;
-  background: var(--logo-bg);
+  background: transparent; /* Transparent at start */
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, padding 0.3s ease;
+}
+
+/* When the user scrolls, we will add this class via JavaScript */
+.site-header.scrolled {
+  position: sticky;
+  background: var(--logo-bg); /* Your logo-matched off-white */
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
 
-.site-header .logo {
-    height: 60px; /* Shorter logo for a sleeker sticky bar */
-    width: auto;
-    transition: all 0.3s ease;
+/* Logo resizing for a sleeker sticky bar */
+.site-header.scrolled .logo {
+  height: 60px;
+  width: auto;
 }
+
 
 .nav {
   display: flex;
