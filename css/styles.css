@@ -85,6 +85,17 @@ body {
   width: auto;
 }
 
+/* Initial state (on the image) */
+.site-header .nav-links a {
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Makes text readable on any photo */
+}
+
+/* Scrolled state (on your off-white background) */
+.site-header.scrolled .nav-links a {
+  color: var(--text); /* Your Slate Blue */
+  text-shadow: none;
+}
 
 .nav {
   display: flex;
