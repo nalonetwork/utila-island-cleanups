@@ -25,3 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearSpan = document.getElementById('year');
   if(yearSpan) yearSpan.textContent = new Date().getFullYear();
 });
+
+window.addEventListener('scroll', function() {
+  const header = document.querySelector('.site-header');
+  const bannerHeight = document.querySelector('.header-banner').offsetHeight;
+
+  // Add the 'scrolled' class once we pass the banner height
+  if (window.scrollY > (bannerHeight - 80)) { 
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
