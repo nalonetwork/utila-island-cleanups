@@ -325,6 +325,12 @@ textarea { min-height: 130px; resize: vertical; }
   margin-top: 8px;
 }
 
+.social-icon-ig {
+  Size: 50px;
+  color: #E1306C;
+}
+
+
 /* CTA and footer */
 .cta {
   margin-top: 6px;
