@@ -67,21 +67,7 @@ body {
   color: var(--text);
   font-size: 1.05rem;
 }
-
- /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            background: var(--primary-green);
-            padding: 1rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            z-index: 999;
-        }
-
-       
+      
 
 /* Shared hero */
 .hero {
