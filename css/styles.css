@@ -73,6 +73,44 @@ body {
   background: #f7f9fa;
 }
 
+ /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--primary-green);
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu .wallet-btn {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
 /* Shared hero */
 .hero {
   padding: 78px 0 36px;
