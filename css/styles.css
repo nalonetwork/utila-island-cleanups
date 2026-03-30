@@ -71,16 +71,18 @@ body {
 .nav-links a:hover,
 .nav-links a.active {
   background: #eef3f6;
-}
+} 
 
 .logo {
-            position: flex; 
-            flex-wrap: wrap;
-            align-items: left;
-            width: 100px;       /* Set a suitable width for your logo */
-            height: auto;       /* Maintain aspect ratio */
-            margin: 10px;       /* Optional: Add a small margin for spacing from the corner */
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
+
+
+
 
 /* Shared hero */
 .hero {
