@@ -41,7 +41,10 @@ body {
   top: 0;
   z-index: 100;
   backdrop-filter: saturate(160%) blur(8px);
-  background: #f4f3ef;
+  
+  /* Semi-transparent version of your logo background */
+  background: rgba(244, 243, 239, 0.85); 
+  
   border-bottom: 1px solid var(--border);
 }
 
@@ -78,7 +81,7 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: #eef3f6;
+  background: rgba(0, 0, 0, 0.05); /* This creates a subtle dark tint regardless of the bg color */
 }
 
 .logo {
