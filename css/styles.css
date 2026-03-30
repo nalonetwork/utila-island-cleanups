@@ -366,7 +366,7 @@ footer {
 }
 
 .nav-links a {
-  margin-left: 20px;             /* Adds space between the individual links */
+  margin-left:60px;             /* Adds space between the individual links */
   text-decoration: none;         /* Optional: removes link underlines */
   color: #333;                   /* Optional: sets your link color */
 }
