@@ -49,10 +49,15 @@ body {
 
 .nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 72px;
-  gap: 20px;
+  justify-content: space-between; /* Pushes items to the far left and right */
+  align-items: center;           /* Vertically centers the logo and links */
+  padding: 10px 20px;            /* Optional: adds some breathing room */
+}
+
+.nav-links a {
+  margin-left: 20px;             /* Adds space between the individual links */
+  text-decoration: none;         /* Optional: removes link underlines */
+  color: #333;                   /* Optional: sets your link color */
 }
 
 .brand {
@@ -61,26 +66,6 @@ body {
   text-decoration: none;
   color: var(--text);
   font-size: 1.05rem;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.nav-links a {
-  color: #1f2a37;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: #f7f9fa;
 }
 
  /* Mobile Menu */
