@@ -147,6 +147,14 @@ p { margin: 0 0 10px; }
   box-shadow: var(--shadow);
 }
 
+.contact-list {
+  list-style: none; /* This removes the bullet points */
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
 /* Buttons */
 .actions {
   margin-top: 24px;
