@@ -97,6 +97,30 @@ body {
   text-shadow: none;
 }
 
+/* --- Home Page (Transparency) Logic --- */
+/* (Keep your existing .hero-wrapper and .site-header.scrolled logic here) */
+
+/* --- Internal Pages (Solid) Logic --- */
+.static-header {
+  position: sticky;
+  top: 0;
+  background: var(--logo-bg) !important; /* Forces the logo background color */
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+/* Ensure the text is dark slate on internal pages */
+.static-header .nav-links a {
+  color: var(--text) !important;
+  text-shadow: none !important;
+}
+
+/* Ensure the logo is the smaller/sleeker size on internal pages */
+.static-header .logo {
+  height: 60px;
+  width: auto;
+}
+
 .nav {
   display: flex;
   align-items: center;
