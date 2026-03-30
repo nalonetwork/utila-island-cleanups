@@ -28,12 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.site-header');
-  const bannerHeight = document.querySelector('.header-banner').offsetHeight;
+  const banner = document.querySelector('.header-banner');
 
-  // Add the 'scrolled' class once we pass the banner height
-  if (window.scrollY > (bannerHeight - 80)) { 
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
+  // Only run the transparency-to-solid logic if a banner exists (Home Page)
+  if (banner) {
+    const bannerHeight = banner.offsetHeight;
+    if (window.scrollY > (bannerHeight - 80)) { 
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
   }
 });
