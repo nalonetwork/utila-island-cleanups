@@ -354,19 +354,3 @@ footer {
             height: auto;       /* Maintain aspect ratio */
             margin: 10px;       /* Optional: Add a small margin for spacing from the corner */
         }
-
-
-
-
-.nav {
-  display: flex;
-  justify-content: space-between; /* Pushes items to the far left and right */
-  align-items: center;           /* Vertically centers the logo and links */
-  padding: 10px 20px;            /* Optional: adds some breathing room */
-}
-
-.nav-links a {
-  margin-left:60px;             /* Adds space between the individual links */
-  text-decoration: none;         /* Optional: removes link underlines */
-  color: #333;                   /* Optional: sets your link color */
-}
