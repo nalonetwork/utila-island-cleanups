@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("weight").innerText = "320 kg / 705 lbs";
 });
 
-const hamburger = document.querySelector(".hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-hamburger.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
+Const hamMenu = document.querySelector('ham-menu';
+Const offScreenMenu = document.querySelector('off-screen-menu');
+hamMenu.addEventListener('click', () {
+  hamMenu.classList.toggle('active');
+  offScreenMenu.classList.toggle('active');
+}
