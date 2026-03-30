@@ -35,17 +35,34 @@ body {
   margin: 0 auto;
 }
 
-/* Header / Nav */
+/* The sliding image container */
+.header-banner {
+  width: 100%;
+  height: 200px; /* Adjust based on how much you want to see before scrolling */
+  overflow: hidden;
+  background: var(--logo-bg); /* Matches your logo background */
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps the image from looking stretched */
+}
+
+/* The sticky Navigation */
 .site-header {
   position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: saturate(160%) blur(8px);
-  
-  /* Semi-transparent version of your logo background */
-  background: rgba(244, 243, 239, 0.85); 
-  
+  top: 0; /* This tells it to stop at the very top of the browser */
+  z-index: 1000;
+  background: var(--logo-bg);
   border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.site-header .logo {
+    height: 60px; /* Shorter logo for a sleeker sticky bar */
+    width: auto;
+    transition: all 0.3s ease;
 }
 
 .nav {
