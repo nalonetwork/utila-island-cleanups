@@ -1,7 +1,7 @@
 :root {
-  --bg: #f2f1ec;
+  --bg: #f5f8f9;
   --card: #ffffff;
-  --text: #365b6d;
+  --text: #0f1720;
   --muted: #546170;
   --brand: #0f766e;
   --brand-dark: #0b5d56;
@@ -71,7 +71,7 @@ body {
 .nav-links a:hover,
 .nav-links a.active {
   background: #eef3f6;
-} 
+}
 
 .logo {
             font-size: 1.8rem;
@@ -80,8 +80,6 @@ body {
             align-items: left;
             gap: 0.5rem;
         }
-
-
 
 
 /* Shared hero */
@@ -356,5 +354,3 @@ footer {
   .nav { padding: 10px 0; }
   .hero { padding-top: 64px; }
 }
-
- 
