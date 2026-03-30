@@ -77,7 +77,7 @@ body {
             font-size: 1.8rem;
             font-weight: bold;
             display: flex;
-            align-items: center;
+            align-items: left;
             gap: 0.5rem;
         }
 
