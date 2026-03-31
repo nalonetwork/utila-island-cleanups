@@ -41,14 +41,24 @@ window.addEventListener('scroll', function() {
   }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Add this to your js/site.js
-const menuToggle = document.getElementById('menu-toggle');
-const navLinks = document.getElementById('nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
 
-if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        // This adds/removes the 'active' class which triggers the CSS display
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function(e) {
+      // Prevents the click from bubbling up
+      e.stopPropagation(); 
+      
+      // Toggle the 'active' class on the menu
+      navLinks.classList.toggle('active');
+      
+      // Optional: Toggle 'open' on the button for the X animation
+      menuToggle.classList.toggle('open');
+      
+      console.log("Menu toggled!"); // Check your browser console (F12) to see if this prints
+    });
+  }
+});ggers the CSS display
     });
 }
