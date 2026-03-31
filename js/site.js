@@ -3,23 +3,16 @@
  * Utila Island Cleanups - Master Script
  */
 function setLanguage(lang) {
-    // 1. Set the attribute on the HTML tag (Primary)
+    // This line is what makes the CSS work!
     document.documentElement.setAttribute('lang', lang);
     
-    // 2. Set a class on the Body (Backup)
-    document.body.className = 'lang-' + lang;
-    
-    console.log("Switching to: " + lang);
-
-    // 3. Update the buttons
+    // UI Updates
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
+        btn.classList.toggle('active', btn.id === `btn-${lang}`);
     });
     
-    const activeBtn = document.getElementById(`btn-${lang}`);
-    if (activeBtn) activeBtn.classList.add('active');
-
     localStorage.setItem('preferredLang', lang);
+}
 }
 // Ensure it runs the moment the page is ready
 document.addEventListener('DOMContentLoaded', () => {
