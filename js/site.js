@@ -77,3 +77,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.querySelector('.site-header');
+  const banner = document.querySelector('.header-banner');
+
+  function handleScroll() {
+    if (banner) {
+      // Home Page Logic: Stick only after scrolling past the photo
+      if (window.scrollY > (banner.offsetHeight - 50)) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    } else {
+      // Internal Page Logic: Always keep it sticky
+      header.classList.add('scrolled');
+    }
+  }
+
+  // Run on scroll
+  window.addEventListener('scroll', handleScroll);
+  // Run once on load to catch internal pages
+  handleScroll();
+});
