@@ -1,49 +1,30 @@
-:root {
-
   /* Colors extracted from the logo */
 
+
+:root {
   --logo-slate: #3b5a6c;   /* "utila" and "island cleanups" text */
-
   --logo-blue: #32a9e1;    /* The heart and the wave */
-
   --logo-bg: #f4f3ef;      /* The warm off-white background */
 
 
 
   /* Functional Variable Mapping */
-
   --bg: var(--logo-bg);
-
   --card: #ffffff;
-
   --text: var(--logo-slate);
-
   --muted: #627b8a;        /* Adjusted for slate harmony */
-
-  
-
   --brand: var(--logo-blue);
-
   --brand-dark: #2581ad;   /* Deepened version of logo blue for hover states */
-
   --accent: #e6f4fa;       /* Very light tint of logo blue */
-
-  
-
   --border: #dcdbd5;       /* Subtle darker version of the logo bg */
-
   --shadow: 0 10px 24px rgba(59, 90, 108, 0.12); /* Tinted slate shadow */
-
   --radius: 14px;
-
   --max: 1120px;
-
 }
 
 
 
 * { box-sizing: border-box; }
-
 html, body { margin: 0; padding: 0; }
 
 
@@ -167,68 +148,49 @@ html, body { margin: 0; padding: 0; }
     padding-top: 20px;
     margin-top: 10px;
   }
-}
+
 
 /* Hamburger "X" Animation */
 .menu-toggle.open .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
 body {
-
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-
   background: var(--bg);
-
   color: var(--text);
-
   line-height: 1.65;
-
 }
 
 
 
 .container {
-
   width: min(92%, var(--max));
-
   margin: 0 auto;
-
 }
 
 
 
 .hero-wrapper {
-
   position: relative;
-
   width: 100%;
-
 }
 
 
 
 .header-banner {
-
   position: relative;
-
   width: 100%;
-
   height: 60vh; /* This makes the banner 60% of the screen height - nice and large! */
-
   overflow: hidden;
-
 }
 
 
 
 .banner-img {
-
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
-
 }
 
 
@@ -236,35 +198,22 @@ body {
 /* Optional: Darkens the image slightly so the white text/logo is easier to see */
 
 .banner-overlay {
-
   position: absolute;
-
   top: 0; left: 0;
-
   width: 100%; height: 100%;
-
   background: rgba(0, 0, 0, 0.2);
-
 }
 
 
 
 .site-header {
-
   position: absolute; /* Starts on top of the image */
-
   top: 0;
-
   width: 100%;
-
   z-index: 1000;
-
   background: transparent; /* Transparent at start */
-
   border-bottom: 1px solid transparent;
-
   transition: background 0.3s ease, padding 0.3s ease;
-
 }
 
 
@@ -272,15 +221,10 @@ body {
 /* When the user scrolls, we will add this class via JavaScript */
 
 .site-header.scrolled {
-
   position: sticky;
-
   background: var(--logo-bg); /* Your logo-matched off-white */
-
   border-bottom: 1px solid var(--border);
-
   box-shadow: var(--shadow);
-
 }
 
 
@@ -288,11 +232,8 @@ body {
 /* Logo resizing for a sleeker sticky bar */
 
 .site-header.scrolled .logo {
-
   height: 60px;
-
   width: auto;
-
 }
 
 
@@ -300,9 +241,7 @@ body {
 /* Initial state (on the image) */
 
 .site-header .nav-links a {
-
   color: white;
-
   text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Makes text readable on any photo */
 
 }
@@ -312,9 +251,7 @@ body {
 /* Scrolled state (on your off-white background) */
 
 .site-header.scrolled .nav-links a {
-
   color: var(--text); /* Your Slate Blue */
-
   text-shadow: none;
 
 }
@@ -326,42 +263,27 @@ body {
 /* We ensure the hamburger is hidden on computers */
 
 .menu-toggle {
-
   display: none; 
 
 }
 
 
 
-@media (max-width: 768px) {
-
-  /* This is the hidden state */
-
   .nav-links {
-
     display: flex; /* We use flex but move it off-screen */
-
     position: fixed;
-
     top: 0;
-
     right: -100%; /* Hidden to the right */
-
     width: 250px;
-
     height: 100vh;
-
     background: var(--logo-bg);
-
     flex-direction: column;
-
     padding: 80px 20px;
-
     transition: right 0.3s ease-in-out; /* This creates the slide effect */
-
     z-index: 999;
-
-  }@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
   /* 1. The Mobile Drawer */
   .nav-links {
     display: flex !important; 
@@ -405,74 +327,48 @@ body {
     width: 100%;
     justify-content: flex-start !important;
   }
-}
+
 
 
  
 
   .menu-toggle .bar {
-
     width: 100%;
-
     height: 3px;
-
     background-color: var(--logo-blue); /* Use your bright blue so it pops against the banner */
-
     border-radius: 5px;
-
     display: block;
-
   }
 
-}
+
 
 
 
 
 
   .nav-links.active {
-
     right: 0 !important; /* Slide into view */
-
     display: flex; /* Shown when JS clicks the button */
-
     position: fixed;
-
     top: 0;
-
     right: 0;
-
     width: 70%;
-
     height: 100vh;
-
     background: var(--logo-bg);
-
     flex-direction: column;
-
     padding: 80px 20px;
-
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-
   }
 
-}
-
- 
 
 
   /* Move the language switch to the bottom of the mobile menu */
 
   .lang-switch {
-
     margin-top: auto;
-
     border-left: none;
-
     padding-top: 20px;
-
     justify-content: flex-start;
-
   }
 
 }
@@ -480,13 +376,9 @@ body {
 
 
 @media (max-width: 768px) {
-
   .menu-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-
   .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-
   .menu-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
 }
 
 
@@ -498,17 +390,11 @@ body {
 /* --- Internal Pages (Solid) Logic --- */
 
 .static-header {
-
   position: sticky;
-
   top: 0;
-
   background: var(--logo-bg) !important; /* Forces the logo background color */
-
   border-bottom: 1px solid var(--border);
-
   box-shadow: var(--shadow);
-
 }
 
 
@@ -516,11 +402,8 @@ body {
 /* Ensure the text is dark slate on internal pages */
 
 .static-header .nav-links a {
-
   color: var(--text) !important;
-
   text-shadow: none !important;
-
 }
 
 
@@ -528,99 +411,64 @@ body {
 /* Ensure the logo is the smaller/sleeker size on internal pages */
 
 .static-header .logo {
-
   height: 60px;
-
   width: auto;
-
 }
 
 
 
 .nav {
-
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   min-height: 72px;
-
   gap: 20px;
-
 }
 
 
 
 .brand {
-
   font-weight: 800;
-
   letter-spacing: -0.02em;
-
   text-decoration: none;
-
   color: var(--text);
-
   font-size: 1.05rem;
-
 }
 
 
 
 .nav-links {
-
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 12px;
-
 }
 
 
 
 .nav-links a {
-
   color: #1f2a37;
-
   text-decoration: none;
-
   font-weight: 500;
-
   font-size: 0.95rem;
-
   padding: 8px 10px;
-
   border-radius: 8px;
-
 }
 
 
 
 .nav-links a:hover,
-
 .nav-links a.active {
-
   background: rgba(0, 0, 0, 0.05); /* This creates a subtle dark tint regardless of the bg color */
-
 }
 
 
 
 .logo {
-
-            font-size: 1.8rem;
-
-            font-weight: bold;
-
-            display: flex;
-
-            align-items: left;
-
-            gap: 0.5rem;
-
+        font-size: 1.8rem;
+        font-weight: bold;
+        display: flex;
+        align-items: left;
+        gap: 0.5rem;
         }
 
 
@@ -630,129 +478,80 @@ body {
 /* Shared hero */
 
 .hero {
-
   padding: 78px 0 36px;
-
   background:
-
     radial-gradient(1100px 280px at 20% -10%, var(--accent), transparent 65%),
-
     radial-gradient(900px 260px at 100% -20%, #ffffff, transparent 65%);
-
 }
 
 
 
 .badge {
-
   display: inline-flex;
-
   align-items: center;
-
   gap: 8px;
-
   font-size: 0.8rem;
-
   font-weight: 700;
-
   letter-spacing: 0.04em;
-
   text-transform: uppercase;
-
   color: var(--brand-dark);
-
   background: var(--accent);
-
   border: 1px solid #bfe7df;
-
   padding: 8px 12px;
-
   border-radius: 999px;
-
   margin-bottom: 14px;
-
 }
 
 
 
 h1 {
-
   margin: 0;
-
   font-size: clamp(1.85rem, 4.2vw, 3rem);
-
   line-height: 1.15;
-
   letter-spacing: -0.02em;
-
 }
 
 
 
 h2 {
-
-  margin: 0 0 12px;
-
+  margin: 0 0 12px; 
   font-size: clamp(1.35rem, 2.5vw, 1.8rem);
-
   letter-spacing: -0.01em;
-
 }
 
-
-
 h3 { margin: 0 0 8px; }
-
-
-
 p { margin: 0 0 10px; }
 
 
 
 .section {
-
   padding: 20px 0 56px;
-
 }
 
 
 
 .section-sub {
-
   margin: 0 0 20px;
-
   color: var(--muted);
-
 }
 
 
 
 .card {
-
   background: var(--card);
-
   border: 1px solid var(--border);
-
   border-radius: var(--radius);
-
   box-shadow: var(--shadow);
-
 }
 
 
 
 .contact-list {
-
   list-style: none; /* This removes the bullet points */
-
   padding: 0;
-
   margin: 0;
-
   display: grid;
-
   gap: 10px;
-
 }
 
 
@@ -760,81 +559,53 @@ p { margin: 0 0 10px; }
 /* Buttons */
 
 .actions {
-
   margin-top: 24px;
-
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 12px;
-
 }
 
 
 
 .btn {
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   text-decoration: none;
-
   border-radius: 10px;
-
   padding: 12px 18px;
-
   font-weight: 600;
-
   border: 1px solid transparent;
-
   transition: all 0.2s ease;
-
 }
 
 
 
 .btn-primary {
-
   background: var(--brand);
-
   color: #fff;
-
 }
 
 
 
 .btn-primary:hover {
-
   background: var(--brand-dark);
-
   transform: translateY(-1px);
-
 }
 
 
 
 .btn-secondary {
-
   background: #fff;
-
   color: #12313a;
-
   border-color: #cad6e1;
-
 }
 
 
 
 .btn-secondary:hover {
-
   background: #f8fbfd;
-
   border-color: #b9c8d6;
-
 }
 
 
@@ -842,165 +613,105 @@ p { margin: 0 0 10px; }
 /* Index-specific blocks */
 
 .slogan {
-
   margin-top: 14px;
-
   color: #18313a;
-
   font-weight: 600;
-
 }
 
 .slogan span {
-
   display: block;
-
   color: var(--muted);
-
   font-weight: 500;
-
   margin-top: 2px;
-
 }
 
 .mission {
-
   margin-top: 18px;
-
   color: #20303c;
-
   max-width: 980px;
-
 }
 
 
 
 .info-list {
-
   margin: 0;
-
   padding: 8px;
-
   list-style: none;
-
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-
   gap: 10px;
-
 }
 
 
 
 .info-item {
-
   display: flex;
-
   gap: 12px;
-
   align-items: flex-start;
-
   border: 1px solid #e8edf2;
-
   border-radius: 12px;
-
   padding: 14px;
-
   background: #fff;
-
 }
 
 
 
 .info-icon {
-
   font-size: 1.2rem;
-
   line-height: 1;
-
   margin-top: 2px;
-
 }
 
 
 
 .info-text {
-
   color: #20303c;
-
   font-size: 0.95rem;
-
 }
 
 
 
 .impact-wrap {
-
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
   gap: 14px;
-
 }
 
 
 
 .impact-card {
-
   padding: 20px;
-
   border-radius: 12px;
-
   border: 1px solid #e2e8ef;
-
   background: #fff;
-
 }
 
 
 
 .impact-label {
-
   margin: 0 0 6px;
-
   color: #4c5b69;
-
   font-size: 0.9rem;
-
   font-weight: 600;
-
 }
 
 
 
 .impact-value {
-
   margin: 0;
-
   font-size: clamp(1.5rem, 3.3vw, 2rem);
-
   line-height: 1.2;
-
   font-weight: 800;
-
   letter-spacing: -0.02em;
-
   color: #0b3b48;
-
 }
 
 
 
 .impact-note {
-
   margin-top: 12px;
-
   font-size: 0.86rem;
-
   color: #607080;
-
 }
 
 
@@ -1008,19 +719,13 @@ p { margin: 0 0 10px; }
 /* About */
 
 .grid-3 {
-
   display: grid;
-
   gap: 16px;
-
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
 }
 
 .block {
-
   padding: 24px;
-
 }
 
 .block p { color: #2a3a47; }
@@ -1030,53 +735,32 @@ p { margin: 0 0 10px; }
 /* Contact */
 
 .layout-2 {
-
   display: grid;
-
   grid-template-columns: 1.15fr 0.85fr;
-
   gap: 16px;
-
 }
 
 @media (max-width: 900px) {
-
   .layout-2 { grid-template-columns: 1fr; }
-
 }
 
 .form-card, .info-card { padding: 22px; }
-
-
-
 form { display: grid; gap: 12px; }
 
 label {
-
   font-weight: 600;
-
   font-size: 0.92rem;
-
   color: #233341;
-
 }
 
 input, textarea {
-
   width: 100%;
-
   border: 1px solid #cad6e1;
-
   border-radius: 10px;
-
   padding: 11px 12px;
-
   font: inherit;
-
   background: #fff;
-
   color: #0f1720;
-
 }
 
 textarea { min-height: 130px; resize: vertical; }
@@ -1084,65 +768,40 @@ textarea { min-height: 130px; resize: vertical; }
 
 
 .contact-list {
-
   list-style: none;
-
   padding: 0;
-
   margin: 0;
-
   display: grid;
-
   gap: 10px;
-
 }
 
 .contact-item {
-
   border: 1px solid #e8edf2;
-
   border-radius: 10px;
-
   padding: 12px;
-
   background: #fff;
-
 }
 
 .label {
 
   display: block;
-
   font-size: 0.8rem;
-
   color: #607080;
-
   text-transform: uppercase;
-
   letter-spacing: 0.04em;
-
   margin-bottom: 3px;
-
   font-weight: 700;
-
 }
 
 .value {
-
   color: #172635;
-
   font-weight: 600;
-
 }
 
 .note {
-
   font-size: 0.86rem;
-
   color: #607080;
-
   margin-top: 8px;
-
 }
 
 
@@ -1150,195 +809,122 @@ textarea { min-height: 130px; resize: vertical; }
 /* CTA and footer */
 
 .cta {
-
   margin-top: 6px;
-
   padding: 30px;
-
   background: linear-gradient(180deg, #ffffff, #f3f8f8);
-
 }
 
 
 
 footer {
-
   border-top: 1px solid var(--border);
-
   background: #fff;
-
   color: #637383;
-
   font-size: 0.9rem;
-
   padding: 18px 0;
-
   margin-top: 12px;
-
 }
 
 
 
 @media (max-width: 720px) {
-
   .nav { padding: 10px 0; }
-
   .hero { padding-top: 64px; }
-
 }
-
-
-
-/* --- Language Toggle Logic --- */
-
-
 
 /* Hide the language that isn't active */
 
 [lang="es"] .lang-en { display: none; }
-
 [lang="en"] .lang-es { display: none; }
 
 
-
-/* Toggle Styling */
-
 .lang-switch {
-
   display: flex;
-
   align-items: center;
-
   gap: 4px;
-
   padding-left: 8px;
-
   margin-left: 8px;
-
   border-left: 1px solid var(--border);
-
 }
 
 
 
 .lang-btn {
-
   background: none;
-
   border: none;
-
   cursor: pointer;
-
   font-family: inherit;
-
   font-size: 0.85rem;
-
   font-weight: 700;
-
   color: var(--muted);
-
   padding: 4px 6px;
-
   border-radius: 6px;
-
   transition: all 0.2s ease;
-
 }
 
 
 
 .lang-btn:hover {
-
   color: var(--text);
-
   background: #eef3f6;
-
 }
 
 
 
 .lang-btn.active {
-
   color: var(--brand);
-
   background: var(--accent);
-
 }
 
 
 
 .separator {
-
   color: var(--border);
-
   font-size: 0.8rem;
-
   user-select: none;
-
 }
 
 
 
 .social-icon-ig, .social-icon-fb {
-
   display: flex;
-
   transition: transform 0.2s ease, opacity 0.2s ease;
-
 }
 
 
 
 .social-icon-ig:hover, .social-icon-fb:hover {
-
   transform: scale(1.1);
-
   opacity: 0.8;
-
 }
 
 
 
 ion-icon {
-
-  /* This ensures the icons use your brand color automatically */
-
   color: var(--brand); 
-
 }
 
 
 
 /* Adjust for small screens */
 
-@media (max-width: 720px) {
-
+@media (max-width: 720px) 
   .lang-switch {
-
     border-left: none;
-
     margin-left: 0;
-
     padding-left: 0;
-
     width: 100%;
-
     justify-content: center;
-
     margin-top: 10px;
-
   }
 
-}
 
 
 
 /* Hide English when page is Spanish */
 
 [lang="es"] .lang-en { 
-
   display: none !important; 
-
 }
 
 
@@ -1346,7 +932,5 @@ ion-icon {
 /* Hide Spanish when page is English */
 
 [lang="en"] .lang-es { 
-
   display: none !important; 
-
 }
