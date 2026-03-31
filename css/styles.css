@@ -293,6 +293,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
   text-decoration: none; /* Removes the underline */
   transition: all 0.2s ease;
   cursor: pointer;
+  border: 1px solid transparent; 
 }
 
 /* This adds the Blue Color */
@@ -340,7 +341,13 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 /* ==========================================================================
    8. LANGUAGE LOGIC & FOOTER
    ========================================================================== */
-[lang="es"] .lang-en, [lang="en"] .lang-es { display: none !important; }
+/* --- Language Hiding Logic --- */
+/* Hide Spanish when the page is set to English */
+html[lang="en"] .lang-es { display: none !important; }
+
+/* Hide English when the page is set to Spanish */
+html[lang="es"] .lang-en { display: none !important; }
+
 
 .lang-switch { display: flex; align-items: center; gap: 8px; margin-left: 20px; }
 
