@@ -62,6 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+      // SIMPLE FORM FEEDBACK
+document.querySelectorAll(".signup-form").forEach(form => {
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    alert("✅ Thank you! We'll be in touch.");
+    form.reset();
+  });
+});
+
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check once on load
 });
