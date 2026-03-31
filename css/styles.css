@@ -201,6 +201,63 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 .btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); }
 
 /* ==========================================================================
+   BUTTONS & ACTIONS
+   ========================================================================== */
+.actions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Primary: The Solid Blue Button */
+.btn-primary {
+  background: var(--brand); /* Logo Blue */
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(50, 169, 225, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(50, 169, 225, 0.35);
+}
+
+/* Secondary: The White/Outline Button */
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text); /* Slate Blue */
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: #f8fbfd;
+  border-color: var(--logo-blue);
+  color: var(--logo-blue);
+}
+
+/* Icon inside button adjustment */
+.btn ion-icon {
+  margin-left: 8px;
+  font-size: 1.2rem;
+  color: inherit; /* Matches the text color of the button */
+}
+
+/* ==========================================================================
    6. LANGUAGE TOGGLE & FOOTER
    ========================================================================== */
 [lang="es"] .lang-en, [lang="en"] .lang-es { display: none !important; }
