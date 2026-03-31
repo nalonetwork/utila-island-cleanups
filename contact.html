@@ -87,51 +87,38 @@
         </p>
 
         <form action="https://formspree.io/f/your-form-id" method="POST">
-          <div>
-            <label for="name">
-              <span class="lang-en">Full name</span>
-              <span class="lang-es">Nombre completo</span>
-            </label>
-            <input id="name" name="name" type="text" required />
-          </div>
+         <div class="signup-card">
+  <form class="signup-form">
 
-          <div>
-            <label for="email">
-              <span class="lang-en">Email address</span>
-              <span class="lang-es">Correo electrónico</span>
-            </label>
-            <input id="email" name="email" type="email" required />
-          </div>
+    <h2>
+      <span class="lang-en">Join the Cleanup</span>
+      <span class="lang-es">Únete a la Limpieza</span>
+    </h2>
 
-          <div>
-            <label for="subject">
-              <span class="lang-en">Subject</span>
-              <span class="lang-es">Asunto</span>
-            </label>
-            <input id="subject" name="subject" type="text" 
-              placeholder="Volunteer, partnership, support..." 
-              data-en="Volunteer, partnership, support..." 
-              data-es="Voluntariado, alianzas, apoyo..." />
-          </div>
+    <p class="signup-sub">
+      <span class="lang-en">Sign up to participate or get updates.</span>
+      <span class="lang-es">Regístrate para participar o recibir actualizaciones.</span>
+    </p>
 
-          <div>
-            <label for="message">
-              <span class="lang-en">Message</span>
-              <span class="lang-es">Mensaje</span>
-            </label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
+    <div class="form-group">
+      <input type="text" placeholder="Name" required />
+    </div>
 
-          <button class="btn btn-primary" type="submit">
-            <span class="lang-en">Send Message</span>
-            <span class="lang-es">Enviar Mensaje</span>
-          </button>
-          
-          <p class="note">
-            <span class="lang-en">Replace the form action URL with your Formspree endpoint.</span>
-            <span class="lang-es">Reemplaza la URL de acción del formulario con tu endpoint de Formspree.</span>
-          </p>
-        </form>
+    <div class="form-group">
+      <input type="email" placeholder="Email" required />
+    </div>
+
+    <div class="form-group">
+      <textarea placeholder="Message (optional)"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary signup-btn">
+      <span class="lang-en">Sign Up</span>
+      <span class="lang-es">Registrarse</span>
+    </button>
+
+  </form>
+</div>
       </article>
 
       <aside class="card info-card">
