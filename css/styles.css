@@ -341,29 +341,28 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 /* ==========================================================================
    8. LANGUAGE LOGIC & FOOTER
    ========================================================================== */
-/* 1. Default: Hide Spanish by default if no language is set */
-.lang-es { display: none !important; }
+/* --- UNIVERSAL LANGUAGE OVERRIDE --- */
 
-/* 2. If the HTML tag says 'es', hide English and SHOW Spanish */
-html[lang="es"] .lang-en { display: none !important; }
-html[lang="es"] .lang-es { display: inline-block !important; }
-
-/* 3. If the HTML tag says 'en', hide Spanish and SHOW English */
-html[lang="en"] .lang-es { display: none !important; }
-html[lang="en"] .lang-en { display: inline-block !important; }
-
-.lang-switch { display: flex; align-items: center; gap: 8px; margin-left: 20px; }
-
-.lang-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  color: var(--muted);
+/* 1. By default, hide ALL Spanish text */
+.lang-es { 
+    display: none !important; 
 }
 
-.lang-btn.active { color: var(--brand); }
+/* 2. If the HTML tag is set to English, hide Spanish (Double Check) */
+html[lang="en"] .lang-es { 
+    display: none !important; 
+}
+html[lang="en"] .lang-en { 
+    display: inline-block !important; 
+}
 
+/* 3. If the HTML tag is set to Spanish, HIDE English and SHOW Spanish */
+html[lang="es"] .lang-en { 
+    display: none !important; 
+}
+html[lang="es"] .lang-es { 
+    display: inline-block !important; 
+}
 footer {
   padding: 40px 0;
   text-align: center;
