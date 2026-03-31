@@ -218,71 +218,10 @@ body.home { padding-top: 0; }
 }
 
 /* ==========================================================================
-   6. /* SIGNUP FORM */
+   6. /* ===== FORM SYSTEM (CLEAN + UNIFIED) ===== */
    ========================================================================== */
 
-.signup-card {
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px;
-  background: white;
-  border-radius: 16px;
-  border: 1px solid var(--border);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-  text-align: center;
-}
 
-.signup-form h2 {
-  color: var(--primary);
-  margin-bottom: 10px;
-}
-
-.signup-sub {
-  color: #666;
-  font-size: 14px;
-  margin-bottom: 25px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.signup-form input,
-.signup-form textarea {
-  width: 100%;
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--bg-soft);
-  font-size: 15px;
-  transition: 0.25s;
-}
-
-.signup-form input:focus,
-.signup-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(40,157,210,0.15);
-}
-
-.signup-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.signup-btn {
-  width: 100%;
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-/* subtle hover lift */
-.signup-card:hover {
-  transform: translateY(-2px);
-  transition: 0.3s;
-}
-/* CLEAN CONTACT FORM */
 .clean-form {
   margin-top: 20px;
 }
@@ -297,7 +236,7 @@ body.home { padding-top: 0; }
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .clean-form label {
@@ -307,17 +246,20 @@ body.home { padding-top: 0; }
   color: var(--primary);
 }
 
+/* unified input styles */
 .clean-form input,
 .clean-form textarea,
 .clean-form select {
-  padding: 12px;
+  width: 100%;
+  padding: 13px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--bg-soft);
   font-size: 15px;
-  transition: 0.25s;
+  transition: all 0.2s ease;
 }
 
+/* unified focus */
 .clean-form input:focus,
 .clean-form textarea:focus,
 .clean-form select:focus {
@@ -329,26 +271,24 @@ body.home { padding-top: 0; }
 
 .clean-form textarea {
   resize: vertical;
+  min-height: 100px;
 }
 
+/* button */
 .form-submit {
   width: 100%;
   margin-top: 10px;
   font-size: 16px;
 }
 
-/* subtle polish */
+/* card polish */
 .form-card {
   padding: 30px;
-}
-
-.form-card h2 {
-  margin-bottom: 5px;
+  transition: transform 0.25s ease;
 }
 
 .form-card:hover {
   transform: translateY(-2px);
-  transition: 0.3s;
 }
 
 /* ==========================================================================
