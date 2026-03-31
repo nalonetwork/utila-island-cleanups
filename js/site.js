@@ -80,29 +80,4 @@ function setLanguage(lang) {
     });
 }
 
-// --- 5. Smooth Scroll for Navigation Links ---
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
 
-        if (targetElement) {
-            // Calculate header height to avoid covering the section title
-            const headerOffset = 90; 
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-
-            // Close mobile menu after clicking a link
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('open');
-            }
-        }
-    });
-});
