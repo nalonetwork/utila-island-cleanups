@@ -42,14 +42,13 @@ window.addEventListener('scroll', function() {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
+  // Add this to your js/site.js
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
 
-  if (menuToggle) {
+if (menuToggle) {
     menuToggle.addEventListener('click', () => {
-      // This 'active' class only has "drawer" instructions inside the mobile Media Query
-      navLinks.classList.toggle('active');
-      menuToggle.classList.toggle('open'); // For the X animation
+        navLinks.classList.toggle('active');
+        // This adds/removes the 'active' class which triggers the CSS display
     });
-  }
-});
+}
