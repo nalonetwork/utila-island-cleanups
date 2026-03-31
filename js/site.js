@@ -1,46 +1,34 @@
-
 /**
- * Utila Island Cleanups - Master Script
+ * Utila Island Cleanups - Unified Site Logic
  */
+
+// 1. Language Function (Must be global so the HTML buttons can see it)
 function setLanguage(lang) {
-    // This is the trigger for the CSS above
+    // Force the HTML attribute (This triggers the CSS hiding logic)
     document.documentElement.setAttribute('lang', lang);
     
-    // Update Button Appearance
+    // Update Button UI
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
+        btn.classList.toggle('active', btn.id === `btn-${lang}`);
     });
     
-    const activeBtn = document.getElementById(`btn-${lang}`);
-    if (activeBtn) activeBtn.classList.add('active');
-
-    // Save for the next page load
+    // Save to browser memory
     localStorage.setItem('preferredLang', lang);
-    
-    console.log("Language changed to: " + lang);
+    console.log("Language set to: " + lang);
 }
 
-// Make sure it runs as soon as the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang') || 'en';
-    setLanguage(savedLang);
-});
-// Ensure it runs the moment the page is ready
-document.addEventListener('DOMContentLoaded', () => {
-    const savedLang = localStorage.getItem('preferredLang') || 'en';
-    setLanguage(savedLang);
-});
+// 2. All Page-Load Logic
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- Initialize Language ---
+    // --- Initial Language Load ---
     const savedLang = localStorage.getItem('preferredLang') || 'en';
     setLanguage(savedLang);
 
-    // --- Footer Year ---
+    // --- Automatic Footer Year ---
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // --- Hamburger Menu Logic ---
+    // --- Mobile Menu Toggle ---
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
@@ -51,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             menuToggle.classList.toggle('open');
         });
 
-        // Close menu when clicking a link
+        // Auto-close menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -60,13 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Sticky Header Scroll Logic ---
+    // --- Sticky Header Logic ---
     const header = document.querySelector('.site-header');
     const banner = document.querySelector('.header-banner');
 
     function handleScroll() {
         if (!header) return;
-        // On pages with a banner, stick after 100px. On others, always stick.
+        // If there's a banner (Home), stick after 100px. Otherwise, always stick.
         if (banner) {
             window.scrollY > 100 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
         } else {
@@ -75,5 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll(); // Check once on load
 });
