@@ -97,6 +97,74 @@ body {
   text-shadow: none;
 }
 
+/* --- DESKTOP VIEW (Default) --- */
+/* We ensure the hamburger is hidden on computers */
+.menu-toggle {
+  display: none; 
+}
+
+/* --- MOBILE VIEW (Only triggers on screens smaller than 768px) --- */
+@media (max-width: 768px) {
+  
+  .menu-toggle {
+    display: flex; /* Hamburger appears only on mobile */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-toggle .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text);
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  /* Transform the nav-links into a mobile drawer */
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Fixes it to the screen */
+    top: 0;
+    right: -100%; /* Starts hidden off-screen to the right */
+    width: 280px;
+    height: 100vh;
+    background: var(--logo-bg);
+    padding: 80px 40px; /* Space for the logo/top */
+    gap: 20px;
+    transition: 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  /* When JS adds the 'active' class, slide it in */
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Stack the links vertically and make them bigger for fingers to tap */
+  .nav-links a {
+    font-size: 1.2rem;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  /* Move the language switch to the bottom of the mobile menu */
+  .lang-switch {
+    margin-top: auto;
+    border-left: none;
+    padding-top: 20px;
+    justify-content: flex-start;
+  }
+}
+
 /* --- Home Page (Transparency) Logic --- */
 /* (Keep your existing .hero-wrapper and .site-header.scrolled logic here) */
 
