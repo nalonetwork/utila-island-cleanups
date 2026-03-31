@@ -341,28 +341,22 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 /* ==========================================================================
    8. LANGUAGE LOGIC & FOOTER
    ========================================================================== */
-/* --- UNIVERSAL LANGUAGE OVERRIDE --- */
+/* --- Language Display Logic --- */
 
-/* 1. By default, hide ALL Spanish text */
+/* 1. Hide Spanish by default */
 .lang-es { 
-    display: none !important; 
+  display: none !important; 
 }
 
-/* 2. If the HTML tag is set to English, hide Spanish (Double Check) */
-html[lang="en"] .lang-es { 
-    display: none !important; 
-}
-html[lang="en"] .lang-en { 
-    display: inline-block !important; 
-}
+/* 2. If HTML lang is 'en', show English and hide Spanish */
+html[lang="en"] .lang-en { display: inline-block !important; }
+html[lang="en"] .lang-es { display: none !important; }
 
-/* 3. If the HTML tag is set to Spanish, HIDE English and SHOW Spanish */
-html[lang="es"] .lang-en { 
-    display: none !important; 
-}
-html[lang="es"] .lang-es { 
-    display: inline-block !important; 
-}
+/* 3. If HTML lang is 'es', hide English and show Spanish */
+html[lang="es"] .lang-en { display: none !important; }
+html[lang="es"] .lang-es { display: inline-block !important; }
+
+   
 footer {
   padding: 40px 0;
   text-align: center;
