@@ -43,25 +43,35 @@ body {
 /* ==========================================================================
    2. HEADER & NAVIGATION (DESKTOP)
    ========================================================================== */
+/* This applies to the Home Page (index.html) */
 .site-header {
-  position: absolute; /* Sits on top of hero banner */
+  position: absolute; 
   top: 0;
   width: 100%;
-  z-index: 9999 !important; /* Force this to the very top layer */
-  pointer-events: auto;     /* Ensure it accepts clicks */
+  z-index: 9999;
   background: transparent;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
-/* This class is added by JavaScript when you scroll down */
+/* This applies to Internal Pages (About, Contact, etc.) 
+   AND the Home Page once you scroll down */
 .site-header.scrolled, 
 .static-header {
-  position: sticky !important; /* This forces it to stay at the top */
-  top: 0;
+  position: fixed !important; /* Fixed is more reliable than sticky for global headers */
+  top: 0 !important;
+  left: 0;
+  width: 100%;
   background: var(--logo-bg) !important;
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
-  z-index: 9999; /* Ensures it stays above all other content */
+  z-index: 9999 !important;
+}
+
+/* IMPORTANT: Since the header is now 'Fixed', we need to push the 
+   page content down on internal pages so the header doesn't cover the title */
+.static-header + main,
+.site-header.scrolled + main {
+  padding-top: 60px; /* Adjust this to match your header height */
 }
 
 .nav {
