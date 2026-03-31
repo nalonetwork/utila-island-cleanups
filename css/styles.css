@@ -206,11 +206,13 @@ body.home { padding-top: 0; }
   border: 1px solid transparent; 
 }
 
+/* Primary: The Solid Blue Button */
 .btn-primary {
   background-color: var(--brand) !important;
   color: #ffffff !important;
 }
 
+/* Secondary: The White/Outline Button */
 .btn-secondary {
   background-color: #ffffff !important;
   color: var(--text) !important;
