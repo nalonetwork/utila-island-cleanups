@@ -47,7 +47,132 @@
 html, body { margin: 0; padding: 0; }
 
 
+/* ==========================================================================
+   HEADER & NAV LOGIC
+   ========================================================================== */
 
+/* 1. Desktop Default (Web Version) */
+.site-header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+/* Solid state for scroll/internal pages */
+.site-header.scrolled, 
+.static-header {
+  position: sticky;
+  background: var(--logo-bg) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+}
+
+/* Desktop Links Row */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 15px;
+  color: white; /* Hero color */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Dark text for solid headers */
+.site-header.scrolled .nav-links a,
+.static-header .nav-links a {
+  color: var(--text) !important;
+  text-shadow: none !important;
+}
+
+/* 2. Hamburger Button (Hidden on Desktop) */
+.menu-toggle {
+  display: none; 
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001; /* Above the drawer */
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--logo-blue);
+  border-radius: 5px;
+}
+
+/* 3. Mobile Specific Styles */
+@media (max-width: 768px) {
+  
+  .menu-toggle {
+    display: flex; /* Show hamburger on mobile */
+  }
+
+  /* Force the hamburger to Slate Blue if header is scrolled/static */
+  .site-header.scrolled .menu-toggle .bar,
+  .static-header .menu-toggle .bar {
+    background-color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden */
+    width: 280px;
+    height: 100vh;
+    background-color: var(--logo-bg);
+    padding: 100px 30px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    z-index: 2000;
+  }
+
+  .nav-links.active {
+    right: 0; /* Slide in */
+  }
+
+  .nav-links a {
+    color: var(--text) !important; /* Always dark in the mobile drawer */
+    text-shadow: none !important;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lang-switch {
+    margin-left: 0;
+    border-left: none;
+    padding-top: 20px;
+    margin-top: 10px;
+  }
+}
+
+/* Hamburger "X" Animation */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 body {
 
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
