@@ -5,16 +5,13 @@
   --logo-slate: #3b5a6c;
   --logo-blue: #32a9e1;
   --logo-bg: #f4f3ef;
-
   --bg: var(--logo-bg);
   --card: #ffffff;
   --text: var(--logo-slate);
   --muted: #627b8a;
-  
   --brand: var(--logo-blue);
   --brand-dark: #2581ad;
   --accent: #e6f4fa;
-  
   --border: #dcdbd5;
   --shadow: 0 10px 24px rgba(59, 90, 108, 0.12);
   --radius: 14px;
@@ -25,7 +22,8 @@
 html, body { 
   margin: 0; 
   padding: 0; 
-  overflow-x: hidden; /* Prevents mobile horizontal scroll */
+  overflow-x: hidden; 
+  scroll-behavior: smooth;
 }
 
 body {
@@ -33,12 +31,10 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
-  padding-top: 60px; /* Match this to the height of your header */
+  padding-top: 60px; 
 }
 
-body.home {
-  padding-top: 0;
-}
+body.home { padding-top: 0; }
 
 .container {
   width: min(92%, var(--max));
@@ -46,26 +42,8 @@ body.home {
 }
 
 /* ==========================================================================
-   2. HEADER & NAVIGATION (DESKTOP)
+   2. HEADER & NAVIGATION
    ========================================================================== */
-/* --- The Banner Image Area --- */
-.header-banner {
-  position: relative;
-  width: 100%;
-  height: 60vh; /* Reduced from 60vh to 50vh for better balance */
-  min-height: 350px; /* Prevents it from getting too small on mobile */
-  max-height: 550px; /* Prevents it from looking "horrible" on giant monitors */
-  overflow: hidden;
-}
-
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Keeps the photo from stretching */
-  display: block;
-}
-
-/* This applies to the Home Page (index.html) */
 .site-header {
   position: absolute; 
   top: 0;
@@ -75,33 +53,24 @@ body.home {
   transition: background 0.3s ease-in-out;
 }
 
-/* This applies to Internal Pages (About, Contact, etc.) 
-   AND the Home Page once you scroll down */
 .site-header.scrolled, 
 .static-header {
-  position: fixed !important; /* Fixed is more reliable than sticky for global headers */
+  position: fixed !important;
   top: 0 !important;
   left: 0;
   width: 100%;
-  height: 60px; /* Tightens the bar height */
+  height: 60px;
   background: var(--logo-bg) !important;
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
-  z-index: 1000 !important;
-}
-
-/* IMPORTANT: Since the header is now 'Fixed', we need to push the 
-   page content down on internal pages so the header doesn't cover the title */
-.static-header + main,
-.site-header.scrolled + main {
-  padding-top: 60px; /* Adjust this to match your header height */
+  z-index: 9999 !important;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
+  min-height: 60px;
 }
 
 .nav-links {
@@ -113,35 +82,26 @@ body.home {
 .nav-links a {
   text-decoration: none;
   font-weight: 600;
-  color: white; /* Visible on hero image */
+  color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   font-size: 0.95rem;
   transition: 0.2s;
 }
 
-/* Links turn dark on white headers */
 .site-header.scrolled .nav-links a,
 .static-header .nav-links a {
   color: var(--text) !important;
   text-shadow: none !important;
 }
 
-.logo {
-  height: 70px;
-  width: auto;
-  transition: 0.3s ease;
-}
-
-.site-header.scrolled .logo,
-.static-header .logo {
-  height: 60px;
-}
+.logo { height: 70px; width: auto; transition: 0.3s ease; }
+.site-header.scrolled .logo, .static-header .logo { height: 50px; }
 
 /* ==========================================================================
    3. HAMBURGER MENU (MOBILE)
    ========================================================================== */
 .menu-toggle {
-  display: none; /* Hidden on desktop */
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -149,28 +109,21 @@ body.home {
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 2001 !important; /* Level 3: Must be highest to stay clickable */
-    position: relative;
+  z-index: 10001 !important;
+  position: relative;
 }
 
 .menu-toggle .bar {
   width: 100%;
   height: 3px;
-  background-color: var(--logo-blue); /* Pops on dark banner */
+  background-color: var(--brand);
   border-radius: 5px;
   transition: 0.3s;
 }
 
-/* MOBILE MEDIA QUERY */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-   .nav-links {
-    z-index: 2000 !important; /* Level 2: Stays on top of the Header bar */
-    /* ... existing mobile styles ... */
-  }
+  .menu-toggle { display: flex; }
 
-  /* Force hamburger to slate if header is white */
   .site-header.scrolled .menu-toggle .bar,
   .static-header .menu-toggle .bar {
     background-color: var(--text);
@@ -181,22 +134,20 @@ body.home {
     flex-direction: column;
     position: fixed;
     top: 0;
-    right: -100%; /* Hidden off-screen */
+    right: -100%;
     width: 280px;
     height: 100vh;
     background: var(--logo-bg);
     padding: 100px 30px;
     transition: right 0.4s ease-in-out;
     box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    z-index: 2000;
+    z-index: 10000;
   }
 
-  .nav-links.active {
-    right: 0; /* Slide in */
-  }
+  .nav-links.active { right: 0; }
 
   .nav-links a {
-    color: var(--text) !important; /* Always dark in drawer */
+    color: var(--text) !important;
     text-shadow: none !important;
     width: 100%;
     font-size: 1.2rem;
@@ -213,25 +164,24 @@ body.home {
   }
 }
 
-/* Hamburger "X" Animation */
 .menu-toggle.open .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
 .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
 .menu-toggle.open .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
 /* ==========================================================================
-   4. HERO BANNERS (Home Page Only)
+   4. HERO BANNER
    ========================================================================== */
 .hero-wrapper { position: relative; width: 100%; }
 
 .header-banner {
   width: 100%;
-  height: 60vh;
-  min-height: 400px;
+  height: 50vh;
+  min-height: 350px;
+  max-height: 550px;
   overflow: hidden;
 }
 
-.banner-img { width: 100%; height: 100%; object-fit: cover; }
-
+.banner-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .banner-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -240,106 +190,52 @@ body.home {
 }
 
 /* ==========================================================================
-   5. SHARED COMPONENTS & LAYOUT
+   5. BUTTONS 
    ========================================================================== */
-.hero {
-  padding: 100px 0 50px;
-  background: radial-gradient(circle at 20% -10%, var(--accent), transparent 70%),
-              radial-gradient(circle at 100% -20%, #ffffff, transparent 70%);
-}
-
-.badge {
-  display: inline-flex;
-  background: var(--accent);
-  color: var(--brand-dark);
-  padding: 8px 16px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
-
-.grid-3 {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.card {
-  background: var(--card);
-  padding: 30px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-/* ==========================================================================
-   6. BUTTONS 
-   ========================================================================== */
-/* This creates the 'Box' and the 'Color' */
 .btn {
-  display: inline-flex; /* Ensures it has a 'box' shape */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  
-  /* The padding creates the space around the text */
   padding: 12px 24px; 
   margin: 10px 5px;
-  
   border-radius: 10px;
   font-weight: 700;
-  text-decoration: none; /* Removes the underline */
+  text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
   border: 1px solid transparent; 
 }
 
-/* This adds the Blue Color */
 .btn-primary {
   background-color: var(--brand) !important;
   color: #ffffff !important;
-  border: none;
 }
 
-/* This adds the White Box with Border */
 .btn-secondary {
   background-color: #ffffff !important;
   color: var(--text) !important;
   border: 1px solid var(--border) !important;
 }
 
-/* Makes sure the text inside isn't underlined */
-.btn span {
-  text-decoration: none !important;
-}
-
-
 /* ==========================================================================
-   7. CONTACT & LISTS
+   6. LANGUAGE LOGIC (CRITICAL FIX)
    ========================================================================== */
-.contact-list { list-style: none; padding: 0; margin: 0; }
+/* Hide inactive by default */
+html:not([lang="es"]) .lang-es { display: none !important; }
+html[lang="es"] .lang-en { display: none !important; }
 
-.contact-item {
-  border: 1px solid var(--border);
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background: white;
-}
+/* Show active */
+html[lang="en"] .lang-en { display: inline-block !important; }
+html[lang="es"] .lang-es { display: inline-block !important; }
 
-.contact-item .label {
-  display: block;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 4px;
+/* Mobile Menu Specific Fix */
+@media (max-width: 768px) {
+    html[lang="en"] .nav-links .lang-es { display: none !important; }
+    html[lang="es"] .nav-links .lang-en { display: none !important; }
 }
 
 /* ==========================================================================
-   8. LANGUAGE LOGIC & FOOTER
+   7. FOOTER & EXTRAS
    ========================================================================== */
 footer {
   padding: 40px 0;
@@ -348,35 +244,8 @@ footer {
   background: white;
 }
 
+.lang-switch { display: flex; align-items: center; gap: 10px; }
+.lang-btn { background: none; border: none; cursor: pointer; font-weight: 800; color: var(--muted); }
+.lang-btn.active { color: var(--brand); }
+
 ion-icon { color: var(--brand); font-size: 1.5rem; vertical-align: middle; }
-   
-   /* 1. Force-hide the inactive language based on the <html> tag */
-
-/* If NOT Spanish, hide Spanish */
-html:not([lang="es"]) .lang-es { 
-    display: none !important; 
-}
-
-/* If IS Spanish, hide English */
-html[lang="es"] .lang-en { 
-    display: none !important; 
-}
-
-/* 2. Ensure the active language is actually visible */
-
-html[lang="en"] .lang-en { 
-    display: inline-block !important; 
-}
-
-html[lang="es"] .lang-es { 
-    display: inline-block !important; 
-}
-
-/* 3. Mobile Menu Specific Fix 
-   (In case your mobile menu is forcing display: flex on all children) */
-@media (max-width: 768px) {
-    html[lang="en"] .nav-links .lang-es { display: none !important; }
-    html[lang="es"] .nav-links .lang-en { display: none !important; }
-}
-   
-
