@@ -59,6 +59,4 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("Menu toggled!"); // Check your browser console (F12) to see if this prints
     });
   }
-});ggers the CSS display
-    });
-}
+});
