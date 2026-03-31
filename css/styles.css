@@ -115,7 +115,7 @@ html, body { margin: 0; padding: 0; }
   }
 
   .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
     position: fixed;
     top: 0;
@@ -124,12 +124,13 @@ html, body { margin: 0; padding: 0; }
     height: 100vh;
     background-color: var(--logo-bg);
     padding: 100px 30px;
-    transition: right 0.4s ease-in-out;
+    transition: right 0.4s ease;
     box-shadow: -10px 0 30px rgba(0,0,0,0.2);
     z-index: 2000;
   }
 
   .nav-links.active {
+    display: flex !important;
     right: 0; /* Slide in */
   }
 
@@ -330,7 +331,14 @@ body {
 
 
 
- 
+ .menu-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    z-index: 2001; /* Higher than the menu */
+  }
 
   .menu-toggle .bar {
     width: 100%;
@@ -340,7 +348,11 @@ body {
     display: block;
   }
 
-
+/* If header is scrolled or on internal pages, make bars slate */
+  .site-header.scrolled .menu-toggle .bar,
+  .static-header .menu-toggle .bar {
+    background-color: var(--text);
+  }
 
 
 
