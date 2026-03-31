@@ -235,9 +235,48 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
 }
+/* ==========================================================================
+   6. BUTTONS 
+   ========================================================================== */
+/* This creates the 'Box' and the 'Color' */
+.btn {
+  display: inline-flex; /* Ensures it has a 'box' shape */
+  align-items: center;
+  justify-content: center;
+  
+  /* The padding creates the space around the text */
+  padding: 12px 24px; 
+  margin: 10px 5px;
+  
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none; /* Removes the underline */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* This adds the Blue Color */
+.btn-primary {
+  background-color: var(--brand) !important;
+  color: #ffffff !important;
+  border: none;
+}
+
+/* This adds the White Box with Border */
+.btn-secondary {
+  background-color: #ffffff !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Makes sure the text inside isn't underlined */
+.btn span {
+  text-decoration: none !important;
+}
+
 
 /* ==========================================================================
-   6. CONTACT & LISTS
+   7. CONTACT & LISTS
    ========================================================================== */
 .contact-list { list-style: none; padding: 0; margin: 0; }
 
@@ -259,7 +298,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 }
 
 /* ==========================================================================
-   7. LANGUAGE LOGIC & FOOTER
+   8. LANGUAGE LOGIC & FOOTER
    ========================================================================== */
 [lang="es"] .lang-en, [lang="en"] .lang-es { display: none !important; }
 
