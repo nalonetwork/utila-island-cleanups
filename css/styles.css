@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* Adjust this to your header's height */
+}
 /* ==========================================================================
    1. CORE VARIABLES & RESET
    ========================================================================== */
