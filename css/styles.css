@@ -218,7 +218,74 @@ body.home { padding-top: 0; }
 }
 
 /* ==========================================================================
-   6. LANGUAGE LOGIC (CRITICAL FIX)
+   6. /* SIGNUP FORM */
+   ========================================================================== */
+
+.signup-card {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.signup-form h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.signup-sub {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.signup-form input,
+.signup-form textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(40,157,210,0.15);
+}
+
+.signup-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.signup-btn {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* subtle hover lift */
+.signup-card:hover {
+  transform: translateY(-2px);
+  transition: 0.3s;
+}
+
+
+/* ==========================================================================
+   7. LANGUAGE LOGIC (CRITICAL FIX)
    ========================================================================== */
 /* Hide inactive by default */
 html:not([lang="es"]) .lang-es { display: none !important; }
@@ -235,7 +302,7 @@ html[lang="es"] .lang-es { display: inline-block !important; }
 }
 
 /* ==========================================================================
-   7. FOOTER & EXTRAS
+   8. FOOTER & EXTRAS
    ========================================================================== */
 footer {
   padding: 40px 0;
