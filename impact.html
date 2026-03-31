@@ -11,41 +11,89 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
- <header class="site-header static-header">
-    <div class="container nav">
-      <a class="brand" href="index.html"></a>
+  <!-- NAVBAR -->
+  <header class="site-header static-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
       <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a class="active" href="impact.html">Impact</a>
-        <a href="get-involved.html">Get Involved</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html">
+        <span class="lang-en">Home</span>
+        <span class="lang-es">Inicio</span>
+      </a>
+      <a href="about.html">
+        <span class="lang-en">About</span>
+        <span class="lang-es">Nosotros</span>
+      </a>
+      <a class="active" href="impact.html">
+        <span class="lang-en">Impact</span>
+        <span class="lang-es">Impacto</span>
+      </a>
+      <a href="get-involved.html">
+        <span class="lang-en">Get Involved</span>
+        <span class="lang-es">Participar</span>
+      </a>
+      <a href="gallery.html">
+        <span class="lang-en">Gallery</span>
+        <span class="lang-es">Galería</span>
+      </a>
+      <a href="contact.html">
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </a>
+
+      <div class="lang-switch">
+        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <span class="separator">/</span>
+        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
 
  <main>
    <section class="hero">
-      <div class="container">
-        <span class="badge">Impact Data</span>
-        <h1>Data tracked from start date to present.</h1>
-          <p class="section-sub">
-          We calculate and track weekly beach cleanups to bring awareness to our impact
-          throught the collection of hard data. 
-          </p>
-      </div>
-     </section>
-      <section class="section">
-      <div class="container">
-        <div class="card block">
-          <p>Bottles: <span id="bottles"></span></p>
-          <p>Total Weight: <span id="weight"></span></p>
-        </div> 
-    </section>
+  <div class="container">
+    <span class="badge">
+      <span class="lang-en">Impact Data</span>
+      <span class="lang-es">Datos de Impacto</span>
+    </span>
+    <h1>
+      <span class="lang-en">Data tracked from start date to present.</span>
+      <span class="lang-es">Datos registrados desde el inicio hasta el presente.</span>
+    </h1>
+    <p class="section-sub">
+      <span class="lang-en">We calculate and track weekly beach cleanups to bring awareness to our impact through the collection of hard data.</span>
+      <span class="lang-es">Calculamos y rastreamos las limpiezas de playa semanales para dar a conocer nuestro impacto a través de la recolección de datos concretos.</span>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="card block">
+      <p>
+        <strong class="lang-en">Bottles:</strong>
+        <strong class="lang-es">Botellas:</strong> 
+        <span id="bottles"></span>
+      </p>
+      <p>
+        <strong class="lang-en">Total Weight:</strong>
+        <strong class="lang-es">Peso Total:</strong> 
+        <span id="weight"></span>
+      </p>
+    </div> 
+  </div>
+</section>
  </main> 
 
-<script src="js/script.js"></script>
+
+  <script src="js/site.js"></script>
 </body>
 </html>

@@ -5,26 +5,25 @@
   --logo-slate: #3b5a6c;
   --logo-blue: #32a9e1;
   --logo-bg: #f4f3ef;
-
   --bg: var(--logo-bg);
   --card: #ffffff;
   --text: var(--logo-slate);
   --muted: #627b8a;
-  
   --brand: var(--logo-blue);
   --brand-dark: #2581ad;
   --accent: #e6f4fa;
-  
   --border: #dcdbd5;
   --shadow: 0 10px 24px rgba(59, 90, 108, 0.12);
   --radius: 14px;
   --max: 1120px;
 }
 
-{ box-sizing: border-box; }
+* { box-sizing: border-box; }
 html, body { 
   margin: 0; 
   padding: 0; 
+  overflow-x: hidden; 
+  scroll-behavior: smooth;
 }
 
 body {
@@ -32,7 +31,10 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
+  padding-top: 60px; 
 }
+
+body.home { padding-top: 0; }
 
 .container {
   width: min(92%, var(--max));
@@ -40,225 +42,210 @@ body {
 }
 
 /* ==========================================================================
-   2. HEADER & NAVIGATION (DESKTOP STABLE)
+   2. HEADER & NAVIGATION
    ========================================================================== */
 .site-header {
-  position: absolute; /* Sits on top of the hero image */
+  position: absolute; 
   top: 0;
   width: 100%;
   z-index: 1000;
   background: transparent;
-  transition: background 0.3s ease, padding 0.3s ease;
+  transition: background 0.3s ease-in-out;
 }
 
-/* Logic for Scrolling (Home) or Internal Pages (Static) */
 .site-header.scrolled, 
 .static-header {
-  position: sticky;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  width: 100%;
+  height: 60px;
   background: var(--logo-bg) !important;
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
+  z-index: 9999 !important;
 }
 
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
+  min-height: 60px;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .nav-links a {
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
-  padding: 8px 12px;
-  border-radius: 8px;
-  color: white; /* Initial state on Hero Image */
+  color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  font-size: 0.95rem;
   transition: 0.2s;
 }
 
-/* Flip text to dark when background is solid */
 .site-header.scrolled .nav-links a,
 .static-header .nav-links a {
   color: var(--text) !important;
   text-shadow: none !important;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.logo {
-  height: 80px;
-  width: auto;
-  transition: height 0.3s ease;
-}
-
-/* Shrink logo on scroll/internal pages */
-.site-header.scrolled .logo,
-.static-header .logo {
-  height: 60px;
-}
+.logo { height: 70px; width: auto; transition: 0.3s ease; }
+.site-header.scrolled .logo, .static-header .logo { height: 50px; }
 
 /* ==========================================================================
-   3. HERO BANNERS (The large image section)
+   3. HAMBURGER MENU (MOBILE)
    ========================================================================== */
-.hero-wrapper {
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10001 !important;
   position: relative;
-  width: 100%;
 }
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--brand);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+
+  .site-header.scrolled .menu-toggle .bar,
+  .static-header .menu-toggle .bar {
+    background-color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--logo-bg);
+    padding: 100px 30px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    z-index: 10000;
+  }
+
+  .nav-links.active { right: 0; }
+
+  .nav-links a {
+    color: var(--text) !important;
+    text-shadow: none !important;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .lang-switch {
+    margin-left: 0;
+    border-left: none;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+}
+
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+.menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.open .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+/* ==========================================================================
+   4. HERO BANNER
+   ========================================================================== */
+.hero-wrapper { position: relative; width: 100%; }
 
 .header-banner {
   width: 100%;
-  height: 60vh; /* 60% of screen height */
-  min-height: 400px;
+  height: 50vh;
+  min-height: 350px;
+  max-height: 550px;
   overflow: hidden;
 }
 
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+.banner-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .banner-overlay {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Darkens image so white text pops */
+  background: rgba(0, 0, 0, 0.2);
 }
 
 /* ==========================================================================
-   4. SHARED PAGE COMPONENTS
+   5. BUTTONS 
    ========================================================================== */
-.hero {
-  padding: 100px 0 50px;
-  background: radial-gradient(circle at 20% -10%, var(--accent), transparent 70%),
-              radial-gradient(circle at 100% -20%, #ffffff, transparent 70%);
-}
-
-.badge {
-  display: inline-flex;
-  background: var(--accent);
-  color: var(--brand-dark);
-  padding: 6px 14px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
-
-.grid-3 {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.card {
-  background: var(--card);
-  padding: 30px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-/* ==========================================================================
-   5. LISTS & BUTTONS
-   ========================================================================== */
-.contact-list { list-style: none; padding: 0; margin: 0; }
-
-.contact-item {
-  border: 1px solid var(--border);
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background: white;
-}
-
-/* ==========================================================================
-   BUTTONS & ACTIONS
-   ========================================================================== */
-.actions {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
+  padding: 12px 24px; 
+  margin: 10px 5px;
   border-radius: 10px;
-  padding: 12px 24px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
   transition: all 0.2s ease;
   cursor: pointer;
+  border: 1px solid transparent; 
 }
 
-/* Primary: The Solid Blue Button */
 .btn-primary {
-  background: var(--brand); /* Logo Blue */
+  background-color: var(--brand) !important;
   color: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(50, 169, 225, 0.25);
 }
 
-.btn-primary:hover {
-  background: var(--brand-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(50, 169, 225, 0.35);
-}
-
-/* Secondary: The White/Outline Button */
 .btn-secondary {
-  background: #ffffff;
-  color: var(--text); /* Slate Blue */
-  border-color: var(--border);
-}
-
-.btn-secondary:hover {
-  background: #f8fbfd;
-  border-color: var(--logo-blue);
-  color: var(--logo-blue);
-}
-
-/* Icon inside button adjustment */
-.btn ion-icon {
-  margin-left: 8px;
-  font-size: 1.2rem;
-  color: inherit; /* Matches the text color of the button */
+  background-color: #ffffff !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
 }
 
 /* ==========================================================================
-   6. LANGUAGE TOGGLE & FOOTER
+   6. LANGUAGE LOGIC (CRITICAL FIX)
    ========================================================================== */
-[lang="es"] .lang-en, [lang="en"] .lang-es { display: none !important; }
+/* Hide inactive by default */
+html:not([lang="es"]) .lang-es { display: none !important; }
+html[lang="es"] .lang-en { display: none !important; }
 
-.lang-switch { display: flex; align-items: center; gap: 8px; margin-left: 20px; border-left: 1px solid var(--border); padding-left: 15px; }
+/* Show active */
+html[lang="en"] .lang-en { display: inline-block !important; }
+html[lang="es"] .lang-es { display: inline-block !important; }
 
-.lang-btn { background: none; border: none; cursor: pointer; font-weight: 700; color: var(--muted); }
-.lang-btn.active { color: var(--brand); }
+/* Mobile Menu Specific Fix */
+@media (max-width: 768px) {
+    html[lang="en"] .nav-links .lang-es { display: none !important; }
+    html[lang="es"] .nav-links .lang-en { display: none !important; }
+}
 
+/* ==========================================================================
+   7. FOOTER & EXTRAS
+   ========================================================================== */
 footer {
   padding: 40px 0;
   text-align: center;
   border-top: 1px solid var(--border);
   background: white;
-  margin-top: 40px;
 }
 
-ion-icon { color: var(--brand); font-size: 1.4rem; vertical-align: middle; }
+.lang-switch { display: flex; align-items: center; gap: 10px; }
+.lang-btn { background: none; border: none; cursor: pointer; font-weight: 800; color: var(--muted); }
+.lang-btn.active { color: var(--brand); }
+
+ion-icon { color: var(--brand); font-size: 1.5rem; vertical-align: middle; }

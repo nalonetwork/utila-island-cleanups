@@ -11,102 +11,198 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html"></a>
+  <header class="site-header static-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
       <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="impact.html">Impact</a>
-        <a href="get-involved.html">Get Involved</a>
-        <a href="gallery.html">Gallery</a>
-        <a class="active" href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="index.html">
+        <span class="lang-en">Home</span>
+        <span class="lang-es">Inicio</span>
+      </a>
+      <a href="about.html">
+        <span class="lang-en">About</span>
+        <span class="lang-es">Nosotros</span>
+      </a>
+      <a href="impact.html">
+        <span class="lang-en">Impact</span>
+        <span class="lang-es">Impacto</span>
+      </a>
+      <a href="get-involved.html">
+        <span class="lang-en">Get Involved</span>
+        <span class="lang-es">Participar</span>
+      </a>
+      <a href="gallery.html">
+        <span class="lang-en">Gallery</span>
+        <span class="lang-es">Galería</span>
+      </a>
+      <a class="active" href="contact.html">
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </a>
+
+      <div class="lang-switch">
+        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <span class="separator">/</span>
+        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <span class="badge">Contact</span>
-        <h1>Get in touch</h1>
+  <section class="hero">
+    <div class="container">
+      <span class="badge">
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </span>
+      <h1>
+        <span class="lang-en">Get in touch</span>
+        <span class="lang-es">Ponte en contacto</span>
+      </h1>
+      <p class="section-sub">
+        <span class="lang-en">Want to join a Wednesday cleanup, volunteer, collaborate, or support the project? Send us a message and we’ll get back to you.</span>
+        <span class="lang-es">¿Quieres unirte a una limpieza de los miércoles, ser voluntario, colaborar o apoyar el proyecto? Envíanos un mensaje y te responderemos.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container layout-2">
+      <article class="card form-card">
+        <h2>
+          <span class="lang-en">Send a message</span>
+          <span class="lang-es">Enviar un mensaje</span>
+        </h2>
         <p class="section-sub">
-          Want to join a Wednesday cleanup, volunteer, collaborate, or support the project?
-          Send us a message and we’ll get back to you.
+          <span class="lang-en">Use this form for volunteer signups, partnerships, and general questions.</span>
+          <span class="lang-es">Usa este formulario para inscripciones de voluntarios, alianzas y preguntas generales.</span>
         </p>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="container layout-2">
-        <article class="card form-card">
-          <h2>Send a message</h2>
-          <p class="section-sub">Use this form for volunteer signups, partnerships, and general questions.</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <div>
+            <label for="name">
+              <span class="lang-en">Full name</span>
+              <span class="lang-es">Nombre completo</span>
+            </label>
+            <input id="name" name="name" type="text" required />
+          </div>
 
-          <form action="https://formspree.io/f/your-form-id" method="POST">
-            <div>
-              <label for="name">Full name</label>
-              <input id="name" name="name" type="text" required />
-            </div>
+          <div>
+            <label for="email">
+              <span class="lang-en">Email address</span>
+              <span class="lang-es">Correo electrónico</span>
+            </label>
+            <input id="email" name="email" type="email" required />
+          </div>
 
-            <div>
-              <label for="email">Email address</label>
-              <input id="email" name="email" type="email" required />
-            </div>
+          <div>
+            <label for="subject">
+              <span class="lang-en">Subject</span>
+              <span class="lang-es">Asunto</span>
+            </label>
+            <input id="subject" name="subject" type="text" 
+              placeholder="Volunteer, partnership, support..." 
+              data-en="Volunteer, partnership, support..." 
+              data-es="Voluntariado, alianzas, apoyo..." />
+          </div>
 
-            <div>
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" type="text" placeholder="Volunteer, partnership, support..." />
-            </div>
+          <div>
+            <label for="message">
+              <span class="lang-en">Message</span>
+              <span class="lang-es">Mensaje</span>
+            </label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
 
-            <div>
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
+          <button class="btn btn-primary" type="submit">
+            <span class="lang-en">Send Message</span>
+            <span class="lang-es">Enviar Mensaje</span>
+          </button>
+          
+          <p class="note">
+            <span class="lang-en">Replace the form action URL with your Formspree endpoint.</span>
+            <span class="lang-es">Reemplaza la URL de acción del formulario con tu endpoint de Formspree.</span>
+          </p>
+        </form>
+      </article>
 
-            <button class="btn btn-primary" type="submit">Send Message</button>
-            <p class="note">Replace the form action URL with your Formspree endpoint (or preferred form service).</p>
-          </form>
-        </article>
-
-        <aside class="card info-card">
-          <h3>Contact details</h3>
+      <aside class="card info-card">
+        <h3>
+          <span class="lang-en">Contact details</span>
+          <span class="lang-es">Detalles de contacto</span>
+        </h3>
+          <li class="contact-item">
+            <span class="label">
+              <span class="lang-en">Weekly cleanup</span>
+              <span class="lang-es">Limpieza semanal</span>
+            </span>
+            <span class="value">
+              <span class="lang-en">Wednesdays, 7:00am–8:45am</span>
+              <span class="lang-es">Miércoles, 7:00am–8:45am</span>
+            </span>
+          </li>
+          <li class="contact-item">
+            <span class="label">
+              <span class="lang-en">Meeting point</span>
+              <span class="lang-es">Punto de encuentro</span>
+            </span>
+            <span class="value">CircleK, Utila</span>
+          </li>
           <ul class="contact-list">
             <li class="contact-item">
               <span class="label">Email</span>
               <span class="value">info@utilaislandcleanups.org</span>
             </li>
-            <li class="contact-item">
-              <span class="label">WhatsApp</span>
-              <span class="value">+504 XXX XXXX</span>
-            </li>
-            <li class="contact-item">
-              <span class="label">Weekly cleanup</span>
-              <span class="value">Wednesdays, 7:00am–8:45am</span>
-            </li>
-            <li class="contact-item">
-              <span class="label">Meeting point</span>
-              <span class="value">CircleK, Utila</span>
-            </li>
 
-            
-            <div>
-            <a class="social-icon-ig" href="https://www.instagram.com/utila.island.cleanups/" target="blank" >
-              <ion-icon name="logo-instagram"></ion-icon>
-            </a>
-            <p>Utila Island Cleanup</p>
-            </div>
+              <li class="contact-item">
+                <span class="label">WhatsApp</span>
+                <a class="value" href="https://tr.ee/MO1vwFTk8f" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                  <ion-icon name="logo-whatsapp" style="color: #25D366;"></ion-icon>
+                  <span class="lang-en">Message us</span>
+                  <span class="lang-es">Envíanos un mensaje</span>
+                </a>
+              </li>
+
+                <li class="contact-item">
+                  <span class="label">Facebook</span>
+                  <a class="value" href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <ion-icon name="logo-facebook" style="color: #1877F2;"></ion-icon>
+                    <span>Utila Island Cleanups</span>
+                  </a>
+                </li>
+
+                <li class="contact-item">
+                  <span class="label">Instagram</span>
+                  <a class="value" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                    <ion-icon name="logo-instagram" style="color: #E4405F;"></ion-icon>
+                    <span>@utila.island.cleanups</span>
+                  </a>
+                </li>
           </ul>
-          <p class="note">Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters.</p>
-        </aside>
-      </div>
-    </section>
-  </main>
+        <p class="note">
+          <span class="lang-en">Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters.</span>
+          <span class="lang-es">Organizado por Off the Dock Adventures, Elmer Funes y Reef Matters.</span>
+        </p>
+      </aside>
+    </div>
+  </section>
+</main>
 
-  <footer>
-    <div class="container">© <span id="year"></span> Utila Island Cleanups</div>
-  </footer>
+<footer>
+  <div class="container">
+    © <span id="year"></span> 
+    <span class="lang-en">Utila Island Cleanups</span>
+    <span class="lang-es">Limpiezas de la Isla de Utila</span>
+  </div>
+</footer>
 
   <script src="js/site.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -11,41 +11,95 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
- <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html"></a>
+ <!-- NAVBAR -->
+  <header class="site-header static-header">
+  <div class="container nav">
+    <a class="brand" href="index.html">
       <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="impact.html">Impact</a>
-        <a class="active" href="get-involved.html">Get Involved</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+      <a href="index.html">
+        <span class="lang-en">Home</span>
+        <span class="lang-es">Inicio</span>
+      </a>
+      <a href="about.html">
+        <span class="lang-en">About</span>
+        <span class="lang-es">Nosotros</span>
+      </a>
+      <a href="impact.html">
+        <span class="lang-en">Impact</span>
+        <span class="lang-es">Impacto</span>
+      </a>
+      <a href="get-involved.html">
+        <span class="lang-en">Get Involved</span>
+        <span class="lang-es">Participar</span>
+      </a>
+      <a href="gallery.html">
+        <span class="lang-en">Gallery</span>
+        <span class="lang-es">Galería</span>
+      </a>
+      <a href="contact.html">
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </a>
+
+      <div class="lang-switch">
+        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+        <span class="separator">/</span>
+        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
        <main>
          <section class="hero">
-            <div class="container">
-              <span class="badge">Get Involved</span>
-              <h1>Get Involved</h1>
-                <p class="section-sub">
-                Join us on our weekly cleanups.  
-                </p>
-            </div>
-           
-                <div class="container">
-                <div class="actions">        
-                   <a class="btn btn-primary" href="Contact.html">Sign up to Volunteer</a>
-                   <a class="btn btn-primary" href="Contact.html">Partner With Us</a>
-                   <a class="btn btn-primary" href="Contact.html">Contact Us</a>
-                   <a class="btn btn-primary" href="get-involved.html">Join a cleanup</a>      
-                 </div>
-            </div> 
-         </section>
+  <div class="container">
+    <span class="badge">
+      <span class="lang-en">Get Involved</span>
+      <span class="lang-es">Participar</span>
+    </span>
+    <h1>
+      <span class="lang-en">Get Involved</span>
+      <span class="lang-es">Involúcrate</span>
+    </h1>
+    <p class="section-sub">
+      <span class="lang-en">Join us on our weekly cleanups.</span>
+      <span class="lang-es">Únete a nuestras limpiezas semanales.</span>
+    </p>
+  </div>
+
+  <div class="container">
+    <div class="actions">
+      <a class="btn btn-primary" href="get-involved.html">
+        <span class="lang-en">Join a cleanup</span>
+        <span class="lang-es">Unirse a una limpieza</span>
+      </a>
+
+      <a class="btn btn-secondary" href="contact.html">
+        <span class="lang-en">Sign up to Volunteer</span>
+        <span class="lang-es">Inscribirse como voluntario</span>
+      </a>
+      
+      <a class="btn btn-secondary" href="contact.html">
+        <span class="lang-en">Partner With Us</span>
+        <span class="lang-es">Asóciate con nosotros</span>
+      </a>
+      
+      <a class="btn btn-secondary" href="contact.html">
+        <span class="lang-en">Contact Us</span>
+        <span class="lang-es">Contáctenos</span>
+      </a>
+    </div>
+  </div>
+</section>
                     
          
        </main> 
+   <script src="js/site.js"></script>
 </body>
 </html>
