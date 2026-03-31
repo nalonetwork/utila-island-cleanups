@@ -40,3 +40,16 @@ window.addEventListener('scroll', function() {
     }
   }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      // This 'active' class only has "drawer" instructions inside the mobile Media Query
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('open'); // For the X animation
+    });
+  }
+});
