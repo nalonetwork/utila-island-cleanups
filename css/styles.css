@@ -103,51 +103,49 @@ body {
   display: none; 
 }
 
-/* --- MOBILE VIEW (Only triggers on screens smaller than 768px) --- */
+/* Ensure the button is visible on mobile */
 @media (max-width: 768px) {
-  
   .menu-toggle {
-    display: flex; /* Hamburger appears only on mobile */
+    display: flex !important; /* Force display */
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 30px;
-    height: 21px;
+    height: 20px;
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1001;
+    padding: 0;
+    z-index: 2000; /* Make sure it's on top of the banner */
   }
 
   .menu-toggle .bar {
     width: 100%;
     height: 3px;
-    background-color: var(--text);
-    border-radius: 10px;
-    transition: 0.3s;
+    background-color: var(--logo-blue); /* Use your bright blue so it pops against the banner */
+    border-radius: 5px;
+    display: block;
   }
+}
 
-  /* Transform the nav-links into a mobile drawer */
+/* Ensure the links are actually hidden until toggled */
+@media (max-width: 768px) {
   .nav-links {
-    display: flex;
-    flex-direction: column;
-    position: fixed; /* Fixes it to the screen */
+    display: none; /* Default hidden */
+  }
+  
+  .nav-links.active {
+    display: flex; /* Shown when JS clicks the button */
+    position: fixed;
     top: 0;
-    right: -100%; /* Starts hidden off-screen to the right */
-    width: 280px;
+    right: 0;
+    width: 70%;
     height: 100vh;
     background: var(--logo-bg);
-    padding: 80px 40px; /* Space for the logo/top */
-    gap: 20px;
-    transition: 0.4s ease-in-out;
+    flex-direction: column;
+    padding: 80px 20px;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    z-index: 1000;
   }
-
-  /* When JS adds the 'active' class, slide it in */
-  .nav-links.active {
-    right: 0;
-  }
-
+}
   /* Stack the links vertically and make them bigger for fingers to tap */
   .nav-links a {
     font-size: 1.2rem;
