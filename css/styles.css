@@ -53,13 +53,15 @@ body {
   transition: all 0.3s ease;
 }
 
-/* State when scrolled or on internal pages */
+/* This class is added by JavaScript when you scroll down */
 .site-header.scrolled, 
 .static-header {
-  position: sticky;
+  position: sticky !important; /* This forces it to stay at the top */
+  top: 0;
   background: var(--logo-bg) !important;
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
+  z-index: 9999; /* Ensures it stays above all other content */
 }
 
 .nav {
