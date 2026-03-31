@@ -341,32 +341,6 @@ h1 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; margin: 0 0 1rem; }
 /* ==========================================================================
    8. LANGUAGE LOGIC & FOOTER
    ========================================================================== */
-/* --- Language Display Logic --- */
-
-/* --- UNIVERSAL LANGUAGE LOGIC --- */
-
-/* 1. Hide all Spanish by default */
-.lang-es { 
-    display: none !important; 
-}
-
-/* 2. When the site is set to English, strictly hide Spanish */
-html[lang="en"] .lang-es { 
-    display: none !important; 
-}
-html[lang="en"] .lang-en { 
-    display: inline-block !important; 
-}
-
-/* 3. When the site is set to Spanish, strictly hide English */
-html[lang="es"] .lang-en { 
-    display: none !important; 
-}
-html[lang="es"] .lang-es { 
-    display: inline-block !important; 
-}
-
-   
 footer {
   padding: 40px 0;
   text-align: center;
@@ -375,3 +349,34 @@ footer {
 }
 
 ion-icon { color: var(--brand); font-size: 1.5rem; vertical-align: middle; }
+   
+   /* 1. Force-hide the inactive language based on the <html> tag */
+
+/* If NOT Spanish, hide Spanish */
+html:not([lang="es"]) .lang-es { 
+    display: none !important; 
+}
+
+/* If IS Spanish, hide English */
+html[lang="es"] .lang-en { 
+    display: none !important; 
+}
+
+/* 2. Ensure the active language is actually visible */
+
+html[lang="en"] .lang-en { 
+    display: inline-block !important; 
+}
+
+html[lang="es"] .lang-es { 
+    display: inline-block !important; 
+}
+
+/* 3. Mobile Menu Specific Fix 
+   (In case your mobile menu is forcing display: flex on all children) */
+@media (max-width: 768px) {
+    html[lang="en"] .nav-links .lang-es { display: none !important; }
+    html[lang="es"] .nav-links .lang-en { display: none !important; }
+}
+   
+
