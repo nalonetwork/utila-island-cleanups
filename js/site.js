@@ -74,3 +74,7 @@ document.querySelectorAll(".signup-form").forEach(form => {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Check once on load
 });
+
+document.querySelector(".clean-form")?.addEventListener("submit", () => {
+  alert("✅ Message sent! We'll get back to you soon.");
+});
