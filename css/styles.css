@@ -1,21 +1,22 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
 :root {
-  /* Colors extracted from the logo */
-  --logo-slate: #3b5a6c;   /* "utila" and "island cleanups" text */
-  --logo-blue: #32a9e1;    /* The heart and the wave */
-  --logo-bg: #f4f3ef;      /* The warm off-white background */
+  --logo-slate: #3b5a6c;
+  --logo-blue: #32a9e1;
+  --logo-bg: #f4f3ef;
 
-  /* Functional Variable Mapping */
   --bg: var(--logo-bg);
   --card: #ffffff;
   --text: var(--logo-slate);
-  --muted: #627b8a;        /* Adjusted for slate harmony */
+  --muted: #627b8a;
   
   --brand: var(--logo-blue);
-  --brand-dark: #2581ad;   /* Deepened version of logo blue for hover states */
-  --accent: #e6f4fa;       /* Very light tint of logo blue */
+  --brand-dark: #2581ad;
+  --accent: #e6f4fa;
   
-  --border: #dcdbd5;       /* Subtle darker version of the logo bg */
-  --shadow: 0 10px 24px rgba(59, 90, 108, 0.12); /* Tinted slate shadow */
+  --border: #dcdbd5;
+  --shadow: 0 10px 24px rgba(59, 90, 108, 0.12);
   --radius: 14px;
   --max: 1120px;
 }
@@ -24,10 +25,11 @@
 html, body { margin: 0; padding: 0; }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.65;
+  overflow-x: hidden; /* Prevents side-scrolling from mobile menu */
 }
 
 .container {
@@ -35,25 +37,156 @@ body {
   margin: 0 auto;
 }
 
-.hero-wrapper {
-  position: relative;
+/* ==========================================================================
+   2. HEADER & NAVIGATION (DESKTOP DEFAULT)
+   ========================================================================== */
+.site-header {
+  position: absolute;
+  top: 0;
   width: 100%;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: all 0.3s ease;
 }
 
-.header-banner {
-  position: relative;
+/* Scrolled & Internal State */
+.site-header.scrolled, 
+.static-header {
+  position: sticky;
+  background: var(--logo-bg) !important;
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80px;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-links a {
+  color: white; /* Default for transparent hero */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  transition: 0.2s;
+}
+
+/* Text colors for solid header */
+.site-header.scrolled .nav-links a,
+.static-header .nav-links a {
+  color: var(--text) !important;
+  text-shadow: none !important;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  transition: 0.3s;
+}
+
+.site-header.scrolled .logo,
+.static-header .logo {
+  height: 60px;
+}
+
+/* ==========================================================================
+   3. MOBILE MENU & HAMBURGER
+   ========================================================================== */
+.menu-toggle {
+  display: none; /* Hidden on Desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 2001;
+}
+
+.menu-toggle .bar {
   width: 100%;
-  height: 60vh; /* This makes the banner 60% of the screen height - nice and large! */
+  height: 3px;
+  background-color: var(--logo-blue);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden off-screen */
+    width: 280px;
+    height: 100vh;
+    background: var(--logo-bg);
+    flex-direction: column;
+    padding: 100px 30px;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    z-index: 2000;
+  }
+
+  .nav-links.active {
+    right: 0 !important;
+  }
+
+  .nav-links a {
+    color: var(--text) !important;
+    text-shadow: none !important;
+    font-size: 1.1rem;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+  }
+
+  .lang-switch {
+    margin-top: 20px;
+    border-left: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  /* Hamburger to X Animation */
+  .menu-toggle.open .bar:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
+  .menu-toggle.open .bar:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+}
+
+/* ==========================================================================
+   4. HERO & BANNERS
+   ========================================================================== */
+.hero-wrapper { position: relative; width: 100%; }
+
+.header-banner {
+  width: 100%;
+  height: 60vh;
   overflow: hidden;
 }
 
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.banner-img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Optional: Darkens the image slightly so the white text/logo is easier to see */
 .banner-overlay {
   position: absolute;
   top: 0; left: 0;
@@ -61,228 +194,28 @@ body {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.site-header {
-  position: absolute; /* Starts on top of the image */
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: transparent; /* Transparent at start */
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s ease, padding 0.3s ease;
-}
-
-/* When the user scrolls, we will add this class via JavaScript */
-.site-header.scrolled {
-  position: sticky;
-  background: var(--logo-bg); /* Your logo-matched off-white */
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-/* Logo resizing for a sleeker sticky bar */
-.site-header.scrolled .logo {
-  height: 60px;
-  width: auto;
-}
-
-/* Initial state (on the image) */
-.site-header .nav-links a {
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* Makes text readable on any photo */
-}
-
-/* Scrolled state (on your off-white background) */
-.site-header.scrolled .nav-links a {
-  color: var(--text); /* Your Slate Blue */
-  text-shadow: none;
-}
-
-/* --- DESKTOP VIEW (Default) --- */
-/* We ensure the hamburger is hidden on computers */
-.menu-toggle {
-  display: none; 
-}
-
-@media (max-width: 768px) {
-  /* This is the hidden state */
-  .nav-links {
-    display: flex; /* We use flex but move it off-screen */
-    position: fixed;
-    top: 0;
-    right: -100%; /* Hidden to the right */
-    width: 250px;
-    height: 100vh;
-    background: var(--logo-bg);
-    flex-direction: column;
-    padding: 80px 20px;
-    transition: right 0.3s ease-in-out; /* This creates the slide effect */
-    z-index: 999;
-  }
-
- 
-  .menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background-color: var(--logo-blue); /* Use your bright blue so it pops against the banner */
-    border-radius: 5px;
-    display: block;
-  }
-}
-
-
-  .nav-links.active {
-    right: 0 !important; /* Slide into view */
-    display: flex; /* Shown when JS clicks the button */
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100vh;
-    background: var(--logo-bg);
-    flex-direction: column;
-    padding: 80px 20px;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-  }
-}
-  /* Stack the links vertically and make them bigger for fingers to tap */
-  .nav-links a {
-    font-size: 1.2rem;
-    width: 100%;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 10px;
-  }
-
-  /* Move the language switch to the bottom of the mobile menu */
-  .lang-switch {
-    margin-top: auto;
-    border-left: none;
-    padding-top: 20px;
-    justify-content: flex-start;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-  .menu-toggle.open .bar:nth-child(2) { opacity: 0; }
-  .menu-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-}
-
-
-
-/* --- Internal Pages (Solid) Logic --- */
-.static-header {
-  position: sticky;
-  top: 0;
-  background: var(--logo-bg) !important; /* Forces the logo background color */
-  border-bottom: 1px solid var(--border);
-  box-shadow: var(--shadow);
-}
-
-/* Ensure the text is dark slate on internal pages */
-.static-header .nav-links a {
-  color: var(--text) !important;
-  text-shadow: none !important;
-}
-
-/* Ensure the logo is the smaller/sleeker size on internal pages */
-.static-header .logo {
-  height: 60px;
-  width: auto;
-}
-
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 72px;
-  gap: 20px;
-}
-
-.brand {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  text-decoration: none;
-  color: var(--text);
-  font-size: 1.05rem;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.nav-links a {
-  color: #1f2a37;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  padding: 8px 10px;
-  border-radius: 8px;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  background: rgba(0, 0, 0, 0.05); /* This creates a subtle dark tint regardless of the bg color */
-}
-
-.logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: left;
-            gap: 0.5rem;
-        }
-
-
-/* Shared hero */
 .hero {
-  padding: 78px 0 36px;
-  background:
-    radial-gradient(1100px 280px at 20% -10%, var(--accent), transparent 65%),
-    radial-gradient(900px 260px at 100% -20%, #ffffff, transparent 65%);
+  padding: 100px 0 50px;
+  background: radial-gradient(circle at 20% -10%, var(--accent), transparent 70%),
+              radial-gradient(circle at 100% -20%, #ffffff, transparent 70%);
 }
 
+/* ==========================================================================
+   5. COMPONENTS (CARDS, BUTTONS, BADGES)
+   ========================================================================== */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--brand-dark);
   background: var(--accent);
   border: 1px solid #bfe7df;
-  padding: 8px 12px;
-  border-radius: 999px;
-  margin-bottom: 14px;
-}
-
-h1 {
-  margin: 0;
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-}
-
-h2 {
-  margin: 0 0 12px;
-  font-size: clamp(1.35rem, 2.5vw, 1.8rem);
-  letter-spacing: -0.01em;
-}
-
-h3 { margin: 0 0 8px; }
-
-p { margin: 0 0 10px; }
-
-.section {
-  padding: 20px 0 56px;
-}
-
-.section-sub {
-  margin: 0 0 20px;
-  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 50px;
+  margin-bottom: 15px;
 }
 
 .card {
@@ -290,22 +223,7 @@ p { margin: 0 0 10px; }
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-}
-
-.contact-list {
-  list-style: none; /* This removes the bullet points */
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 10px;
-}
-
-/* Buttons */
-.actions {
-  margin-top: 24px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  padding: 25px;
 }
 
 .btn {
@@ -314,286 +232,78 @@ p { margin: 0 0 10px; }
   justify-content: center;
   text-decoration: none;
   border-radius: 10px;
-  padding: 12px 18px;
+  padding: 14px 24px;
   font-weight: 600;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.btn-primary {
-  background: var(--brand);
-  color: #fff;
-}
+.btn-primary { background: var(--brand); color: #fff; border: none; }
+.btn-primary:hover { background: var(--brand-dark); transform: translateY(-2px); }
 
-.btn-primary:hover {
-  background: var(--brand-dark);
-  transform: translateY(-1px);
-}
+.btn-secondary { background: #fff; color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: #f8fbfd; }
 
-.btn-secondary {
-  background: #fff;
-  color: #12313a;
-  border-color: #cad6e1;
-}
-
-.btn-secondary:hover {
-  background: #f8fbfd;
-  border-color: #b9c8d6;
-}
-
-/* Index-specific blocks */
-.slogan {
-  margin-top: 14px;
-  color: #18313a;
-  font-weight: 600;
-}
-.slogan span {
-  display: block;
-  color: var(--muted);
-  font-weight: 500;
-  margin-top: 2px;
-}
-.mission {
-  margin-top: 18px;
-  color: #20303c;
-  max-width: 980px;
-}
-
-.info-list {
-  margin: 0;
-  padding: 8px;
-  list-style: none;
+/* ==========================================================================
+   6. GRID & LAYOUTS
+   ========================================================================= */
+.grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 10px;
-}
-
-.info-item {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  border: 1px solid #e8edf2;
-  border-radius: 12px;
-  padding: 14px;
-  background: #fff;
-}
-
-.info-icon {
-  font-size: 1.2rem;
-  line-height: 1;
-  margin-top: 2px;
-}
-
-.info-text {
-  color: #20303c;
-  font-size: 0.95rem;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .impact-wrap {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
-
-.impact-card {
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid #e2e8ef;
-  background: #fff;
-}
-
-.impact-label {
-  margin: 0 0 6px;
-  color: #4c5b69;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.impact-value {
-  margin: 0;
-  font-size: clamp(1.5rem, 3.3vw, 2rem);
-  line-height: 1.2;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: #0b3b48;
-}
-
-.impact-note {
-  margin-top: 12px;
-  font-size: 0.86rem;
-  color: #607080;
-}
-
-/* About */
-.grid-3 {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-.block {
-  padding: 24px;
-}
-.block p { color: #2a3a47; }
-
-/* Contact */
-.layout-2 {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 16px;
-}
-@media (max-width: 900px) {
-  .layout-2 { grid-template-columns: 1fr; }
-}
-.form-card, .info-card { padding: 22px; }
-
-form { display: grid; gap: 12px; }
-label {
-  font-weight: 600;
-  font-size: 0.92rem;
-  color: #233341;
-}
-input, textarea {
-  width: 100%;
-  border: 1px solid #cad6e1;
-  border-radius: 10px;
-  padding: 11px 12px;
-  font: inherit;
-  background: #fff;
-  color: #0f1720;
-}
-textarea { min-height: 130px; resize: vertical; }
 
 .contact-list {
   list-style: none;
   padding: 0;
-  margin: 0;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
+
 .contact-item {
-  border: 1px solid #e8edf2;
-  border-radius: 10px;
-  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
   background: #fff;
 }
-.label {
-  display: block;
-  font-size: 0.8rem;
-  color: #607080;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 3px;
-  font-weight: 700;
-}
-.value {
-  color: #172635;
-  font-weight: 600;
-}
-.note {
-  font-size: 0.86rem;
-  color: #607080;
-  margin-top: 8px;
-}
 
-/* CTA and footer */
-.cta {
-  margin-top: 6px;
-  padding: 30px;
-  background: linear-gradient(180deg, #ffffff, #f3f8f8);
-}
+/* ==========================================================================
+   7. UTILITY & LANGUAGE TOGGLE
+   ========================================================================== */
+[lang="es"] .lang-en, [lang="en"] .lang-es { display: none !important; }
 
-footer {
-  border-top: 1px solid var(--border);
-  background: #fff;
-  color: #637383;
-  font-size: 0.9rem;
-  padding: 18px 0;
-  margin-top: 12px;
-}
-
-@media (max-width: 720px) {
-  .nav { padding: 10px 0; }
-  .hero { padding-top: 64px; }
-}
-
-/* --- Language Toggle Logic --- */
-
-/* Hide the language that isn't active */
-[lang="es"] .lang-en { display: none; }
-[lang="en"] .lang-es { display: none; }
-
-/* Toggle Styling */
 .lang-switch {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding-left: 8px;
-  margin-left: 8px;
+  gap: 5px;
+  margin-left: 15px;
   border-left: 1px solid var(--border);
+  padding-left: 15px;
 }
 
 .lang-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 0.85rem;
   font-weight: 700;
   color: var(--muted);
-  padding: 4px 6px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
 
-.lang-btn:hover {
-  color: var(--text);
-  background: #eef3f6;
+.lang-btn.active { color: var(--brand); }
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
-.lang-btn.active {
-  color: var(--brand);
-  background: var(--accent);
-}
-
-.separator {
-  color: var(--border);
-  font-size: 0.8rem;
-  user-select: none;
-}
-
-.social-icon-ig, .social-icon-fb {
-  display: flex;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.social-icon-ig:hover, .social-icon-fb:hover {
-  transform: scale(1.1);
-  opacity: 0.8;
-}
-
-ion-icon {
-  /* This ensures the icons use your brand color automatically */
-  color: var(--brand); 
-}
-
-/* Adjust for small screens */
-@media (max-width: 720px) {
-  .lang-switch {
-    border-left: none;
-    margin-left: 0;
-    padding-left: 0;
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-  }
-}
-
-/* Hide English when page is Spanish */
-[lang="es"] .lang-en { 
-  display: none !important; 
-}
-
-/* Hide Spanish when page is English */
-[lang="en"] .lang-es { 
-  display: none !important; 
-}
+ion-icon { color: var(--brand); font-size: 1.4rem; }
