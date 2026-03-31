@@ -30,14 +30,19 @@ window.addEventListener('scroll', function() {
   const header = document.querySelector('.site-header');
   const banner = document.querySelector('.header-banner');
 
-  // Only run the transparency-to-solid logic if a banner exists (Home Page)
   if (banner) {
+    // Determine the height of your photo/banner
     const bannerHeight = banner.offsetHeight;
-    if (window.scrollY > (bannerHeight - 80)) { 
+    
+    // If we have scrolled further than the banner, add the sticky class
+    if (window.scrollY > bannerHeight) { 
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
     }
+  } else {
+    // If there is no banner (internal pages), ensure it's always sticky
+    header.classList.add('scrolled');
   }
 });
 
