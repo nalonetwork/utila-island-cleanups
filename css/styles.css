@@ -103,21 +103,23 @@ body {
   display: none; 
 }
 
-/* Ensure the button is visible on mobile */
 @media (max-width: 768px) {
-  .menu-toggle {
-    display: flex !important; /* Force display */
+  /* This is the hidden state */
+  .nav-links {
+    display: flex; /* We use flex but move it off-screen */
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden to the right */
+    width: 250px;
+    height: 100vh;
+    background: var(--logo-bg);
     flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 2000; /* Make sure it's on top of the banner */
+    padding: 80px 20px;
+    transition: right 0.3s ease-in-out; /* This creates the slide effect */
+    z-index: 999;
   }
 
+ 
   .menu-toggle .bar {
     width: 100%;
     height: 3px;
@@ -127,13 +129,9 @@ body {
   }
 }
 
-/* Ensure the links are actually hidden until toggled */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* Default hidden */
-  }
-  
+
   .nav-links.active {
+    right: 0 !important; /* Slide into view */
     display: flex; /* Shown when JS clicks the button */
     position: fixed;
     top: 0;
@@ -169,8 +167,7 @@ body {
   .menu-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 }
 
-/* --- Home Page (Transparency) Logic --- */
-/* (Keep your existing .hero-wrapper and .site-header.scrolled logic here) */
+
 
 /* --- Internal Pages (Solid) Logic --- */
 .static-header {
