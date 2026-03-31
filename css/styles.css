@@ -282,7 +282,74 @@ body.home { padding-top: 0; }
   transform: translateY(-2px);
   transition: 0.3s;
 }
+/* CLEAN CONTACT FORM */
+.clean-form {
+  margin-top: 20px;
+}
 
+.form-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.clean-form .form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.clean-form label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.clean-form input,
+.clean-form textarea,
+.clean-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  font-size: 15px;
+  transition: 0.25s;
+}
+
+.clean-form input:focus,
+.clean-form textarea:focus,
+.clean-form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(40,157,210,0.15);
+}
+
+.clean-form textarea {
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* subtle polish */
+.form-card {
+  padding: 30px;
+}
+
+.form-card h2 {
+  margin-bottom: 5px;
+}
+
+.form-card:hover {
+  transform: translateY(-2px);
+  transition: 0.3s;
+}
 
 /* ==========================================================================
    7. LANGUAGE LOGIC (CRITICAL FIX)
