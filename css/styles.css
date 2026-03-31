@@ -236,8 +236,51 @@ body {
 
     z-index: 999;
 
+  }@media (max-width: 768px) {
+  /* 1. The Mobile Drawer */
+  .nav-links {
+    display: flex !important; 
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important; /* Start hidden */
+    width: 280px !important;
+    height: 100vh !important;
+    background-color: var(--logo-bg) !important; /* Solid background */
+    padding: 100px 30px !important;
+    transition: right 0.4s ease-in-out !important;
+    z-index: 2000 !important;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2) !important;
+    visibility: visible !important; /* Ensure it's not hidden */
+    opacity: 1 !important;
+  }
+/* 2. The Links inside the Drawer */
+  .nav-links a {
+    /* CRITICAL: Force the text to be Slate Blue, not white */
+    color: var(--text) !important; 
+    text-shadow: none !important;
+    
+    display: block !important; /* Ensure they take up space */
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
+  /* 3. The Language Switcher in Mobile */
+  .lang-switch {
+    margin: 20px 0 0 0 !important;
+    padding: 20px 0 0 0 !important;
+    border-left: none !important;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    justify-content: flex-start !important;
+  }
+}
 
 
  
