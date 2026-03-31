@@ -86,39 +86,52 @@
           <span class="lang-es">Usa este formulario para inscripciones de voluntarios, alianzas y preguntas generales.</span>
         </p>
 
-        <form action="https://formspree.io/f/your-form-id" method="POST">
-         <div class="signup-card">
-  <form class="signup-form">
+<form action="https://formspree.io/f/your-form-id" method="POST" class="clean-form">
 
-    <h2>
-      <span class="lang-en">Join the Cleanup</span>
-      <span class="lang-es">Únete a la Limpieza</span>
-    </h2>
-
-    <p class="signup-sub">
-      <span class="lang-en">Sign up to participate or get updates.</span>
-      <span class="lang-es">Regístrate para participar o recibir actualizaciones.</span>
-    </p>
-
+  <div class="form-row">
     <div class="form-group">
-      <input type="text" placeholder="Name" required />
+      <label>
+        <span class="lang-en">Name</span>
+        <span class="lang-es">Nombre</span>
+      </label>
+      <input type="text" name="name" required />
     </div>
 
     <div class="form-group">
-      <input type="email" placeholder="Email" required />
+      <label>Email</label>
+      <input type="email" name="email" required />
     </div>
+  </div>
 
-    <div class="form-group">
-      <textarea placeholder="Message (optional)"></textarea>
-    </div>
+  <div class="form-group">
+    <label>
+      <span class="lang-en">What are you interested in?</span>
+      <span class="lang-es">¿En qué estás interesado?</span>
+    </label>
+    <select name="interest" required>
+      <option value="">Select...</option>
+      <option>Join a cleanup</option>
+      <option>Volunteer</option>
+      <option>Partnership</option>
+      <option>General question</option>
+    </select>
+  </div>
 
-    <button type="submit" class="btn btn-primary signup-btn">
-      <span class="lang-en">Sign Up</span>
-      <span class="lang-es">Registrarse</span>
-    </button>
+  <div class="form-group">
+    <label>
+      <span class="lang-en">Message</span>
+      <span class="lang-es">Mensaje</span>
+    </label>
+    <textarea name="message" rows="4"></textarea>
+  </div>
 
-  </form>
-</div>
+  <button type="submit" class="btn btn-primary form-submit">
+    <span class="lang-en">Send Message</span>
+    <span class="lang-es">Enviar mensaje</span>
+  </button>
+
+</form>
+
       </article>
 
       <aside class="card info-card">
