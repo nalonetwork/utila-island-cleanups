@@ -2,21 +2,28 @@
 /**
  * Utila Island Cleanups - Master Script
  */
-
-// 1. Language Switching Function (Must be global for HTML buttons to see it)
 function setLanguage(lang) {
-    // Update the <html> tag (This triggers the CSS hiding logic)
+    // This is the most important line:
     document.documentElement.setAttribute('lang', lang);
     
-    // Update the Toggle Buttons UI
+    // Log to the console so you can verify it's running
+    console.log("Language switched to: " + lang);
+
+    // Update the button appearance
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.id === `btn-${lang}`);
+        btn.classList.remove('active');
     });
-    
-    // Save choice for next time
+    const activeBtn = document.getElementById(`btn-${lang}`);
+    if (activeBtn) activeBtn.classList.add('active');
+
     localStorage.setItem('preferredLang', lang);
 }
 
+// Ensure it runs the moment the page is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const savedLang = localStorage.getItem('preferredLang') || 'en';
+    setLanguage(savedLang);
+});
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Initialize Language ---
