@@ -290,20 +290,7 @@ body {
 
 }
 
-  /* Stack the links vertically and make them bigger for fingers to tap */
-
-  .nav-links a {
-
-    font-size: 1.2rem;
-
-    width: 100%;
-
-    border-bottom: 1px solid var(--border);
-
-    padding-bottom: 10px;
-
-  }
-
+ 
 
 
   /* Move the language switch to the bottom of the mobile menu */
