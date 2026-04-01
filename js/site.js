@@ -1,69 +1,57 @@
-/**
- * Utila Island Cleanups - Unified Site Logic
- */
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+const langToggle = document.getElementById('lang-toggle');
+const links = document.querySelectorAll('.nav-links li a');
 
-// 1. Language Function (Must be global so the HTML buttons can see it)
-function setLanguage(lang) {
-    // Force the HTML attribute (This triggers the CSS hiding logic)
-    document.documentElement.setAttribute('lang', lang);
-    
-    // Update Button UI
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.id === `btn-${lang}`);
+// --- Mobile Navigation Logic ---
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
-    
-    // Save to browser memory
-    localStorage.setItem('preferredLang', lang);
-    console.log("Language set to: " + lang);
 }
 
-// 2. All Page-Load Logic
-document.addEventListener('DOMContentLoaded', () => {
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    });
+});
+
+// --- Simple Language Toggle Logic ---
+
+// We start assuming the page is in its natural state (English)
+let currentLang = localStorage.getItem('preferredLang') || 'en';
+
+function updateContent(lang) {
+    const elements = document.querySelectorAll('[data-en]');
     
-    // --- Initial Language Load ---
-    const savedLang = localStorage.getItem('preferredLang') || 'en';
-    setLanguage(savedLang);
-
-    // --- Automatic Footer Year ---
-    const yearEl = document.getElementById("year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // --- Mobile Menu Toggle ---
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('open');
-        });
-
-        // Auto-close menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('open');
-            });
-        });
-    }
-
-    // --- Sticky Header Logic ---
-    const header = document.querySelector('.site-header');
-    const banner = document.querySelector('.header-banner');
-
-    function handleScroll() {
-        if (!header) return;
-        // If there's a banner (Home), stick after 100px. Otherwise, always stick.
-        if (banner) {
-            window.scrollY > 100 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
-        } else {
-            header.classList.add('scrolled');
+    elements.forEach(el => {
+        // Get the specific translation from the data attribute
+        const translation = el.getAttribute(`data-${lang}`);
+        if (translation) {
+            el.innerText = translation;
         }
-    }
+    });
 
-     document.querySelector(".clean-form")?.addEventListener("submit", function () {
-  setTimeout(() => {
-    alert("✅ Message sent! We'll get back to you soon.");
-  }, 300);
+    // Update the button to show the NEXT available option
+    langToggle.innerText = lang === 'en' ? 'ES' : 'EN';
+    document.documentElement.lang = lang;
+}
+
+// Event Listener for the Toggle Button
+if (langToggle) {
+    langToggle.addEventListener('click', () => {
+        currentLang = (currentLang === 'en') ? 'es' : 'en';
+        localStorage.setItem('preferredLang', currentLang);
+        updateContent(currentLang);
+    });
+}
+
+// On Page Load: ONLY run if the user previously chose Spanish.
+// If it's English, we do nothing so the hardcoded HTML shows up perfectly.
+window.addEventListener('DOMContentLoaded', () => {
+    if (currentLang === 'es') {
+        updateContent('es');
+    } else {
+        langToggle.innerText = 'ES';
+    }
 });
