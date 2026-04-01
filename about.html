@@ -1,156 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | Utila Island Cleanups</title>
-  <meta name="description" content="Learn more about Utila Island Cleanups, our mission, and why weekly beach cleanups matter." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Utila Island Cleanups</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 <body>
-  <header class="site-header static-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-    </a>
-    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="index.html">
-        <span class="lang-en">Home</span>
-        <span class="lang-es">Inicio</span>
-      </a>
-      <a class="active" href="about.html">
-        <span class="lang-en">About</span>
-        <span class="lang-es">Nosotros</span>
-      </a>
-      <a href="impact.html">
-        <span class="lang-en">Impact</span>
-        <span class="lang-es">Impacto</span>
-      </a>
-      <a href="get-involved.html">
-        <span class="lang-en">Get Involved</span>
-        <span class="lang-es">Participar</span>
-      </a>
-      <a href="gallery.html">
-        <span class="lang-en">Gallery</span>
-        <span class="lang-es">Galería</span>
-      </a>
-      <a href="contact.html">
-        <span class="lang-en">Contact</span>
-        <span class="lang-es">Contacto</span>
-      </a>
-
-      <div class="lang-switch">
-        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
-        <span class="separator">/</span>
-        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
-      </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html"><img src="UICsquare.png" alt="Logo" class="logo"></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
+                <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
+                <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+                <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
+                <li><button id="lang-toggle">ES</button></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
     </nav>
-  </div>
-</header>
 
-  <main>
-    <main>
-  <section class="hero">
-    <div class="container">
-      <span class="badge">
-        <span class="lang-en">About Us</span>
-        <span class="lang-es">Sobre Nosotros</span>
-      </span>
-      <h1>
-        <span class="lang-en">Community-led coastal protection in Utila</span>
-        <span class="lang-es">Protección costera liderada por la comunidad en Utila</span>
-      </h1>
-      <p class="section-sub">
-        <span class="lang-en">We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action.</span>
-        <span class="lang-es">Organizamos limpiezas de playa semanales para reducir la contaminación, proteger los ecosistemas locales y fortalecer la conciencia ambiental a través de la acción.</span>
-      </p>
-    </div>
-  </section>
+    <header class="about-hero">
+        <div class="hero-overlay">
+            <h1 data-en="About Us" data-es="Sobre Nosotros">About Us</h1>
+            <p data-en="Community-led coastal protection in Utila" data-es="Protección costera liderada por la comunidad en Utila">
+                Community-led coastal protection in Utila
+            </p>
+        </div>
+    </header>
 
-  <section class="section">
-    <div class="container">
-      <div class="card block">
-        <h2>
-          <span class="lang-en">Our Mission</span>
-          <span class="lang-es">Nuestra Misión</span>
-        </h2>
-        <p class="lang-en">
-          Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
-        </p>
-        <p class="lang-es">
-          Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, como las tortugas marinas y la iguana endémica Swamper.
-        </p>
-      </div>
-    </div>
-  </section>
+    <main class="container">
+        <section class="content-block">
+            <p class="lead-text" data-en="We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action." 
+               data-es="Organizamos limpiezas de playa semanales para reducir la contaminación, proteger los ecosistemas locales y fortalecer la conciencia ambiental a través de la acción.">
+               We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action.
+            </p>
+        </section>
 
-  <section class="section">
-    <div class="container grid-3">
-      <article class="card block">
-        <h3>
-          <span class="lang-en">Why this work matters</span>
-          <span class="lang-es">Por qué este trabajo importa</span>
-        </h3>
-        <p>
-          <span class="lang-en">Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila.</span>
-          <span class="lang-es">Las playas más limpias ayudan a mantener la basura fuera del océano, reducen el daño a la vida marina y protegen los frágiles hábitats costeros de Utila.</span>
-        </p>
-      </article>
+ <section class="content-block bg-alt">
+    <h2 data-en="Our Mission" data-es="Nuestra Misión">Our Mission</h2>
+    <p data-en="Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana." 
+       data-es="Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, incluyendo las tortugas marinas y la iguana endémica Swamper.">
+       Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
+    </p>
+</section>
 
-      <article class="card block">
-        <h3>
-          <span class="lang-en">How we do it</span>
-          <span class="lang-es">Cómo lo hacemos</span>
-        </h3>
-        <p>
-          <span class="lang-en">We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting.</span>
-          <span class="lang-es">Coordinamos limpiezas semanales, proporcionamos materiales y logística, y rastreamos el impacto medible a lo largo del tiempo mediante informes transparentes.</span>
+<section class="info-grid container">
+    <div class="info-card">
+        <ion-icon name="heart-outline" class="contact-icon"></ion-icon>
+        <h3 data-en="Why this work matters" data-es="Por qué es importante">Why this work matters</h3>
+        <p data-en="Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila." 
+           data-es="Las playas más limpias ayudan a mantener la basura fuera del océano, reducen el daño a la vida marina y protegen los frágiles hábitats costeros de Utila.">
+           Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila.
         </p>
-      </article>
-
-      <article class="card block">
-        <h3>
-          <span class="lang-en">Who we work with</span>
-          <span class="lang-es">Con quién trabajamos</span>
-        </h3>
-        <p>
-          <span class="lang-en">Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters, with support from volunteers and partners across the community.</span>
-          <span class="lang-es">Organizado por Off the Dock Adventures, Elmer Funes y Reef Matters, con el apoyo de voluntarios y socios de toda la comunidad.</span>
-        </p>
-      </article>
     </div>
 
-    <div class="container">
-      <div class="actions">
-        <a class="btn btn-primary" href="get-involved.html">
-          <span class="lang-en">Join a Cleanup</span>
-          <span class="lang-es">Unirse a una Limpieza</span>
-        </a>
-        <a class="btn btn-secondary" href="contact.html">
-          <span class="lang-en">Contact Us</span>
-          <span class="lang-es">Contáctenos</span>
-        </a>
-      </div>
+    <div class="info-card">
+        <ion-icon name="construct-outline" class="contact-icon"></ion-icon>
+        <h3 data-en="How we do it" data-es="Cómo lo hacemos">How we do it</h3>
+        <p data-en="We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting." 
+           data-es="Coordinamos limpiezas semanales, proporcionamos materiales y logística, y realizamos un seguimiento del impacto medible a lo largo del tiempo a través de informes transparentes.">
+           We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting.
+        </p>
     </div>
-  </section>
-</main>
 
-<footer>
-  <div class="container">
-    © <span id="year"></span> 
-    <span class="lang-en">Utila Island Cleanups</span>
-    <span class="lang-es">Limpiezas de la Isla de Utila</span>
-  </div>
+    <div class="info-card">
+        <ion-icon name="people-outline" class="contact-icon"></ion-icon>
+        <h3 data-en="Who we work with" data-es="Con quién trabajamos">Who we work with</h3>
+        <p data-en="Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters, with support from volunteers and partners across the community." 
+           data-es="Organizado por Off the Dock Adventures, Elmer Funes y Reef Matters, con el apoyo de voluntarios y socios de toda la comunidad.">
+           Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters, with support from volunteers and partners across the community.
+        </p>
+    </div>
+</section>
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <img src="UICsquare.png" alt="Logo" class="footer-logo">
+            <p class="footer-slogan" data-en="Creating awareness one cleanup at a time" data-es="Creamos consciencia ambiental una limpieza de playa a la vez">
+                Creating awareness one cleanup at a time
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h4 data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</h4>
+            <ul>
+                <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
+                <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
+                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4 data-en="Follow Us" data-es="Síguenos">Follow Us</h4>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://www.instagram.com/utila.island.cleanups/" target="_blank" aria-label="Instagram">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="mailto:utilaislandcleanups@gmail.com" aria-label="Email">
+                    <ion-icon name="mail-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+    </div>
 </footer>
 
-  <script src="js/site.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
