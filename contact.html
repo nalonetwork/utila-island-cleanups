@@ -1,212 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Utila Island Cleanups</title>
-  <meta name="description" content="Contact Utila Island Cleanups to join cleanups, volunteer, partner, or ask questions." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Utila Island Cleanups</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
-  <header class="site-header static-header">
-  <div class="container nav">
-    <a class="brand" href="index.html">
-      <img src="images/UICsquare.png" alt="UCI logo" width="100" height="100" class="logo">
-    </a>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="index.html">
-        <span class="lang-en">Home</span>
-        <span class="lang-es">Inicio</span>
-      </a>
-      <a href="about.html">
-        <span class="lang-en">About</span>
-        <span class="lang-es">Nosotros</span>
-      </a>
-      <a href="impact.html">
-        <span class="lang-en">Impact</span>
-        <span class="lang-es">Impacto</span>
-      </a>
-      <a href="get-involved.html">
-        <span class="lang-en">Get Involved</span>
-        <span class="lang-es">Participar</span>
-      </a>
-      <a href="gallery.html">
-        <span class="lang-en">Gallery</span>
-        <span class="lang-es">Galería</span>
-      </a>
-      <a class="active" href="contact.html">
-        <span class="lang-en">Contact</span>
-        <span class="lang-es">Contacto</span>
-      </a>
+   <nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html"><img src="UICsquare.png" alt="Utila Island Cleanups Logo" class="logo"></a>
+        
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+            <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
+            <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
+            <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+            <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+            <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
+            <li><button id="lang-toggle">ES</button></li>
+        </ul>
 
-      <div class="lang-switch">
-        <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
-        <span class="separator">/</span>
-        <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
-      </div>
-    </nav>
-  </div>
-</header>
-
-  <main>
-  <section class="hero">
-    <div class="container">
-      <span class="badge">
-        <span class="lang-en">Contact</span>
-        <span class="lang-es">Contacto</span>
-      </span>
-      <h1>
-        <span class="lang-en">Get in touch</span>
-        <span class="lang-es">Ponte en contacto</span>
-      </h1>
-      <p class="section-sub">
-        <span class="lang-en">Want to join a Wednesday cleanup, volunteer, collaborate, or support the project? Send us a message and we’ll get back to you.</span>
-        <span class="lang-es">¿Quieres unirte a una limpieza de los miércoles, ser voluntario, colaborar o apoyar el proyecto? Envíanos un mensaje y te responderemos.</span>
-      </p>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </div>
-  </section>
+</nav>
 
-  <section class="section">
-    <div class="container layout-2">
-      <article class="card form-card">
-        <h2>
-          <span class="lang-en">Send a message</span>
-          <span class="lang-es">Enviar un mensaje</span>
-        </h2>
-        <p class="section-sub">
-          <span class="lang-en">Use this form for volunteer signups, partnerships, and general questions.</span>
-          <span class="lang-es">Usa este formulario para inscripciones de voluntarios, alianzas y preguntas generales.</span>
-        </p>
+    <header class="about-hero">
+        <h1 data-en="Get in Touch" data-es="Ponte en Contacto">Get in Touch</h1>
+    </header>
 
-<form action="https://formspree.io/f/your-form-id" method="POST" class="clean-form">
+    <main class="container">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope contact-icon"></i>
+                <h3 data-en="Email Us" data-es="Correo Electrónico">Email Us</h3>
+                <p>utilaislandcleanups@gmail.com</p>
+                <a href="mailto:utilaislandcleanups@gmail.com" class="btn" data-en="Send Email" data-es="Enviar Correo">Send Email</a>
+            </div>
 
-  <div class="form-row">
-    <div class="form-group">
-      <label>
-        <span class="lang-en">Name</span>
-        <span class="lang-es">Nombre</span>
-      </label>
-      <input type="text" name="name" required />
-    </div>
+            <div class="contact-card">
+                <i class="fab fa-whatsapp contact-icon"></i>
+                <h3 data-en="WhatsApp" data-es="WhatsApp">WhatsApp</h3>
+                <p data-en="Chat with us directly for quick questions." data-es="Chatea con nosotros directamente para dudas rápidas.">Chat with us directly for quick questions.</p>
+                <a href="https://wa.me/50400000000" class="btn whatsapp-btn" data-en="Message Us" data-es="Escríbenos">Message Us</a>
+            </div>
+        </div>
 
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" name="email" required />
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>
-      <span class="lang-en">What are you interested in?</span>
-      <span class="lang-es">¿En qué estás interesado?</span>
-    </label>
-    <select name="interest" required>
-      <option value="">Select...</option>
-      <option>Join a cleanup</option>
-      <option>Volunteer</option>
-      <option>Partnership</option>
-      <option>General question</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label>
-      <span class="lang-en">Message</span>
-      <span class="lang-es">Mensaje</span>
-    </label>
-    <textarea name="message" rows="4"></textarea>
-  </div>
-
-  <button type="submit" class="btn btn-primary form-submit">
-    <span class="lang-en">Send Message</span>
-    <span class="lang-es">Enviar mensaje</span>
-  </button>
-
-</form>
-
-      </article>
-
-      <aside class="card info-card">
-        <h3>
-          <span class="lang-en">Contact details</span>
-          <span class="lang-es">Detalles de contacto</span>
-        </h3>
-          <li class="contact-item">
-            <span class="label">
-              <span class="lang-en">Weekly cleanup</span>
-              <span class="lang-es">Limpieza semanal</span>
-            </span>
-            <span class="value">
-              <span class="lang-en">Wednesdays, 7:00am–8:45am</span>
-              <span class="lang-es">Miércoles, 7:00am–8:45am</span>
-            </span>
-          </li>
-          <li class="contact-item">
-            <span class="label">
-              <span class="lang-en">Meeting point</span>
-              <span class="lang-es">Punto de encuentro</span>
-            </span>
-            <span class="value">CircleK, Utila</span>
-          </li>
-          <ul class="contact-list">
+    <section class="social-section bg-alt">
+        <h2 data-en="Follow Our Journey" data-es="Sigue Nuestro Viaje">Follow Our Journey</h2>
+        <ul class="contact-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px;">
+            
             <li class="contact-item">
-              <span class="label">Email</span>
-              <span class="value">info@utilaislandcleanups.org</span>
+                <span class="label" style="display: block; font-weight: bold; margin-bottom: 5px;" data-en="Facebook" data-es="Facebook">Facebook</span>
+                <a class="value" href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: var(--dark-blue); font-size: 1.2rem;">
+                    <ion-icon name="logo-facebook" style="color: #1877F2; font-size: 2rem;"></ion-icon>
+                    <span>Utila Island Cleanups</span>
+                </a>
             </li>
 
-              <li class="contact-item">
-                <span class="label">WhatsApp</span>
-                <a class="value" href="https://tr.ee/MO1vwFTk8f" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
-                  <ion-icon name="logo-whatsapp" style="color: #25D366;"></ion-icon>
-                  <span class="lang-en">Message us</span>
-                  <span class="lang-es">Envíanos un mensaje</span>
-                </a>
-              </li>
-
-                <li class="contact-item">
-                  <span class="label">Facebook</span>
-                  <a class="value" href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
-                    <ion-icon name="logo-facebook" style="color: #1877F2;"></ion-icon>
-                    <span>Utila Island Cleanups</span>
-                  </a>
-                </li>
-
-                <li class="contact-item">
-                  <span class="label">Instagram</span>
-                  <a class="value" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
-                    <ion-icon name="logo-instagram" style="color: #E4405F;"></ion-icon>
+            <li class="contact-item">
+                <span class="label" style="display: block; font-weight: bold; margin-bottom: 5px;" data-en="Instagram" data-es="Instagram">Instagram</span>
+                <a class="value" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: var(--dark-blue); font-size: 1.2rem;">
+                    <ion-icon name="logo-instagram" style="color: #E4405F; font-size: 2rem;"></ion-icon>
                     <span>@utila.island.cleanups</span>
-                  </a>
-                </li>
-          </ul>
-        <p class="note">
-          <span class="lang-en">Organized by Off the Dock Adventures, Elmer Funes, and Reef Matters.</span>
-          <span class="lang-es">Organizado por Off the Dock Adventures, Elmer Funes y Reef Matters.</span>
-        </p>
-      </aside>
+                </a>
+            </li>
+
+        </ul>
+     </section>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-brand">
+            <img src="UICsquare.png" alt="Logo" class="footer-logo">
+            <p class="footer-slogan" data-en="Creating awareness one cleanup at a time" data-es="Creamos consciencia ambiental una limpieza de playa a la vez">
+                Creating awareness one cleanup at a time
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h4 data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</h4>
+            <ul>
+                <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
+                <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
+                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-social">
+            <h4 data-en="Follow Us" data-es="Síguenos">Follow Us</h4>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://www.instagram.com/utila.island.cleanups/" target="_blank" aria-label="Instagram">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="mailto:utilaislandcleanups@gmail.com" aria-label="Email">
+                    <ion-icon name="mail-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
     </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    © <span id="year"></span> 
-    <span class="lang-en">Utila Island Cleanups</span>
-    <span class="lang-es">Limpiezas de la Isla de Utila</span>
-  </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+    </div>
 </footer>
-
-  <script src="js/site.js"></script>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    
+    <script src="script.js"></script>
 </body>
 </html>
