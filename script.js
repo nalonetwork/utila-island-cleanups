@@ -55,3 +55,31 @@ window.addEventListener('DOMContentLoaded', () => {
         langToggle.innerText = 'ES';
     }
 });
+// --- Gallery Slider Logic ---
+let sliderStates = {};
+
+function moveSlider(sliderId, direction) {
+    // Initialize state for this specific slider if it doesn't exist
+    if (!sliderStates[sliderId]) {
+        sliderStates[sliderId] = 0;
+    }
+
+    const slider = document.getElementById(sliderId);
+    const track = slider.querySelector('.slider-track');
+    const slides = track.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    // Update current index
+    sliderStates[sliderId] += direction;
+
+    // Loop back logic
+    if (sliderStates[sliderId] >= totalSlides) {
+        sliderStates[sliderId] = 0;
+    } else if (sliderStates[sliderId] < 0) {
+        sliderStates[sliderId] = totalSlides - 1;
+    }
+
+    // Move the track
+    const offset = sliderStates[sliderId] * -100;
+    track.style.transform = `translateX(${offset}%)`;
+}
