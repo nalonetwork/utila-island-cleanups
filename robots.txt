@@ -1,0 +1,6 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Link to your sitemap to help engines find your pages
+Sitemap: https://utilaislandcleanups.org/sitemap.xml
