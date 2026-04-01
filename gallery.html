@@ -8,66 +8,249 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html"><img src="UICsquare.png" alt="Utila Island Cleanups Logo" class="logo"></a>
-        
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
-            <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
-            <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
-            <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
-            <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
-            <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
-            <li><button id="lang-toggle">ES</button></li>
-        </ul>
+     <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html"><img src="UICsquare.png" alt="Utila Island Cleanups Logo" class="logo"></a>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
+                    <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
+                    <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
+                    <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
+                    <li><button id="lang-toggle">ES</button></li>
+                </ul>
 
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <header class="about-hero">
-        <h1 data-en="Visualizing Change" data-es="Visualizando el Cambio">Visualizing Change</h1>
+        <div class="hero-overlay">
+            <h1 data-en="Our Gallery" data-es="Nuestra Galería">Our Gallery</h1>
+            <p data-en="Visualizing the impact of every cleanup." data-es="Visualizando el impacto de cada limpieza.">Visualizing the impact of every cleanup.</p>
+        </div>
     </header>
 
     <main class="container">
+        <section class="gallery-section bg-alt">
+            <h2 data-en="Our Cleanup Community in Action" data-es="Nuestra Comunidad de Limpieza en Acción">
+                Our Cleanup Community in Action
+            </h2>
+            <p data-en="Meet the volunteers and organizations like Off the Dock Adventures and Reef Matters who unite every Wednesday morning at Circle K." 
+            data-es="Conoce a los voluntarios y organizaciones como Off the Dock Adventures y Reef Matters que se unen cada miércoles por la mañana en Circle K.">
+            Meet the volunteers and organizations like Off the Dock Adventures and Reef Matters who unite every Wednesday morning at Circle K.
+            </p>
+            
+            <div class="slider-container" id="slider-community">
+                <div class="slider-track">
+                    
+                    <div class="slide">
+                        <img src="Community_Photos/Casalove040326.jpg" alt="Cheerful cleanup volunteers take a selfie at Casa Love on March 4th 2026.">
+                        <p data-en="A cheerful selfie from the Casa Love cleanup on March 4th, 2026." 
+                        data-es="Una alegre selfie de la limpieza en Casa Love el 4 de marzo de 2026.">
+                        A cheerful selfie from the Casa Love cleanup on March 4th, 2026.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Community_Photos/Cocobeach040226.jpg" alt="Cleanup crew poses under a cloudy sky at Coco Beach on February 4th 2026.">
+                        <p data-en="Tracking impact at Coco Beach under dramatic skies on February 4th, 2026." 
+                        data-es="Siguiendo el impacto en Coco Beach bajo cielos dramáticos el 4 de febrero de 2026.">
+                        Tracking impact at Coco Beach under dramatic skies on February 4th, 2026.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Community_Photos/Donquickset240126.jpg" alt="A large team gathers on sunny Don Quick Set Beach on January 24th 2026 to protect local ecosystems.">
+                        <p data-en="A huge team gathers at Don Quick Set Beach to protect local ecosystems on January 24th, 2026." 
+                        data-es="Un gran equipo se reúne en Don Quick Set Beach para proteger los ecosistemas locales el 24 de enero de 2026.">
+                        A huge team gathers at Don Quick Set Beach to protect local ecosystems on January 24th, 2026.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Community_Photos/Tradewinds250226.jpg" alt="Cleanup volunteers pose with a red TukTuk and dog on Tradewinds Beach on February 25th 2026.">
+                        <p data-en="Utilizing responsible waste management on Tradewinds Beach on February 25th, 2026." 
+                        data-es="Utilizando la gestión responsable de residuos en Tradewinds Beach el 25 de febrero de 2026.">
+                        Utilizing responsible waste management on Tradewinds Beach on February 25th, 2026.
+                        </p>
+                    </div>
+
+                </div>
+                <button class="slider-prev" onclick="moveSlider('slider-community', -1)">&#10094;</button>
+                <button class="slider-next" onclick="moveSlider('slider-community', 1)">&#10095;</button>
+            </div>
+        </section>
+
         <section class="gallery-section">
             <h2 data-en="Before & After" data-es="Antes y Después">Before & After</h2>
-            <div class="comparison-grid">
-                <div class="comparison-item">
-                    <img src="before1.jpg" alt="Before cleanup">
-                    <p data-en="Before" data-es="Antes">Before</p>
+            <div class="slider-container" id="slider-impact">
+                <div class="slider-track">
+                    <div class="slide"><img src="before1.jpg" alt="Beach before cleanup"><p data-en="Before" data-es="Antes">Before</p></div>
+                    <div class="slide"><img src="after1.jpg" alt="Beach after cleanup"><p data-en="After" data-es="Después">After</p></div>
                 </div>
-                <div class="comparison-item">
-                    <img src="after1.jpg" alt="After cleanup">
-                    <p data-en="After" data-es="Después">After</p>
+                <button class="slider-prev" onclick="moveSlider('slider-impact', -1)">&#10094;</button>
+                <button class="slider-next" onclick="moveSlider('slider-impact', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <section class="gallery-section bg-alt">
+                <h2 data-en="Trash Treasures: Unique Finds from Utila's Beaches" 
+                    data-es="Tesoros de Basura: Hallazgos Únicos de las Playas de Utila">
+                    Trash Treasures: Unique Finds from Utila's Beaches
+                </h2>
+                <p data-en="Our cleanups often uncover unexpected and odd items. These 'Trash Treasures' highlight the diverse and persistent nature of marine debris." 
+                data-es="Nuestras limpiezas a menudo descubren objetos inesperados y curiosos. Estos 'Tesoros de Basura' resaltan la naturaleza diversa y persistente de los desechos marinos.">
+                Our cleanups often uncover unexpected and odd items. These 'Trash Treasures' highlight the diverse and persistent nature of marine debris.
+                </p>
+    
+            <div class="slider-container" id="slider-treasures">
+                <div class="slider-track">
+                    
+                    <div class="slide">
+                        <img src="Treasures/ILY_shoe.jpg" alt="A small pink and black child's clog shoe found on a beach, featuring a cartoon 'I Love You' charm.">
+                        <p data-en="Found: A lost child's shoe with an 'I Love You' message, a reminder of the personal items that become marine debris." 
+                        data-es="Encontrado: Un zapato de niño perdido con un mensaje de 'Te Amo', un recordatorio de los objetos personales que se convierten en desechos marinos.">
+                        Found: A lost child's shoe with an 'I Love You' message, a reminder of the personal items that become marine debris.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Treasures/Minion.jpg" alt="A weathered yellow Minion toy figure standing amidst beach debris and dried seaweed.">
+                        <p data-en="Found: A weathered Minion toy, showing how popular culture items end up in our oceans." 
+                        data-es="Encontrado: Un juguete de Minion capeado, mostrando cómo los objetos de la cultura popular terminan en nuestros océanos.">
+                        Found: A weathered Minion toy, showing how popular culture items end up in our oceans.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Treasures/Plastic_doll.jpg" alt="A hand holding a headless, pink plastic fashion doll body backlit by the setting sun on a beach.">
+                        <p data-en="Found: A headless plastic doll body, backlit by the sun, a surreal reminder of plastic pollution." 
+                        data-es="Encontrado: Un cuerpo de muñeca de plástico sin cabeza, a contraluz por el sol, un recordatorio surrealista de la contaminación por plástico.">
+                        Found: A headless plastic doll body, backlit by the sun, a surreal reminder of plastic pollution.
+                        </p>
+                    </div>
+
+                    <div class="slide">
+                        <img src="Treasures/Pumpkin.jpg" alt="A volunteer holding up a large, handmade cardboard Jack-o'-lantern face found during a cleanup.">
+                        <p data-en="Found: A handmade cardboard Jack-o'-lantern, likely from a local celebration, found during a cleanup." 
+                        data-es="Encontrado: Una linterna de Jack-o'-lantern de cartón hecha a mano, probablemente de una celebración local, encontrada durante una limpieza.">
+                        Found: A handmade cardboard Jack-o'-lantern, likely from a local celebration, found during a cleanup.
+                        </p>
+                    </div>
+
+                </div>
+                <button class="slider-prev" onclick="moveSlider('slider-treasures', -1)">&#10094;</button>
+                <button class="slider-next" onclick="moveSlider('slider-treasures', 1)">&#10095;</button>
+            </div>
+        </section>
+
+<section class="gallery-section bg-alt">
+            <h2 data-en="Global Trash Journey: How Debris Travels to Utila" 
+                data-es="Viaje Global de la Basura: Cómo Llegan los Desechos a Utila">
+                Global Trash Journey: How Debris Travels to Utila
+            </h2>
+            <p data-en="Our cleanups often find waste from thousands of miles away, demonstrating how tides, wind, and rain carry pollution across entire oceans." 
+            data-es="Nuestras limpiezas a menudo encuentran desechos de miles de kilómetros de distancia, demostrando cómo las mareas, el viento y la lluvia transportan la contaminación a través de océanos enteros.">
+            Our cleanups often find waste from thousands of miles away, demonstrating how tides, wind, and rain carry pollution across entire oceans.
+            </p>
+    
+        <div class="slider-container" id="slider-global">
+            <div class="slider-track">
+                
+                <div class="slide">
+                    <img src="Around_the_World/Belize.jpg" alt="Water bottle from Belize found on Utila beach.">
+                    <p data-en="Found: A water bottle from Belize, showcasing close regional travel." 
+                    data-es="Encontrado: Una botella de agua de Belice, mostrando el viaje regional cercano.">
+                    Found: A water bottle from Belize, showcasing close regional travel.
+                    </p>
+                </div>
+
+                <div class="slide">
+                    <img src="Around_the_World/China.jpg" alt="A bottle from China, demonstrating vast ocean travel.">
+                    <p data-en="Found: A product from China, demonstrating a vast trans-oceanic journey." 
+                    data-es="Encontrado: Un producto de China, demostrando un vasto viaje transoceánico.">
+                    Found: A product from China, demonstrating a vast trans-oceanic journey.
+                    </p>
+                </div>
+
+                <div class="slide">
+                    <img src="Around_the_World/Grenada.jpg" alt="Green seasoning bottle from Grenada, a Caribbean neighbor.">
+                    <p data-en="Found: A seasoning bottle from our Caribbean neighbor, Grenada." 
+                    data-es="Encontrado: Una botella de sazón de nuestra vecina caribeña, Granada.">
+                    Found: A seasoning bottle from our Caribbean neighbor, Grenada.
+                    </p>
+                </div>
+
+                <div class="slide">
+                    <img src="Around_the_World/Haiti.jpg" alt="Blue Heaven pure water bottle from Haiti found on Utila.">
+                    <p data-en="Found: Pure water packaging originating from Haiti." 
+                    data-es="Encontrado: Empaque de agua pura originario de Haití.">
+                    Found: Pure water packaging originating from Haiti.
+                    </p>
+                </div>
+
+                <div class="slide">
+                    <img src="Around_the_World/Trinidad.jpg" alt="Fruit punch bottle from Trinidad found in Utila trash pile.">
+                    <p data-en="Found: Fruit punch bottle from Trinidad, tracked via ocean currents." 
+                    data-es="Encontrado: Botella de ponche de frutas de Trinidad, rastreada a través de las corrientes oceánicas.">
+                    Found: Fruit punch bottle from Trinidad, tracked via ocean currents.
+                    </p>
+                </div>
+
+                </div>
+                <button class="slider-prev" onclick="moveSlider('slider-global', -1)">&#10094;</button>
+                <button class="slider-next" onclick="moveSlider('slider-global', 1)">&#10095;</button>
+                </div>
+        </section>
+
+        <section class="gallery-section bg-alt">
+            <h2 data-en="The Trash Treasure Map: Visualizing Global Ocean Pollution" 
+                data-es="El Mapa del Tesoro de Basura: Visualizando la Contaminación Oceánica Global">
+                The Trash Treasure Map: Visualizing Global Ocean Pollution
+            </h2>
+            <p data-en="Our cleanups often reveal unique 'Trash Treasures' that have traveled vast distances via currents and tides, proving that pollution is not just a local problem. See where some of our favorite finds began their journey to the shores of Utila." 
+            data-es="Nuestras limpiezas a menudo revelan 'Tesoros de Basura' únicos que han viajado vastas distancias a través de corrientes y mareas, demostrando que la contaminación no es solo un problema local. Vea dónde comenzaron su viaje algunos de nuestros hallazgos favoritos hacia las costas de Utila.">
+            Our cleanups often reveal unique 'Trash Treasures' that have traveled vast distances via currents and tides, proving that pollution is not just a local problem. See where some of our favorite finds began their journey to the shores of Utila.
+            </p>
+            
+            <div class="map-container" style="text-align: center; margin-top: 30px;">
+                <img src="Around_the_World/trash_map.png" alt="A global map showing dotted lines tracing trash travel routes to Utila. Icons represent where specific bottles from Asia and Caribbean neighbors originated." style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+
+            <div class="info-grid container" style="margin-top: 40px;">
+                <div class="info-card">
+                    <h3 data-en="Origin: East Asia" data-es="Origen: Asia Oriental">Origin: East Asia</h3>
+                    <p data-en="Our findings Prove trans-oceanic travel, emphasizing that plastic from one side of the world affects ecosystems on the other." 
+                    data-es="Nuestros hallazgos demuestran el viaje transoceánico, enfatizando que el plástico de un lado del mundo afecta los ecosistemas del otro.">
+                    Our findings Prove trans-oceanic travel, emphasizing that plastic from one side of the world affects ecosystems on the other.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 data-en="Origin: Regional Caribbean" data-es="Origen: Caribe Regional">Origin: Regional Caribbean</h3>
+                    <p data-en="Shared tides with neighbors like Belize and Haiti bring common packaging, reinforcing the need for regional conservation networks." 
+                    data-es="Las mareas compartidas con vecinos como Belice y Haití traen empaques comunes, reforzando la necesidad de redes de conservación regional.">
+                    Shared tides with neighbors like Belize and Haiti bring common packaging, reinforcing the need for regional conservation networks.
+                    </p>
+                </div>
+                <div class="info-card">
+                    <h3 data-en="Utila's Shoreline" data-es="Costa de Utila">Utila's Shoreline</h3>
+                    <p data-en="Where global waste becomes a local threat to the endemic Swamper iguana and sea turtles—and where we take our stand every Wednesday morning." 
+                    data-es="Donde los desechos globales se convierten en una amenaza local para la iguana endémica Swamper y las tortugas marinas, y donde tomamos nuestra posición cada miércoles por la mañana.">
+                    Where global waste becomes a local threat to the endemic Swamper iguana and sea turtles—and where we take our stand every Wednesday morning.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <hr class="section-divider">
+        
 
-        <section class="gallery-section">
-            <h2 data-en="Cleanups & Wildlife" data-es="Limpiezas y Vida Silvestre">Cleanups & Wildlife</h2>
-            <div class="photo-grid">
-                <div class="photo-card">
-                    <img src="banner.jpg" alt="Team Cleanup">
-                    <p data-en="Weekly Wednesday Team" data-es="Equipo de los Miércoles">Weekly Wednesday Team</p>
-                </div>
-                <div class="photo-card">
-                    <img src="wildlife1.jpg" alt="Swamper Iguana">
-                    <p data-en="Endemic Swamper Iguana" data-es="Iguana Swamper Endémica">Endemic Swamper Iguana</p>
-                </div>
-                <div class="photo-card">
-                    <img src="wildlife2.jpg" alt="Sea Turtle">
-                    <p data-en="Sea Turtle Nesting Protection" data-es="Protección de Tortugas Marinas">Sea Turtle Nesting Protection</p>
-                </div>
-            </div>
-        </section>
     </main>
 
 <footer class="site-footer">
@@ -87,27 +270,27 @@
                 <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
                 <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
             </ul>
-            </div>
-
-                <div class="footer-social">
-                    <h4 data-en="Follow Us" data-es="Síguenos">Follow Us</h4>
-                    <div class="footer-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                        <a href="https://www.instagram.com/utila.island.cleanups/" target="_blank" aria-label="Instagram">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                        <a href="mailto:utilaislandcleanups@gmail.com" aria-label="Email">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
         </div>
-    </footer>
+
+        <div class="footer-social">
+            <h4 data-en="Follow Us" data-es="Síguenos">Follow Us</h4>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://www.instagram.com/utila.island.cleanups/" target="_blank" aria-label="Instagram">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="mailto:utilaislandcleanups@gmail.com" aria-label="Email">
+                    <ion-icon name="mail-outline"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
