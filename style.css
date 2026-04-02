@@ -697,3 +697,24 @@ body {
         gap: 40px;
     }
 }
+
+.mission-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pillar {
+    background: #fdfdfd;
+    padding: 25px;
+    border-left: 5px solid #289dd2; /* Utila Blue Accent */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.pillar h4 {
+    color: #365b6d;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
