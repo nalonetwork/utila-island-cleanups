@@ -718,3 +718,54 @@ body {
     text-transform: uppercase;
     font-size: 1.1rem;
 }
+/* Core Values Styling */
+.uic-values {
+    padding: 80px 0;
+    background-color: #f2f1ec;
+}
+
+.subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.value-card {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(40, 157, 210, 0.1);
+}
+
+.value-card ion-icon {
+    font-size: 3rem;
+    color: #289dd2; /* Utila Blue */
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    color: #365b6d; /* Brand Dark Blue */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
