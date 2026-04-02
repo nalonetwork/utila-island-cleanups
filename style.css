@@ -598,3 +598,84 @@ body {
     background: #289dd2; /* Your brand bright blue */
     transform: translateY(-50%) scale(1.1);
 }
+
+/* Homepage Impact Dashboard */
+.home-impact-dashboard {
+    padding: 100px 0;
+    background-color: #365b6d; /* Your brand dark blue */
+    color: #f2f1ec; /* Your brand cream */
+    text-align: center;
+}
+
+.dashboard-intro h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-intro p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+/* Flexbox Row */
+.impact-stats-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.metric-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.metric-box:hover {
+    transform: scale(1.05);
+}
+
+/* Numbers */
+.metric-value {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 15px;
+    color: #289dd2; /* Bright blue for emphasis */
+}
+
+.metric-value small {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+.metric-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+/* Decorative Bars */
+.metric-bar {
+    height: 4px;
+    width: 60px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.bottle-bar { background-color: #2ecc71; }
+.weight-bar { background-color: #f1c40f; }
+.mission-bar { background-color: #e74c3c; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .metric-value { font-size: 3.5rem; }
+    .dashboard-intro h2 { font-size: 2.2rem; }
+}
