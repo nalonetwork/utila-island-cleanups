@@ -678,6 +678,8 @@ body {
 .bottle-bar { background-color: #2ecc71; }
 .weight-bar { background-color: #f1c40f; }
 .mission-bar { background-color: #e74c3c; }
+.weight-lbs-bar { background-color: #289dd2;}
+
 
 /* Mobile Responsiveness */
 @media (max-width: 992px) {
