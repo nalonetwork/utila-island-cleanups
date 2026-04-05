@@ -845,14 +845,14 @@ body {
 /* Mission Photo Styling - Centered Fix */
 .mission-image-container {
     margin-top: 40px;
-    width: 90%;
+    width: 100%;
     display: flex;         /* Creates a flex container */
     justify-content: center; /* Centers the content horizontally */
     align-items: center;     /* Centers the content vertically if needed */
 }
 
 .mission-photo {
-    width: 90%;
+    width: 100%;
     max-width: 900px;      /* Matches the width of your centered text */
     height: auto;
     display: block;        /* Removes bottom whitespace */
