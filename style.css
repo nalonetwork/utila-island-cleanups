@@ -769,3 +769,102 @@ body {
     line-height: 1.6;
     color: #555;
 }
+
+/* Partners Page Specifics */
+.page-header {
+    background-color: #365b6d;
+    color: white;
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.partners-grid-section {
+    padding: 80px 0;
+}
+
+.partners-detailed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.partner-card-large {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    gap: 40px;
+}
+
+.partner-logo {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+.partner-logo img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%); /* Keeps it professional */
+    transition: filter 0.3s ease;
+}
+
+.partner-card-large:hover .partner-logo img {
+    filter: grayscale(0%);
+}
+
+.partner-text h3 {
+    font-size: 1.8rem;
+    color: #365b6d;
+    margin-bottom: 15px;
+}
+
+.partner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    color: #289dd2;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .partner-card-large {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    .partner-logo {
+        flex: 0 0 auto;
+        width: 150px;
+    }
+}
+/* Mission Photo Styling */
+.mission-image-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mission-photo {
+    width: 90%;
+    max-width: 900px; /* Matches the width of your centered text */
+    height: auto;
+    border-radius: 15px; /* Rounded corners to match your cards */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    display: block;
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .mission-image-container {
+        margin-top: 25px;
+    }
+    .mission-photo {
+        border-radius: 8px;
+    }
+}
