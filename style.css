@@ -845,7 +845,7 @@ body {
 /* Mission Photo Styling */
 .mission-image-container {
     margin-top: 40px;
-    display: flex;
+    display: fixed;
     justify-content: center;
     width: 100%;
 }
