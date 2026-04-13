@@ -598,3 +598,274 @@ body {
     background: #289dd2; /* Your brand bright blue */
     transform: translateY(-50%) scale(1.1);
 }
+
+/* Homepage Impact Dashboard - Spacing Fix */
+.home-impact-dashboard .container {
+    max-width: 1200px; /* Keeps the stats from spreading too far */
+    margin: 0 auto;
+    padding: 0 40px; /* Extra side padding for the whole section */
+}
+
+.dashboard-intro h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-intro p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 60px;
+}
+
+.impact-stats-row {
+    display: grid;
+    /* Adjusting minmax to 220px ensures cards shrink before they overlap */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 50px; /* Increased from 20px to 50px for significant "breathing room" */
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+.metric-box {
+    padding: 30px 15px; /* Added internal padding to the boxes */
+    background: rgba(255, 255, 255, 0.03); /* Subtle backing to define the space */
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.metric-box:hover {
+    transform: scale(1.05);
+}
+
+/* Number Size Adjustment */
+.metric-value {
+    font-size: 3.2rem; /* Scaled down slightly to prevent horizontal overflow */
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: #289dd2;
+    white-space: nowrap; /* Prevents "kg" or "lbs" from dropping to a new line */
+}
+
+.metric-value small {
+    font-size: 1.5rem;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+/* Label Spacing */
+.metric-label {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+    min-height: 3rem; /* Ensures labels align even if one is 2 lines and another is 1 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Decorative Bars */
+.metric-bar {
+    height: 4px;
+    width: 60px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+.bottle-bar { background-color: #2ecc71; }
+.weight-bar { background-color: #f1c40f; }
+.mission-bar { background-color: #e74c3c; }
+.weight-lbs-bar { background-color: #289dd2;}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .impact-stats-row {
+        gap: 30px;
+    }
+    .metric-value {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .impact-stats-row {
+        grid-template-columns: 1fr; /* Stack vertically on small phones */
+        gap: 40px;
+    }
+}
+
+.mission-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.pillar {
+    background: #fdfdfd;
+    padding: 25px;
+    border-left: 5px solid #289dd2; /* Utila Blue Accent */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.pillar h4 {
+    color: #365b6d;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+/* Core Values Styling */
+.uic-values {
+    padding: 80px 0;
+    background-color: #f2f1ec;
+}
+
+.subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+}
+
+.value-card {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(40, 157, 210, 0.1);
+}
+
+.value-card ion-icon {
+    font-size: 3rem;
+    color: #289dd2; /* Utila Blue */
+    margin-bottom: 20px;
+}
+
+.value-card h3 {
+    color: #365b6d; /* Brand Dark Blue */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.value-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Partners Page Specifics */
+.page-header {
+    background-color: #365b6d;
+    color: white;
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.partners-grid-section {
+    padding: 80px 0;
+}
+
+.partners-detailed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.partner-card-large {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    gap: 40px;
+}
+
+.partner-logo {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+.partner-logo img {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%); /* Keeps it professional */
+    transition: filter 0.3s ease;
+}
+
+.partner-card-large:hover .partner-logo img {
+    filter: grayscale(0%);
+}
+
+.partner-text h3 {
+    font-size: 1.8rem;
+    color: #365b6d;
+    margin-bottom: 15px;
+}
+
+.partner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    color: #289dd2;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .partner-card-large {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+    .partner-logo {
+        flex: 0 0 auto;
+        width: 150px;
+    }
+}
+/* Mission Photo Styling - Centered Fix */
+.mission-image-container {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;         /* Creates a flex container */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center;     /* Centers the content vertically if needed */
+}
+
+.mission-photo {
+    width: 100%;
+    max-width: 900px;      /* Matches the width of your centered text */
+    height: auto;
+    display: block;        /* Removes bottom whitespace */
+    margin: 0 auto;        /* Traditional centering backup */
+    border-radius: 15px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Tweak */
+@media (max-width: 768px) {
+    .mission-image-container {
+        margin-top: 25px;
+        padding: 0 15px;    /* Adds a little breathing room on phones */
+    }
+}
+}
