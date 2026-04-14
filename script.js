@@ -1,22 +1,20 @@
 /**
  * UIC WEBSITE CORE JAVASCRIPT
- * Organized for: Navigation, Language, Live Data, and Gallery
+ * Optimized for: Navigation, Language Toggle (Text & Images), Live Data, and Gallery
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // --- 1. MOBILE NAVIGATION LOGIC ---
-    // This handles both the "hamburger" and "menu-toggle" classes to ensure it works on all pages
     const hamburger = document.getElementById('hamburger') || document.querySelector('.menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            hamburger.classList.toggle('is-active'); // Triggers the 'X' animation
+            hamburger.classList.toggle('is-active'); 
         });
 
-        // Close menu automatically when any link inside is clicked
         const links = navLinks.querySelectorAll('a');
         links.forEach(link => {
             link.addEventListener('click', () => {
@@ -30,85 +28,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const langToggle = document.getElementById('lang-toggle');
     let currentLang = localStorage.getItem('preferredLang') || 'en';
 
-    function updateContent(lang) {
+    // This is the SINGLE master function for changing language
+    window.updateContent = function(lang) {
+        // A. Update all text elements
         const elements = document.querySelectorAll('[data-en]');
         elements.forEach(el => {
             const translation = el.getAttribute(`data-${lang}`);
             if (translation) {
-                // If it's a link in the nav, we keep it simple; otherwise, update text
                 el.innerText = translation;
             }
         });
 
-        // Update button text to show the option to switch
+        // B. Update the Impact Summary Image (The fix you needed!)
+        const impactImg = document.getElementById('impact-summary-img');
+        if (impactImg) {
+            const newSrc = impactImg.getAttribute(`data-img-${lang}`);
+            if (newSrc) {
+                impactImg.src = newSrc;
+                console.log("Swapped impact image to:", newSrc);
+            }
+        }
+
+        // C. Update the button text (Shows the opposite language)
         if (langToggle) {
             langToggle.innerText = lang === 'en' ? 'ES' : 'EN';
         }
         document.documentElement.lang = lang;
-    }
+    };
 
     if (langToggle) {
         langToggle.addEventListener('click', () => {
             currentLang = (currentLang === 'en') ? 'es' : 'en';
             localStorage.setItem('preferredLang', currentLang);
-            updateContent(currentLang);
+            window.updateContent(currentLang);
         });
     }
 
     // Run language check on load
-    if (currentLang === 'es') {
-        updateContent('es');
-    } else if (langToggle) {
-        langToggle.innerText = 'ES';
-    }
+    window.updateContent(currentLang);
 
-    // --- 3. LIVE DATA FETCH (SHEETY) ---
-    // Only runs if counter elements exist on the current page
+    // --- 3. LIVE DATA FETCH TRIGGER ---
     if (document.querySelector('.counter')) {
         fetchImpactData();
     }
 });
 
 // --- LIVE DATA FUNCTIONS ---
-
 async function fetchImpactData() {
     const url = 'https://api.sheety.co/32127990cba796d619a30aeb84fbf2ab/impactData/sheet1';
+    const bottles = document.getElementById('count-bottles');
+    const weightKg = document.getElementById('count-weight-kg');
+    const weightLbs = document.getElementById('count-weight-lbs');
+    const cleanups = document.getElementById('count-cleanups');
 
     try {
         const response = await fetch(url);
+        if (!response.ok) throw new Error(`Sheety Error: ${response.status}`);
+
         const json = await response.json();
         const liveData = json.sheet1[0]; 
         
-        console.log("Sheety Data Received:", liveData); 
+        const bVal = liveData.bottles || 0;
+        const kgVal = liveData.weightkg || liveData.kg || 0;
+        const lbsVal = liveData.weightlbs || liveData.lbs || 0;
+        const cVal = liveData.cleanups || 0;
 
-        const bottles = document.getElementById('count-bottles');
-        const weightKg = document.getElementById('count-weight-kg');
-        const weightLbs = document.getElementById('count-weight-lbs');
-        const cleanups = document.getElementById('count-cleanups');
+        if (bottles) bottles.setAttribute('data-target', bVal);
+        if (weightKg) weightKg.setAttribute('data-target', kgVal);
+        if (weightLbs) weightLbs.setAttribute('data-target', lbsVal);
+        if (cleanups) cleanups.setAttribute('data-target', cVal);
 
-        // Update data-target attributes for the animation
-        if (bottles) bottles.setAttribute('data-target', liveData.bottles || 0);
-        if (weightKg) weightKg.setAttribute('data-target', liveData.weightkg || liveData.weightKg || 0);
-        if (weightLbs) weightLbs.setAttribute('data-target', liveData.weightlbs || liveData.weightLbs || 0);
-        if (cleanups) cleanups.setAttribute('data-target', liveData.cleanups || 0);
-
-        initCounters();
+        runCounterAnimation();
     } catch (error) {
-        console.error('Error connecting to Sheety:', error);
-        initCounters(); // Run anyway to show 0s instead of blank
+        console.error('CONNECTION FAILED:', error.message);
+        runCounterAnimation(); 
     }
 }
 
-function initCounters() {
+function runCounterAnimation() {
     const counters = document.querySelectorAll('.counter');
     const speed = 100; 
-
     counters.forEach(counter => {
         const updateCount = () => {
             const target = +counter.getAttribute('data-target') || 0;
             const count = +counter.innerText.replace(/,/g, ''); 
             const inc = target / speed;
-
             if (count < target) {
                 counter.innerText = Math.ceil(count + inc).toLocaleString();
                 setTimeout(updateCount, 15);
@@ -121,29 +125,15 @@ function initCounters() {
 }
 
 // --- 4. GALLERY SLIDER LOGIC ---
-// Kept outside DOMContentLoaded so HTML buttons can find the function
 let sliderStates = {};
-
 function moveSlider(sliderId, direction) {
-    if (!sliderStates[sliderId]) {
-        sliderStates[sliderId] = 0;
-    }
-
+    if (!sliderStates[sliderId]) sliderStates[sliderId] = 0;
     const slider = document.getElementById(sliderId);
     if (!slider) return;
-
     const track = slider.querySelector('.slider-track');
     const slides = track.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-
     sliderStates[sliderId] += direction;
-
-    if (sliderStates[sliderId] >= totalSlides) {
-        sliderStates[sliderId] = 0;
-    } else if (sliderStates[sliderId] < 0) {
-        sliderStates[sliderId] = totalSlides - 1;
-    }
-
-    const offset = sliderStates[sliderId] * -100;
-    track.style.transform = `translateX(${offset}%)`;
+    if (sliderStates[sliderId] >= slides.length) sliderStates[sliderId] = 0;
+    else if (sliderStates[sliderId] < 0) sliderStates[sliderId] = slides.length - 1;
+    track.style.transform = `translateX(${sliderStates[sliderId] * -100}%)`;
 }
