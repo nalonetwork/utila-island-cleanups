@@ -76,131 +76,52 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- LIVE DATA FUNCTIONS ---
 
 async function fetchImpactData() {
-
     const url = 'https://api.sheety.co/32127990cba796d619a30aeb84fbf2ab/impactData/sheet1';
 
-    const bottles = document.getElementById('count-bottles');
-
-    const weightKg = document.getElementById('count-weight-kg');
-
-    const weightLbs = document.getElementById('count-weight-lbs');
-
-    const cleanups = document.getElementById('count-cleanups');
-
-
-
     try {
-
         const response = await fetch(url);
-
-        if (!response.ok) throw new Error(`Sheety Error: ${response.status}`);
-
-
-
         const json = await response.json();
-
         const liveData = json.sheet1[0]; 
-
         
+        console.log("Sheety Data Received:", liveData); 
 
-        const bVal = liveData.bottles || 0;
+        const bottles = document.getElementById('count-bottles');
+        const weightKg = document.getElementById('count-weight-kg');
+        const weightLbs = document.getElementById('count-weight-lbs');
+        const cleanups = document.getElementById('count-cleanups');
 
-        const kgVal = liveData.weightkg || liveData.kg || 0;
+        // Update data-target attributes for the animation
+        if (bottles) bottles.setAttribute('data-target', liveData.bottles || 0);
+        if (weightKg) weightKg.setAttribute('data-target', liveData.weightkg || liveData.weightKg || 0);
+        if (weightLbs) weightLbs.setAttribute('data-target', liveData.weightlbs || liveData.weightLbs || 0);
+        if (cleanups) cleanups.setAttribute('data-target', liveData.cleanups || 0);
 
-        const lbsVal = liveData.weightlbs || liveData.lbs || 0;
-
-        const cVal = liveData.cleanups || 0;
-
-
-
-        if (bottles) bottles.setAttribute('data-target', bVal);
-
-        if (weightKg) weightKg.setAttribute('data-target', kgVal);
-
-        if (weightLbs) weightLbs.setAttribute('data-target', lbsVal);
-
-        if (cleanups) cleanups.setAttribute('data-target', cVal);
-
-
-
-        runCounterAnimation();
-
+        initCounters();
     } catch (error) {
-
-        console.error('CONNECTION FAILED:', error.message);
-
-        runCounterAnimation(); 
-
+        console.error('Error connecting to Sheety:', error);
+        initCounters(); // Run anyway to show 0s instead of blank
     }
-
 }
 
-
-
-function runCounterAnimation() {
-
+function initCounters() {
     const counters = document.querySelectorAll('.counter');
-
-    
+    const speed = 100; 
 
     counters.forEach(counter => {
-
-        const target = parseFloat(counter.getAttribute('data-target')) || 0;
-
-        const isDecimal = counter.getAttribute('data-target').includes('.');
-
-        const speed = 100; // Adjust for faster/slower animation
-
-        const increment = target / speed;
-
-
-
         const updateCount = () => {
+            const target = +counter.getAttribute('data-target') || 0;
+            const count = +counter.innerText.replace(/,/g, ''); 
+            const inc = target / speed;
 
-            const current = parseFloat(counter.innerText.replace(/,/g, '')) || 0;
-
-
-
-            if (current < target) {
-
-                const nextValue = current + increment;
-
-                // If it's a decimal (KG/LBS), show 1 decimal place. Otherwise, whole number.
-
-                counter.innerText = isDecimal 
-
-                    ? nextValue.toFixed(1) 
-
-                    : Math.ceil(nextValue).toLocaleString();
-
-                
-
-                setTimeout(updateCount, 20);
-
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc).toLocaleString();
+                setTimeout(updateCount, 15);
             } else {
-
-                // Final snap to exact target with proper formatting
-
-                counter.innerText = isDecimal 
-
-                    ? target.toFixed(1) 
-
-                    : target.toLocaleString();
-
+                counter.innerText = target.toLocaleString();
             }
-
         };
-
-        
-
-        // Reset to 0 before starting to ensure animation is visible
-
-        counter.innerText = "0";
-
         updateCount();
-
     });
-
 }
 
 function runCounterAnimation() {
