@@ -107,19 +107,34 @@ async function fetchImpactData() {
 
 function runCounterAnimation() {
     const counters = document.querySelectorAll('.counter');
-    const speed = 100; 
+    
     counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target')) || 0;
+        const isDecimal = counter.getAttribute('data-target').includes('.');
+        const speed = 100; // Adjust for faster/slower animation
+        const increment = target / speed;
+
         const updateCount = () => {
-            const target = +counter.getAttribute('data-target') || 0;
-            const count = +counter.innerText.replace(/,/g, ''); 
-            const inc = target / speed;
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc).toLocaleString();
-                setTimeout(updateCount, 15);
+            const current = parseFloat(counter.innerText.replace(/,/g, '')) || 0;
+
+            if (current < target) {
+                const nextValue = current + increment;
+                // If it's a decimal (KG/LBS), show 1 decimal place. Otherwise, whole number.
+                counter.innerText = isDecimal 
+                    ? nextValue.toFixed(1) 
+                    : Math.ceil(nextValue).toLocaleString();
+                
+                setTimeout(updateCount, 20);
             } else {
-                counter.innerText = target.toLocaleString();
+                // Final snap to exact target with proper formatting
+                counter.innerText = isDecimal 
+                    ? target.toFixed(1) 
+                    : target.toLocaleString();
             }
         };
+        
+        // Reset to 0 before starting to ensure animation is visible
+        counter.innerText = "0";
         updateCount();
     });
 }
