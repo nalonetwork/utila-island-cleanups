@@ -217,66 +217,49 @@ body {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-/* --- IMPACT PAGE: GLASS DASHBOARD --- */
-.stats-glass-grid {
+/* Impact Page Specifics */
+.data-date {
+    font-style: italic;
+    color: var(--accent-gray);
+    margin-bottom: 40px;
+}
+
+.stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin: 40px 0 60px 0;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
-.glass-card {
-    background: white; /* You can change this to rgba(255, 255, 255, 0.8) for a glass look */
-    padding: 30px 20px;
-    border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(54, 91, 109, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.stat-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: transform 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.glass-card:hover {
-    transform: translateY(-8px);
+.stat-card:hover {
+    transform: translateY(-5px);
 }
 
-/* Icon Background Circles */
-.icon-box {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: white;
+.stat-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
-.bottle-bg { background: #2ecc71; }
-.weight-bg { background: #f1c40f; }
-.weight-lbs-bg { background: #289dd2; }
-.cleanup-bg { background: #e74c3c; }
-
-/* The Numbers (The Counters) */
-.stat-content h3 {
-    font-size: 2.2rem; /* Adjusted size to ensure 4939.3 fits on one line */
+.stat-card h2 {
+    font-size: 3.5rem;
     color: var(--bright-blue);
-    margin-bottom: 5px;
-    font-weight: 800;
+    margin: 10px 0;
 }
 
-.stat-content p {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+.charts-placeholder {
+    padding: 40px;
+    border: 2px dashed var(--accent-gray);
+    border-radius: 10px;
     color: var(--dark-blue);
-    opacity: 0.8;
 }
-
 /* Update Tag Styling */
 .update-tag {
     font-style: italic;
