@@ -74,53 +74,133 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- LIVE DATA FUNCTIONS ---
+
 async function fetchImpactData() {
+
     const url = 'https://api.sheety.co/32127990cba796d619a30aeb84fbf2ab/impactData/sheet1';
-    
+
     const bottles = document.getElementById('count-bottles');
+
     const weightKg = document.getElementById('count-weight-kg');
+
     const weightLbs = document.getElementById('count-weight-lbs');
+
     const cleanups = document.getElementById('count-cleanups');
 
+
+
     try {
+
         const response = await fetch(url);
-        
-        // Handle the 402 Error (Quota Exceeded) specifically
-        if (response.status === 402) {
-            console.warn("Sheety quota exceeded. Using numbers from HTML.");
-            runCounterAnimation(); 
-            return;
-        }
 
         if (!response.ok) throw new Error(`Sheety Error: ${response.status}`);
 
-        const json = await response.json();
-        
-        // Check if data actually exists before trying to read it
-        if (json && json.sheet1 && json.sheet1[0]) {
-            const liveData = json.sheet1[0];
-            
-            // Map the data (ensure lowercase keys match Sheety's format)
-            const bVal = liveData.bottles || 0;
-            const kgVal = liveData.weightkg || liveData.kg || 0;
-            const lbsVal = liveData.weightlbs || liveData.lbs || 0;
-            const cVal = liveData.cleanups || 0;
 
-            // Set the new targets from the live spreadsheet
-            if (bottles) bottles.setAttribute('data-target', bVal);
-            if (weightKg) weightKg.setAttribute('data-target', kgVal);
-            if (weightLbs) weightLbs.setAttribute('data-target', lbsVal);
-            if (cleanups) cleanups.setAttribute('data-target', cVal);
-        }
+
+        const json = await response.json();
+
+        const liveData = json.sheet1[0]; 
+
+        
+
+        const bVal = liveData.bottles || 0;
+
+        const kgVal = liveData.weightkg || liveData.kg || 0;
+
+        const lbsVal = liveData.weightlbs || liveData.lbs || 0;
+
+        const cVal = liveData.cleanups || 0;
+
+
+
+        if (bottles) bottles.setAttribute('data-target', bVal);
+
+        if (weightKg) weightKg.setAttribute('data-target', kgVal);
+
+        if (weightLbs) weightLbs.setAttribute('data-target', lbsVal);
+
+        if (cleanups) cleanups.setAttribute('data-target', cVal);
+
+
 
         runCounterAnimation();
 
     } catch (error) {
+
         console.error('CONNECTION FAILED:', error.message);
-        // If the internet or API fails, we still run the animation 
-        // using the hardcoded numbers you put in the HTML data-target.
+
         runCounterAnimation(); 
+
     }
+
+}
+
+
+
+function runCounterAnimation() {
+
+    const counters = document.querySelectorAll('.counter');
+
+    
+
+    counters.forEach(counter => {
+
+        const target = parseFloat(counter.getAttribute('data-target')) || 0;
+
+        const isDecimal = counter.getAttribute('data-target').includes('.');
+
+        const speed = 100; // Adjust for faster/slower animation
+
+        const increment = target / speed;
+
+
+
+        const updateCount = () => {
+
+            const current = parseFloat(counter.innerText.replace(/,/g, '')) || 0;
+
+
+
+            if (current < target) {
+
+                const nextValue = current + increment;
+
+                // If it's a decimal (KG/LBS), show 1 decimal place. Otherwise, whole number.
+
+                counter.innerText = isDecimal 
+
+                    ? nextValue.toFixed(1) 
+
+                    : Math.ceil(nextValue).toLocaleString();
+
+                
+
+                setTimeout(updateCount, 20);
+
+            } else {
+
+                // Final snap to exact target with proper formatting
+
+                counter.innerText = isDecimal 
+
+                    ? target.toFixed(1) 
+
+                    : target.toLocaleString();
+
+            }
+
+        };
+
+        
+
+        // Reset to 0 before starting to ensure animation is visible
+
+        counter.innerText = "0";
+
+        updateCount();
+
+    });
+
 }
 
 function runCounterAnimation() {
