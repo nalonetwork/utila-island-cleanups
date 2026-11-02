@@ -27,40 +27,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. LANGUAGE TOGGLE LOGIC ---
-    const langToggle = document.getElementById('lang-toggle');
+    const SUPPORTED_LANGS = ['en', 'es', 'fr'];
+    const langOptions = document.querySelectorAll('.lang-option');
     let currentLang = localStorage.getItem('preferredLang') || 'en';
+    if (!SUPPORTED_LANGS.includes(currentLang)) {
+        currentLang = 'en';
+    }
 
     function updateContent(lang) {
         const elements = document.querySelectorAll('[data-en]');
         elements.forEach(el => {
             const translation = el.getAttribute(`data-${lang}`);
             if (translation) {
-                // If it's a link in the nav, we keep it simple; otherwise, update text
                 el.innerText = translation;
             }
         });
 
-        // Update button text to show the option to switch
-        if (langToggle) {
-            langToggle.innerText = lang === 'en' ? 'ES' : 'EN';
-        }
+        langOptions.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+
         document.documentElement.lang = lang;
     }
 
-    if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            currentLang = (currentLang === 'en') ? 'es' : 'en';
+    langOptions.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            if (lang === currentLang) return;
+            currentLang = lang;
             localStorage.setItem('preferredLang', currentLang);
             updateContent(currentLang);
         });
-    }
+    });
 
-    // Run language check on load
-    if (currentLang === 'es') {
-        updateContent('es');
-    } else if (langToggle) {
-        langToggle.innerText = 'ES';
-    }
+    // Apply the saved/detected language on load
+    updateContent(currentLang);
 
     // --- 3. LIVE DATA FETCH (SHEETY) ---
     // Only runs if counter elements exist on the current page

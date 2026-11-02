@@ -96,14 +96,34 @@ body {
     color: var(--bright-blue); /* #289dd2 from scheme */
 }
 
-#lang-toggle { 
-    background: var(--bright-blue); 
-    color: white; 
-    border: none; 
-    padding: 5px 12px; 
-    cursor: pointer; 
-    border-radius: 4px; 
-    font-weight: bold; 
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: var(--accent-gray);
+    border-radius: 6px;
+    padding: 3px;
+}
+
+.lang-option {
+    background: transparent;
+    color: var(--dark-blue);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-option:hover {
+    color: var(--bright-blue);
+}
+
+.lang-option.active {
+    background: var(--bright-blue);
+    color: white;
 }
 
 /* 4. HERO SECTIONS */

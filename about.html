@@ -20,14 +20,18 @@
             <a href="index.html"><img src="UICsquare.png" alt="Logo" class="logo"></a>
             
             <ul class="nav-links" id="nav-links">
-                <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
-                <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
-                <li><a href="partners.html" data-en="Partners" data-es="Socios">Partners</a></li>
-                <li><a href="gallery.html" data-en="Gallery" data-es="Galería">Gallery</a></li>
-                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
-                <li><a href="contact.html" data-en="Contact" data-es="Contacto">Contact</a></li>
-                <li><button id="lang-toggle">ES</button></li>
+                <li><a href="index.html" data-en="Home" data-es="Inicio" data-fr="Accueil">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-es="Nosotros" data-fr="À propos">About Us</a></li>
+                <li><a href="impact.html" data-en="Impact" data-es="Impacto" data-fr="Impact">Impact</a></li>
+                <li><a href="partners.html" data-en="Partners" data-es="Socios" data-fr="Partenaires">Partners</a></li>
+                <li><a href="gallery.html" data-en="Gallery" data-es="Galería" data-fr="Galerie">Gallery</a></li>
+                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a></li>
+                <li><a href="contact.html" data-en="Contact" data-es="Contacto" data-fr="Contact">Contact</a></li>
+                <li class="lang-switcher" id="lang-switcher">
+                    <button class="lang-option active" data-lang="en" aria-label="English">EN</button>
+                    <button class="lang-option" data-lang="es" aria-label="Español">ES</button>
+                    <button class="lang-option" data-lang="fr" aria-label="Français">FR</button>
+                </li>
             </ul>
             
             <div class="hamburger" id="hamburger">
@@ -38,8 +42,8 @@
 
     <header class="about-hero">
         <div class="hero-overlay">
-            <h1 data-en="About Us" data-es="Sobre Nosotros">About Us</h1>
-            <p data-en="Community-led coastal protection in Utila" data-es="Protección costera liderada por la comunidad en Utila">
+            <h1 data-en="About Us" data-es="Sobre Nosotros" data-fr="À propos">About Us</h1>
+            <p data-en="Community-led coastal protection in Utila" data-es="Protección costera liderada por la comunidad en Utila" data-fr="Protection côtière menée par la communauté à Utila">
                 Community-led coastal protection in Utila
             </p>
         </div>
@@ -48,15 +52,15 @@
     <section class="about-intro container">
         <p class="mission-lead-centered" 
         data-en="We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action." 
-        data-es="Organizamos limpiezas de playa semanales para reducir la contaminación, proteger los ecosistemas locales y fortalecer la conciencia ambiental a través de la acción.">
+        data-es="Organizamos limpiezas de playa semanales para reducir la contaminación, proteger los ecosistemas locales y fortalecer la conciencia ambiental a través de la acción." data-fr="Nous organisons des nettoyages de plage hebdomadaires pour réduire la pollution, protéger les écosystèmes locaux et renforcer la sensibilisation environnementale par l'action.">
         We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action.
         </p>
     </section>
 
  <section class="content-block bg-alt">
-    <h2 data-en="Our Mission" data-es="Nuestra Misión">Our Mission</h2>
+    <h2 data-en="Our Mission" data-es="Nuestra Misión" data-fr="Notre mission">Our Mission</h2>
     <p data-en="Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana." 
-       data-es="Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, incluyendo las tortugas marinas y la iguana endémica Swamper.">
+       data-es="Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, incluyendo las tortugas marinas y la iguana endémica Swamper." data-fr="Utila Island Cleanups s'engage à protéger les plages d'Utila, au Honduras, grâce à des nettoyages hebdomadaires et à une gestion responsable des déchets. Chaque mercredi matin, nous agissons pour préserver les écosystèmes côtiers essentiels à notre communauté et à la faune qui en dépend, notamment les tortues marines et l'iguane endémique des marais.">
        Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
     </p>
 </section>
@@ -71,18 +75,18 @@
 <section class="info-grid container">
     <div class="info-card">
         <ion-icon name="heart-outline" class="contact-icon"></ion-icon>
-        <h3 data-en="Why this work matters" data-es="Por qué es importante">Why this work matters</h3>
+        <h3 data-en="Why this work matters" data-es="Por qué es importante" data-fr="Pourquoi ce travail est important">Why this work matters</h3>
         <p data-en="Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila." 
-           data-es="Las playas más limpias ayudan a mantener la basura fuera del océano, reducen el daño a la vida marina y protegen los frágiles hábitats costeros de Utila.">
+           data-es="Las playas más limpias ayudan a mantener la basura fuera del océano, reducen el daño a la vida marina y protegen los frágiles hábitats costeros de Utila." data-fr="Des plages plus propres permettent d'éloigner les déchets de l'océan, de réduire les dommages causés à la vie marine et de protéger les habitats côtiers fragiles autour d'Utila.">
            Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila.
         </p>
     </div>
 
     <div class="info-card">
         <ion-icon name="construct-outline" class="contact-icon"></ion-icon>
-        <h3 data-en="How we do it" data-es="Cómo lo hacemos">How we do it</h3>
+        <h3 data-en="How we do it" data-es="Cómo lo hacemos" data-fr="Comment nous procédons">How we do it</h3>
         <p data-en="We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting." 
-           data-es="Coordinamos limpiezas semanales, proporcionamos materiales y logística, y realizamos un seguimiento del impacto medible a lo largo del tiempo a través de informes transparentes.">
+           data-es="Coordinamos limpiezas semanales, proporcionamos materiales y logística, y realizamos un seguimiento del impacto medible a lo largo del tiempo a través de informes transparentes." data-fr="Nous coordonnons des nettoyages hebdomadaires, fournissons le matériel et la logistique, et suivons un impact mesurable dans le temps grâce à des rapports transparents.">
            We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting.
         </p>
     </div>
@@ -90,14 +94,14 @@
 </section>
 
 <section class="partners-section container">
-    <h2 data-en="Who We Work With" data-es="Con Quiénes Trabajamos">Who We Work With</h2>
+    <h2 data-en="Who We Work With" data-es="Con Quiénes Trabajamos" data-fr="Avec qui nous travaillons">Who We Work With</h2>
     <p data-en="Our mission is made possible through the support of dedicated local partners and sponsors." 
-       data-es="Nuestra misión es posible gracias al apoyo de socios y patrocinadores locales dedicados.">
+       data-es="Nuestra misión es posible gracias al apoyo de socios y patrocinadores locales dedicados." data-fr="Notre mission est rendue possible grâce au soutien de partenaires et de sponsors locaux dévoués.">
        Our mission is made possible through the support of dedicated local partners and sponsors.
     </p>
 
     <div class="partners-cta" style="margin-top: 30px; text-align: center;">
-        <a href="partners.html" class="btn btn-partners" data-en="Learn More About Our Partners" data-es="Saber Más Sobre Nuestros Socios">
+        <a href="partners.html" class="btn btn-partners" data-en="Learn More About Our Partners" data-es="Saber Más Sobre Nuestros Socios" data-fr="En savoir plus sur nos partenaires">
             Learn More About Our Partners
         </a>
     </div>
@@ -108,23 +112,23 @@
     <div class="footer-container">
         <div class="footer-brand">
             <img src="UICsquare.png" alt="Logo" class="footer-logo">
-            <p class="footer-slogan" data-en="Creating awareness one cleanup at a time" data-es="Creamos consciencia ambiental una limpieza de playa a la vez">
+            <p class="footer-slogan" data-en="Creating awareness one cleanup at a time" data-es="Creamos consciencia ambiental una limpieza de playa a la vez" data-fr="Créer une prise de conscience, une plage nettoyée à la fois">
                 Creating awareness one cleanup at a time
             </p>
         </div>
 
         <div class="footer-links">
-            <h4 data-en="Quick Links" data-es="Enlaces Rápidos">Quick Links</h4>
+            <h4 data-en="Quick Links" data-es="Enlaces Rápidos" data-fr="Liens rapides">Quick Links</h4>
             <ul>
-                <li><a href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-es="Nosotros">About Us</a></li>
-                <li><a href="impact.html" data-en="Impact" data-es="Impacto">Impact</a></li>
-                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa">Get Involved</a></li>
+                <li><a href="index.html" data-en="Home" data-es="Inicio" data-fr="Accueil">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-es="Nosotros" data-fr="À propos">About Us</a></li>
+                <li><a href="impact.html" data-en="Impact" data-es="Impacto" data-fr="Impact">Impact</a></li>
+                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a></li>
             </ul>
         </div>
 
         <div class="footer-social">
-            <h4 data-en="Follow Us" data-es="Síguenos">Follow Us</h4>
+            <h4 data-en="Follow Us" data-es="Síguenos" data-fr="Suivez-nous">Follow Us</h4>
             <div class="footer-icons">
                 <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
                     <ion-icon name="logo-facebook"></ion-icon>
@@ -139,7 +143,7 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados." data-fr="Tous droits réservés.">All rights reserved.</span></p>
     </div>
 </footer>
 
