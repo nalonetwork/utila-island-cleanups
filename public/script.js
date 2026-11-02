@@ -63,42 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply the saved/detected language on load
     updateContent(currentLang);
 
-    // --- 3. LIVE DATA FETCH (SHEETY) ---
-    // Only runs if counter elements exist on the current page
+    // --- 3. LIVE DATA ---
+    // Animate counters from their current (static fallback) data-target values.
+    // src/live-counters.js fetches live totals from Supabase and, once loaded,
+    // updates the data-target attributes and re-triggers initCounters().
     if (document.querySelector('.counter')) {
-        fetchImpactData();
+        initCounters();
     }
 });
 
 // --- LIVE DATA FUNCTIONS ---
-
-async function fetchImpactData() {
-    const url = 'https://api.sheety.co/32127990cba796d619a30aeb84fbf2ab/impactData/sheet1';
-
-    try {
-        const response = await fetch(url);
-        const json = await response.json();
-        const liveData = json.sheet1[0]; 
-        
-        console.log("Sheety Data Received:", liveData); 
-
-        const bottles = document.getElementById('count-bottles');
-        const weightKg = document.getElementById('count-weight-kg');
-        const weightLbs = document.getElementById('count-weight-lbs');
-        const cleanups = document.getElementById('count-cleanups');
-
-        // Update data-target attributes for the animation
-        if (bottles) bottles.setAttribute('data-target', liveData.bottles || 0);
-        if (weightKg) weightKg.setAttribute('data-target', liveData.weightkg || liveData.weightKg || 0);
-        if (weightLbs) weightLbs.setAttribute('data-target', liveData.weightlbs || liveData.weightLbs || 0);
-        if (cleanups) cleanups.setAttribute('data-target', liveData.cleanups || 0);
-
-        initCounters();
-    } catch (error) {
-        console.error('Error connecting to Sheety:', error);
-        initCounters(); // Run anyway to show 0s instead of blank
-    }
-}
 
 function initCounters() {
     const counters = document.querySelectorAll('.counter');

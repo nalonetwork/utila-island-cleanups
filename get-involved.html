@@ -76,6 +76,54 @@
             </div>
         </div>
 
+        <div class="volunteer-signup-section">
+            <h2 data-en="Sign Up for the Next Cleanup" data-es="Regístrate para la Próxima Limpieza" data-fr="Inscrivez-vous au prochain nettoyage">Sign Up for the Next Cleanup</h2>
+            <p data-en="Let us know you're coming so we can plan transport and supplies." data-es="Avísanos que vienes para planear transporte y materiales." data-fr="Faites-nous savoir que vous venez afin que nous puissions prévoir le transport et le matériel.">
+                Let us know you're coming so we can plan transport and supplies.
+            </p>
+
+            <form id="volunteer-form" class="volunteer-form">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="volunteer-name" data-en="Full Name" data-es="Nombre Completo" data-fr="Nom complet">Full Name</label>
+                        <input type="text" id="volunteer-name" name="full_name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="volunteer-email" data-en="Email" data-es="Correo Electrónico" data-fr="E-mail">Email</label>
+                        <input type="email" id="volunteer-email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="volunteer-whatsapp" data-en="WhatsApp Number" data-es="Número de WhatsApp" data-fr="Numéro WhatsApp">WhatsApp Number</label>
+                        <input type="tel" id="volunteer-whatsapp" name="whatsapp_number">
+                    </div>
+                    <div class="form-field">
+                        <label for="volunteer-language" data-en="Preferred Language" data-es="Idioma Preferido" data-fr="Langue préférée">Preferred Language</label>
+                        <select id="volunteer-language" name="preferred_language">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="volunteer-date" data-en="Planned Date" data-es="Fecha Planeada" data-fr="Date prévue">Planned Date</label>
+                        <input type="date" id="volunteer-date" name="planned_date">
+                    </div>
+                    <div class="form-field checkbox-field">
+                        <label for="volunteer-gloves">
+                            <input type="checkbox" id="volunteer-gloves" name="has_own_gloves">
+                            <span data-en="I have my own gloves" data-es="Tengo mis propios guantes" data-fr="J'ai mes propres gants">I have my own gloves</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="volunteer-notes" data-en="Notes" data-es="Notas" data-fr="Remarques">Notes</label>
+                    <textarea id="volunteer-notes" name="notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn" data-en="Sign Up" data-es="Registrarse" data-fr="S'inscrire">Sign Up</button>
+                <p id="volunteer-form-status" class="form-status" role="status"></p>
+            </form>
+        </div>
+
     </main>
 
     <footer class="site-footer">
@@ -109,5 +157,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="module" src="/src/volunteer-form.js"></script>
 </body>
 </html>

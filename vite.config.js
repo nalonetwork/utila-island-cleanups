@@ -14,6 +14,7 @@ export default defineConfig({
         getInvolved: resolve(root, 'get-involved.html'),
         impact: resolve(root, 'impact.html'),
         partners: resolve(root, 'partners.html'),
+        admin: resolve(root, 'admin.html'),
       },
     },
   },
