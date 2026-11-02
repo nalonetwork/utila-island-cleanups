@@ -25,16 +25,57 @@ const cleanupForm = document.getElementById('cleanup-form');
 const cleanupFormStatus = document.getElementById('cleanup-form-status');
 const cleanupsTableBody = document.getElementById('cleanups-table-body');
 
-const announcementForm = document.getElementById('announcement-form');
-const announcementStatus = document.getElementById('announcement-status');
-
 const signupsTableBody = document.getElementById('signups-table-body');
+
+const attendanceCleanupSelect = document.getElementById('attendance-cleanup-select');
+const rosterTableBody = document.getElementById('roster-table-body');
+const walkinForm = document.getElementById('walkin-form');
+const walkinFormStatus = document.getElementById('walkin-form-status');
+
+let selectedCleanupId = null;
+let currentRosterSignupIds = new Set();
+
+const adminTabs = document.querySelectorAll('.admin-tab');
+const adminPanels = document.querySelectorAll('.admin-tab-panel');
+
+function setActiveTab(tabName) {
+  adminTabs.forEach(tab => {
+    const isActive = tab.dataset.tab === tabName;
+    tab.classList.toggle('active', isActive);
+    tab.setAttribute('aria-selected', String(isActive));
+  });
+  adminPanels.forEach(panel => {
+    panel.hidden = panel.dataset.panel !== tabName;
+  });
+  try {
+    localStorage.setItem('admin-active-tab', tabName);
+  } catch {
+    // ignore storage errors (e.g. private browsing)
+  }
+}
+
+adminTabs.forEach(tab => {
+  tab.addEventListener('click', () => setActiveTab(tab.dataset.tab));
+});
+
+function restoreActiveTab() {
+  let savedTab = null;
+  try {
+    savedTab = localStorage.getItem('admin-active-tab');
+  } catch {
+    // ignore storage errors (e.g. private browsing)
+  }
+  if (savedTab && document.querySelector(`.admin-tab[data-tab="${savedTab}"]`)) {
+    setActiveTab(savedTab);
+  }
+}
 
 function showDashboard() {
   loginSection.hidden = true;
   dashboardSection.hidden = false;
+  restoreActiveTab();
   loadCleanups();
-  loadAnnouncement();
+  loadCleanupOptions();
   loadSignups();
 }
 
@@ -100,6 +141,7 @@ cleanupForm.addEventListener('submit', async (e) => {
   cleanupFormStatus.textContent = 'Cleanup logged.';
   cleanupForm.reset();
   loadCleanups();
+  loadCleanupOptions();
 });
 
 // --- Section B: Past Cleanups ---
@@ -123,8 +165,8 @@ async function loadCleanups() {
 
   cleanupsTableBody.innerHTML = data.map(row => `
     <tr>
-      <td>${escapeHtml(row.event_date)}</td>
-      <td>${escapeHtml(row.location_name)}</td>
+      <td><span class="badge badge-date">${escapeHtml(row.event_date)}</span></td>
+      <td><span class="badge badge-location">${escapeHtml(row.location_name)}</span></td>
       <td>${escapeHtml(row.bags_collected)}</td>
       <td>${escapeHtml(row.bottles_recycled)}</td>
       <td>${escapeHtml(row.weight_kg)}</td>
@@ -144,64 +186,160 @@ cleanupsTableBody.addEventListener('click', async (e) => {
     window.alert(`Error deleting: ${error.message}`);
     return;
   }
+  if (String(selectedCleanupId) === String(btn.dataset.id)) {
+    selectedCleanupId = null;
+  }
   loadCleanups();
+  loadCleanupOptions();
 });
 
-// --- Section C: Update Announcement ---
+// --- Section C: Volunteer Attendance ---
 
-async function loadAnnouncement() {
+async function loadCleanupOptions() {
+  const previouslySelected = selectedCleanupId;
+
   const { data, error } = await supabase
-    .from('announcements')
-    .select('*')
-    .order('id', { ascending: false })
-    .limit(1)
-    .maybeSingle();
-
-  if (error || !data) return;
-
-  document.getElementById('announcement-id').value = data.id;
-  document.getElementById('announcement-active').checked = !!data.is_active;
-  document.getElementById('announcement-title-en').value = data.title_en || '';
-  document.getElementById('announcement-title-es').value = data.title_es || '';
-  document.getElementById('announcement-title-fr').value = data.title_fr || '';
-  document.getElementById('announcement-details-en').value = data.details_en || '';
-  document.getElementById('announcement-details-es').value = data.details_es || '';
-  document.getElementById('announcement-details-fr').value = data.details_fr || '';
-  document.getElementById('announcement-meetup-time').value = data.meetup_time || '';
-  document.getElementById('announcement-meeting-point').value = data.meeting_point || '';
-}
-
-announcementForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
-  announcementStatus.textContent = 'Saving...';
-
-  const id = document.getElementById('announcement-id').value;
-  const payload = {
-    is_active: document.getElementById('announcement-active').checked,
-    title_en: document.getElementById('announcement-title-en').value.trim(),
-    title_es: document.getElementById('announcement-title-es').value.trim(),
-    title_fr: document.getElementById('announcement-title-fr').value.trim(),
-    details_en: document.getElementById('announcement-details-en').value.trim(),
-    details_es: document.getElementById('announcement-details-es').value.trim(),
-    details_fr: document.getElementById('announcement-details-fr').value.trim(),
-    meetup_time: document.getElementById('announcement-meetup-time').value.trim() || null,
-    meeting_point: document.getElementById('announcement-meeting-point').value.trim() || null,
-  };
-
-  const { error } = id
-    ? await supabase.from('announcements').update(payload).eq('id', id)
-    : await supabase.from('announcements').insert(payload);
+    .from('cleanups')
+    .select('id, event_date, location_name')
+    .order('event_date', { ascending: false });
 
   if (error) {
-    announcementStatus.textContent = `Error: ${error.message}`;
+    attendanceCleanupSelect.innerHTML = `<option value="">Error: ${escapeHtml(error.message)}</option>`;
     return;
   }
 
-  announcementStatus.textContent = 'Announcement saved.';
-  loadAnnouncement();
+  if (!data || data.length === 0) {
+    attendanceCleanupSelect.innerHTML = '<option value="">No cleanups logged yet</option>';
+    selectedCleanupId = null;
+    loadRoster();
+    return;
+  }
+
+  attendanceCleanupSelect.innerHTML = `<option value="">Select a cleanup...</option>` + data.map(row => `
+    <option value="${escapeHtml(row.id)}">${escapeHtml(row.event_date)} — ${escapeHtml(row.location_name)}</option>
+  `).join('');
+
+  if (previouslySelected && data.some(row => String(row.id) === String(previouslySelected))) {
+    attendanceCleanupSelect.value = String(previouslySelected);
+  } else {
+    selectedCleanupId = null;
+  }
+
+  loadRoster();
+}
+
+attendanceCleanupSelect.addEventListener('change', () => {
+  selectedCleanupId = attendanceCleanupSelect.value || null;
+  loadRoster();
 });
 
-// --- Section D: Recent Volunteer Signups ---
+async function loadRoster() {
+  if (!selectedCleanupId) {
+    currentRosterSignupIds = new Set();
+    rosterTableBody.innerHTML = '<tr><td colspan="4">Select a cleanup above to view its roster.</td></tr>';
+    renderSignupsCheckinState();
+    return;
+  }
+
+  const { data, error } = await supabase
+    .from('cleanup_attendees')
+    .select('*')
+    .eq('cleanup_id', selectedCleanupId)
+    .order('full_name', { ascending: true });
+
+  if (error) {
+    rosterTableBody.innerHTML = `<tr><td colspan="4">Error: ${escapeHtml(error.message)}</td></tr>`;
+    return;
+  }
+
+  currentRosterSignupIds = new Set(
+    (data || []).filter(row => row.signup_id != null).map(row => String(row.signup_id))
+  );
+  renderSignupsCheckinState();
+
+  if (!data || data.length === 0) {
+    rosterTableBody.innerHTML = '<tr><td colspan="4">No attendees logged for this cleanup yet.</td></tr>';
+    return;
+  }
+
+  rosterTableBody.innerHTML = data.map(row => `
+    <tr>
+      <td>${escapeHtml(row.full_name)}</td>
+      <td>${escapeHtml(row.email)}${row.email && row.whatsapp_number ? ' / ' : ''}${escapeHtml(row.whatsapp_number)}</td>
+      <td><input type="checkbox" class="attendance-toggle" data-id="${escapeHtml(row.id)}" ${row.attended ? 'checked' : ''}></td>
+      <td>${escapeHtml(row.notes)}</td>
+    </tr>
+  `).join('');
+}
+
+rosterTableBody.addEventListener('change', async (e) => {
+  const toggle = e.target.closest('.attendance-toggle');
+  if (!toggle) return;
+
+  const { error } = await supabase
+    .from('cleanup_attendees')
+    .update({ attended: toggle.checked })
+    .eq('id', toggle.dataset.id);
+
+  if (error) {
+    window.alert(`Error updating attendance: ${error.message}`);
+    toggle.checked = !toggle.checked;
+    return;
+  }
+
+  refreshVolunteersCount(selectedCleanupId);
+});
+
+walkinForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  if (!selectedCleanupId) {
+    walkinFormStatus.textContent = 'Select a cleanup above first.';
+    return;
+  }
+
+  walkinFormStatus.textContent = 'Saving...';
+
+  const payload = {
+    cleanup_id: selectedCleanupId,
+    full_name: document.getElementById('walkin-name').value.trim(),
+    email: document.getElementById('walkin-email').value.trim() || null,
+    whatsapp_number: document.getElementById('walkin-whatsapp').value.trim() || null,
+    notes: document.getElementById('walkin-notes').value.trim() || null,
+    attended: true,
+  };
+
+  const { error } = await supabase.from('cleanup_attendees').insert(payload);
+
+  if (error) {
+    walkinFormStatus.textContent = `Error: ${error.message}`;
+    return;
+  }
+
+  walkinFormStatus.textContent = 'Walk-in added.';
+  walkinForm.reset();
+  loadRoster();
+  refreshVolunteersCount(selectedCleanupId);
+});
+
+async function refreshVolunteersCount(cleanupId) {
+  if (!cleanupId) return;
+
+  const { count, error: countError } = await supabase
+    .from('cleanup_attendees')
+    .select('id', { count: 'exact', head: true })
+    .eq('cleanup_id', cleanupId)
+    .eq('attended', true);
+
+  if (countError) return;
+
+  await supabase.from('cleanups').update({ volunteers_count: count }).eq('id', cleanupId);
+  loadCleanups();
+}
+
+// --- Section D: Registered Signups ---
+
+let latestSignups = [];
 
 async function loadSignups() {
   const { data, error } = await supabase
@@ -211,25 +349,72 @@ async function loadSignups() {
     .limit(10);
 
   if (error) {
-    signupsTableBody.innerHTML = `<tr><td colspan="6">Error: ${escapeHtml(error.message)}</td></tr>`;
+    signupsTableBody.innerHTML = `<tr><td colspan="8">Error: ${escapeHtml(error.message)}</td></tr>`;
     return;
   }
 
-  if (!data || data.length === 0) {
-    signupsTableBody.innerHTML = '<tr><td colspan="6">No signups yet.</td></tr>';
+  latestSignups = data || [];
+
+  if (latestSignups.length === 0) {
+    signupsTableBody.innerHTML = '<tr><td colspan="8">No signups yet.</td></tr>';
     return;
   }
 
-  signupsTableBody.innerHTML = data.map(row => `
+  signupsTableBody.innerHTML = latestSignups.map(row => `
     <tr>
       <td>${escapeHtml(row.full_name)}</td>
       <td>${escapeHtml(row.email)}</td>
       <td>${escapeHtml(row.whatsapp_number)}</td>
       <td>${escapeHtml(row.preferred_language)}</td>
-      <td>${escapeHtml(row.planned_date)}</td>
-      <td>${row.has_own_gloves ? 'Yes' : 'No'}</td>
+      <td><span class="badge badge-date">${escapeHtml(row.planned_date)}</span></td>
+      <td>${row.has_own_gloves ? 'Has gloves' : 'Needs gloves'}</td>
+      <td>${escapeHtml(row.notes)}</td>
+      <td><button class="btn-checkin" type="button" data-signup-id="${escapeHtml(row.id)}">Check In to Selected Cleanup</button></td>
     </tr>
   `).join('');
+
+  renderSignupsCheckinState();
 }
+
+function renderSignupsCheckinState() {
+  signupsTableBody.querySelectorAll('.btn-checkin').forEach(btn => {
+    const alreadyIn = currentRosterSignupIds.has(String(btn.dataset.signupId));
+    btn.disabled = !selectedCleanupId || alreadyIn;
+    btn.textContent = alreadyIn ? 'Checked In' : 'Check In to Selected Cleanup';
+  });
+}
+
+signupsTableBody.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.btn-checkin');
+  if (!btn) return;
+
+  if (!selectedCleanupId) {
+    window.alert('Select a cleanup in the Volunteer Attendance tab first.');
+    return;
+  }
+
+  const signup = latestSignups.find(row => String(row.id) === String(btn.dataset.signupId));
+  if (!signup) return;
+
+  btn.disabled = true;
+
+  const { error } = await supabase.from('cleanup_attendees').insert({
+    cleanup_id: selectedCleanupId,
+    signup_id: signup.id,
+    full_name: signup.full_name,
+    email: signup.email,
+    whatsapp_number: signup.whatsapp_number,
+    attended: true,
+  });
+
+  if (error) {
+    window.alert(`Error checking in: ${error.message}`);
+    btn.disabled = false;
+    return;
+  }
+
+  loadRoster();
+  refreshVolunteersCount(selectedCleanupId);
+});
 
 checkSession();

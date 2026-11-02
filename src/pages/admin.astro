@@ -27,139 +27,156 @@ import Layout from '../layouts/Layout.astro';
                 <button id="logout-btn" class="btn">Log Out</button>
             </header>
 
-            <section class="admin-section">
-                <h2>Log New Cleanup</h2>
-                <form id="cleanup-form">
-                    <div class="form-grid">
-                        <div class="form-field">
-                            <label for="cleanup-date">Date</label>
-                            <input type="date" id="cleanup-date" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-location">Location</label>
-                            <input type="text" id="cleanup-location" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-bags">Bags Collected</label>
-                            <input type="number" id="cleanup-bags" min="0">
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-bottles">Bottles Recycled</label>
-                            <input type="number" id="cleanup-bottles" min="0">
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-weight">Weight (kg)</label>
-                            <input type="number" id="cleanup-weight" min="0" step="0.1">
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-volunteers">Volunteers</label>
-                            <input type="number" id="cleanup-volunteers" min="0">
-                        </div>
-                        <div class="form-field">
-                            <label for="cleanup-organizer">Lead Organizer</label>
-                            <input type="text" id="cleanup-organizer">
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="cleanup-notes">Notes</label>
-                        <textarea id="cleanup-notes" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn">Log Cleanup</button>
-                    <p id="cleanup-form-status" class="form-status"></p>
-                </form>
-            </section>
+            <div class="admin-tabs" role="tablist">
+                <button type="button" class="admin-tab active" data-tab="cleanups" role="tab" aria-selected="true">Cleanups &amp; Collections</button>
+                <button type="button" class="admin-tab" data-tab="volunteers" role="tab" aria-selected="false">Volunteer Attendance</button>
+            </div>
 
-            <section class="admin-section">
-                <h2>Past Cleanups</h2>
-                <div class="admin-table-wrap">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Location</th>
-                                <th>Bags</th>
-                                <th>Bottles</th>
-                                <th>Weight (kg)</th>
-                                <th>Volunteers</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody id="cleanups-table-body">
-                            <tr><td colspan="7">Loading...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            <div class="admin-tab-panel" data-panel="cleanups">
 
-            <section class="admin-section">
-                <h2>Update Announcement</h2>
-                <form id="announcement-form">
-                    <input type="hidden" id="announcement-id">
-                    <div class="checkbox-row">
-                        <input type="checkbox" id="announcement-active">
-                        <label for="announcement-active">Active (show on homepage)</label>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-field">
-                            <label for="announcement-title-en">Title (EN)</label>
-                            <input type="text" id="announcement-title-en">
+                <section class="admin-section">
+                    <h2>Log New Cleanup</h2>
+                    <form id="cleanup-form">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="cleanup-date">Date</label>
+                                <input type="date" id="cleanup-date" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-location">Location</label>
+                                <input type="text" id="cleanup-location" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-bags">Bags Collected</label>
+                                <input type="number" id="cleanup-bags" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-bottles">Bottles Recycled</label>
+                                <input type="number" id="cleanup-bottles" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-weight">Weight (kg)</label>
+                                <input type="number" id="cleanup-weight" min="0" step="0.1">
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-volunteers">Volunteers</label>
+                                <input type="number" id="cleanup-volunteers" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="cleanup-organizer">Lead Organizer</label>
+                                <input type="text" id="cleanup-organizer">
+                            </div>
                         </div>
                         <div class="form-field">
-                            <label for="announcement-title-es">Title (ES)</label>
-                            <input type="text" id="announcement-title-es">
+                            <label for="cleanup-notes">Notes</label>
+                            <textarea id="cleanup-notes" rows="3"></textarea>
                         </div>
-                        <div class="form-field">
-                            <label for="announcement-title-fr">Title (FR)</label>
-                            <input type="text" id="announcement-title-fr">
-                        </div>
-                    </div>
-                    <div class="form-field">
-                        <label for="announcement-details-en">Details (EN)</label>
-                        <textarea id="announcement-details-en" rows="2"></textarea>
-                    </div>
-                    <div class="form-field">
-                        <label for="announcement-details-es">Details (ES)</label>
-                        <textarea id="announcement-details-es" rows="2"></textarea>
-                    </div>
-                    <div class="form-field">
-                        <label for="announcement-details-fr">Details (FR)</label>
-                        <textarea id="announcement-details-fr" rows="2"></textarea>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-field">
-                            <label for="announcement-meetup-time">Meetup Time</label>
-                            <input type="text" id="announcement-meetup-time" placeholder="e.g. Wednesday 7:00 AM">
-                        </div>
-                        <div class="form-field">
-                            <label for="announcement-meeting-point">Meeting Point</label>
-                            <input type="text" id="announcement-meeting-point" placeholder="e.g. Circle K">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn">Save Announcement</button>
-                    <p id="announcement-status" class="form-status"></p>
-                </form>
-            </section>
+                        <button type="submit" class="btn">Log Cleanup</button>
+                        <p id="cleanup-form-status" class="form-status"></p>
+                    </form>
+                </section>
 
-            <section class="admin-section">
-                <h2>Recent Volunteer Signups</h2>
-                <div class="admin-table-wrap">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>WhatsApp</th>
-                                <th>Language</th>
-                                <th>Planned Date</th>
-                                <th>Own Gloves</th>
-                            </tr>
-                        </thead>
-                        <tbody id="signups-table-body">
-                            <tr><td colspan="6">Loading...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+                <section class="admin-section">
+                    <h2>Past Cleanups</h2>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Location</th>
+                                    <th>Bags</th>
+                                    <th>Bottles</th>
+                                    <th>Weight (kg)</th>
+                                    <th>Volunteers</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="cleanups-table-body">
+                                <tr><td colspan="7">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="admin-tab-panel" data-panel="volunteers" hidden>
+
+                <section class="admin-section">
+                    <h2>Volunteer Attendance</h2>
+                    <div class="form-field">
+                        <label for="attendance-cleanup-select">Cleanup Event</label>
+                        <select id="attendance-cleanup-select">
+                            <option value="">Loading cleanups...</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="admin-section">
+                    <h2>Event Roster</h2>
+                    <form id="walkin-form">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="walkin-name">Name</label>
+                                <input type="text" id="walkin-name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="walkin-email">Email</label>
+                                <input type="email" id="walkin-email">
+                            </div>
+                            <div class="form-field">
+                                <label for="walkin-whatsapp">WhatsApp</label>
+                                <input type="text" id="walkin-whatsapp">
+                            </div>
+                        </div>
+                        <div class="form-field">
+                            <label for="walkin-notes">Notes</label>
+                            <input type="text" id="walkin-notes">
+                        </div>
+                        <button type="submit" class="btn">Add Walk-in</button>
+                        <p id="walkin-form-status" class="form-status"></p>
+                    </form>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Contact</th>
+                                    <th>Attended</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="roster-table-body">
+                                <tr><td colspan="4">Select a cleanup above to view its roster.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="admin-section">
+                    <h2>Registered Signups</h2>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>WhatsApp</th>
+                                    <th>Language</th>
+                                    <th>Planned Date</th>
+                                    <th>Gear Needed</th>
+                                    <th>Notes</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="signups-table-body">
+                                <tr><td colspan="8">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
 
         </div>
 
