@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Admin Dashboard - Utila Island Cleanups</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Admin Dashboard - Utila Island Cleanups" robots="noindex, nofollow" siteScript={false} ionicons={false}>
     <div class="admin-wrap">
 
         <section id="admin-login" class="login-card">
@@ -30,7 +23,7 @@
         <div id="admin-dashboard" hidden>
 
             <header class="admin-header">
-                <img src="UICsquare.png" alt="Utila Island Cleanups" class="logo">
+                <img src="/UICsquare.png" alt="Utila Island Cleanups" class="logo">
                 <button id="logout-btn" class="btn">Log Out</button>
             </header>
 
@@ -172,6 +165,7 @@
 
     </div>
 
-    <script type="module" src="/src/admin.js"></script>
-</body>
-</html>
+    <script>
+        import '../scripts/admin.js';
+    </script>
+</Layout>

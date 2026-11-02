@@ -1,61 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Partners | Utila Island Cleanups</title>
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-</head>
-<body>
-    <nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html">
-            <img src="UICsquare.png" alt="Utila Island Cleanups Logo" class="logo">
-        </a>
-                
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html" data-en="Home" data-es="Inicio" data-fr="Accueil">Home</a></li>
-            <li><a href="about.html" data-en="About Us" data-es="Nosotros" data-fr="À propos">About Us</a></li>
-            <li><a href="impact.html" data-en="Impact" data-es="Impacto" data-fr="Impact">Impact</a></li>
-            <li><a href="partners.html" data-en="Partners" data-es="Socios" data-fr="Partenaires">Partners</a></li>
-            <li><a href="gallery.html" data-en="Gallery" data-es="Galería" data-fr="Galerie">Gallery</a></li>
-            <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a></li>
-            <li><a href="contact.html" data-en="Contact" data-es="Contacto" data-fr="Contact">Contact</a></li>
-            <li class="lang-switcher" id="lang-switcher">
-                <button class="lang-option active" data-lang="en" aria-label="English">EN</button>
-                <button class="lang-option" data-lang="es" aria-label="Español">ES</button>
-                <button class="lang-option" data-lang="fr" aria-label="Français">FR</button>
-            </li>
-        </ul>
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout title="Our Partners | Utila Island Cleanups">
+    <Navbar />
 
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav>
-
-    
-     
-<header class="about-hero">
+    <header class="about-hero">
         <div class="hero-overlay">
             <h1 data-en="Our Partners & Sponsors" data-es="Nuestros Socios y Patrocinadores" data-fr="Nos partenaires et sponsors">Our Partners & Sponsors</h1>
-            <p data-en="Conservation is a team effort. Meet the local businesses and organizations that provide the fuel, tools, and hands for our missions." 
+            <p data-en="Conservation is a team effort. Meet the local businesses and organizations that provide the fuel, tools, and hands for our missions."
                data-es="La conservación es un esfuerzo de equipo. Conozca las empresas y organizaciones locales que proporcionan el combustible, las herramientas y las manos para nuestras misiones." data-fr="La conservation est un effort collectif. Découvrez les entreprises et organisations locales qui fournissent le carburant, les outils et la main-d'œuvre pour nos missions.">
-            </p> 
+            </p>
         </div>
     </header>
 
-
-
     <section class="partners-grid-section container">
     <div class="partners-detailed-grid">
-        
+
         <div class="partner-card-large">
             <div class="partner-logo">
-                <img src="logos/OffTheDockLogo.webp" alt="Off the Dock AdventuCares">
+                <img src="/logos/OffTheDockLogo.webp" alt="Off the Dock AdventuCares">
             </div>
             <div class="partner-text">
                 <h3>Off the Dock AdventuCares</h3>
@@ -71,7 +36,7 @@
 
         <div class="partner-card-large">
             <div class="partner-logo">
-                <img src="UICsquare.png" alt="Elmer Funes">
+                <img src="/UICsquare.png" alt="Elmer Funes">
             </div>
             <div class="partner-text">
                 <h3>Elmer Funes</h3>
@@ -84,7 +49,7 @@
 
         <div class="partner-card-large">
             <div class="partner-logo">
-                <img src="logos/ReefMatters.webp" alt="Reef Matters">
+                <img src="/logos/ReefMatters.webp" alt="Reef Matters">
             </div>
             <div class="partner-text">
                 <h3>Reef Matters</h3>
@@ -100,7 +65,7 @@
 
         <div class="partner-card-large">
     <div class="partner-logo">
-        <img src="logos/RecycleHonduras.jpg" alt="Recycle Honduras">
+        <img src="/logos/RecycleHonduras.jpg" alt="Recycle Honduras">
     </div>
     <div class="partner-text">
         <h3>Recycle Honduras</h3>
@@ -117,47 +82,5 @@
     </div>
 </section>
 
-   <footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-brand">
-            <img src="UICsquare.png" alt="Logo" class="footer-logo">
-            <p class="footer-slogan" data-en="Creating awareness one cleanup at a time" data-es="Creamos consciencia ambiental una limpieza de playa a la vez" data-fr="Créer une prise de conscience, une plage nettoyée à la fois">
-                Creating awareness one cleanup at a time
-            </p>
-        </div>
-
-        <div class="footer-links">
-            <h4 data-en="Quick Links" data-es="Enlaces Rápidos" data-fr="Liens rapides">Quick Links</h4>
-            <ul>
-                <li><a href="index.html" data-en="Home" data-es="Inicio" data-fr="Accueil">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-es="Nosotros" data-fr="À propos">About Us</a></li>
-                <li><a href="impact.html" data-en="Impact" data-es="Impacto" data-fr="Impact">Impact</a></li>
-                <li><a href="get-involved.html" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-social">
-            <h4 data-en="Follow Us" data-es="Síguenos" data-fr="Suivez-nous">Follow Us</h4>
-            <div class="footer-icons">
-                <a href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" aria-label="Facebook">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </a>
-                <a href="https://www.instagram.com/utila.island.cleanups/" target="_blank" aria-label="Instagram">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-                <a href="mailto:utilaislandcleanups@gmail.com" aria-label="Email">
-                    <ion-icon name="mail-outline"></ion-icon>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Utila Island Cleanups. <span data-en="All rights reserved." data-es="Todos los derechos reservados." data-fr="Tous droits réservés.">All rights reserved.</span></p>
-    </div>
-</footer>
-
-      
-    <script src="script.js"></script>
-
-</body>
-</html>
+    <Footer />
+</Layout>

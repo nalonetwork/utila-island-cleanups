@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+    title="Contact Us - Utila Island Cleanups"
+    description="Utila Island Cleanups is a community-led non-profit dedicated to beach cleanups and protecting marine life in Utila, Honduras. Join us every Wednesday morning."
+    keywords="Utila, Honduras, beach cleanup, marine conservation, Swamper iguana, sea turtles, environmental awareness, Off the Dock Adventures"
+    ogTitle="Utila Island Cleanups | Creating Awareness One Cleanup at a Time"
+    ogDescription="Weekly beach cleanups in Utila, Honduras to preserve vital coastal ecosystems."
+>
+    <Fragment slot="head">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </Fragment>
+
+    <Navbar />
+
+    <header class="about-hero">
+        <h1 data-en="Get in Touch" data-es="Ponte en Contacto" data-fr="Contactez-nous">Get in Touch</h1>
+    </header>
+
+    <main class="container">
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope contact-icon"></i>
+                <h3 data-en="Email Us" data-es="Correo Electrónico" data-fr="Envoyez-nous un e-mail">Email Us</h3>
+                <p>utilaislandcleanups@gmail.com</p>
+                <a href="mailto:utilaislandcleanups@gmail.com" class="btn" data-en="Send Email" data-es="Enviar Correo" data-fr="Envoyer un e-mail">Send Email</a>
+            </div>
+
+            <div class="contact-card">
+                <i class="fab fa-whatsapp contact-icon"></i>
+                <h3 data-en="WhatsApp" data-es="WhatsApp" data-fr="WhatsApp">WhatsApp</h3>
+                <p data-en="Chat with us directly for quick questions." data-es="Chatea con nosotros directamente para dudas rápidas." data-fr="Discutez directement avec nous pour toute question rapide.">Chat with us directly for quick questions.</p>
+                <a href="https://wa.me/19546830865" class="btn whatsapp-btn" data-en="Message Us" data-es="Escríbenos" data-fr="Écrivez-nous">Message Us</a>
+            </div>
+        </div>
+
+    <section class="social-section bg-alt">
+        <h2 data-en="Follow Our Journey" data-es="Sigue Nuestro Viaje" data-fr="Suivez notre parcours">Follow Our Journey</h2>
+        <ul class="contact-list" style="list-style: none; padding: 0; display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px;">
+
+            <li class="contact-item">
+                <span class="label" style="display: block; font-weight: bold; margin-bottom: 5px;" data-en="Facebook" data-es="Facebook" data-fr="Facebook">Facebook</span>
+                <a class="value" href="https://www.facebook.com/profile.php?id=61582192533687" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: var(--dark-blue); font-size: 1.2rem;">
+                    <ion-icon name="logo-facebook" style="color: #1877F2; font-size: 2rem;"></ion-icon>
+                    <span>Utila Island Cleanups</span>
+                </a>
+            </li>
+
+            <li class="contact-item">
+                <span class="label" style="display: block; font-weight: bold; margin-bottom: 5px;" data-en="Instagram" data-es="Instagram" data-fr="Instagram">Instagram</span>
+                <a class="value" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" style="text-decoration: none; display: flex; align-items: center; gap: 8px; color: var(--dark-blue); font-size: 1.2rem;">
+                    <ion-icon name="logo-instagram" style="color: #E4405F; font-size: 2rem;"></ion-icon>
+                    <span>@utila.island.cleanups</span>
+                </a>
+            </li>
+
+        </ul>
+     </section>
+    </main>
+
+    <Footer />
+</Layout>

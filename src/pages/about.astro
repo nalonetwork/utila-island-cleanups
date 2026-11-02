@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+    title="About Us - Utila Island Cleanups"
+    description="Utila Island Cleanups is a community-led non-profit dedicated to beach cleanups and protecting marine life in Utila, Honduras. Join us every Wednesday morning."
+    keywords="Utila, Honduras, beach cleanup, marine conservation, Swamper iguana, sea turtles, environmental awareness, Off the Dock Adventures"
+    ogTitle="Utila Island Cleanups | Creating Awareness One Cleanup at a Time"
+    ogDescription="Weekly beach cleanups in Utila, Honduras to preserve vital coastal ecosystems."
+>
+    <Navbar />
+
+    <header class="about-hero">
+        <div class="hero-overlay">
+            <h1 data-en="About Us" data-es="Sobre Nosotros" data-fr="À propos">About Us</h1>
+            <p data-en="Community-led coastal protection in Utila" data-es="Protección costera liderada por la comunidad en Utila" data-fr="Protection côtière menée par la communauté à Utila">
+                Community-led coastal protection in Utila
+            </p>
+        </div>
+    </header>
+
+    <section class="about-intro container">
+        <p class="mission-lead-centered"
+        data-en="We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action."
+        data-es="Organizamos limpiezas de playa semanales para reducir la contaminación, proteger los ecosistemas locales y fortalecer la conciencia ambiental a través de la acción." data-fr="Nous organisons des nettoyages de plage hebdomadaires pour réduire la pollution, protéger les écosystèmes locaux et renforcer la sensibilisation environnementale par l'action.">
+        We organize weekly beach cleanups to reduce pollution, protect local ecosystems, and strengthen environmental awareness through action.
+        </p>
+    </section>
+
+ <section class="content-block bg-alt">
+    <h2 data-en="Our Mission" data-es="Nuestra Misión" data-fr="Notre mission">Our Mission</h2>
+    <p data-en="Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana."
+       data-es="Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, incluyendo las tortugas marinas y la iguana endémica Swamper." data-fr="Utila Island Cleanups s'engage à protéger les plages d'Utila, au Honduras, grâce à des nettoyages hebdomadaires et à une gestion responsable des déchets. Chaque mercredi matin, nous agissons pour préserver les écosystèmes côtiers essentiels à notre communauté et à la faune qui en dépend, notamment les tortues marines et l'iguane endémique des marais.">
+       Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
+    </p>
+</section>
+
+
+
+    <div class="mission-image-container">
+        <img src="/Community_Photos/mission.jpeg" alt="Utila Island Cleanups Community Action" class="mission-photo">
+    </div>
+
+<section class="info-grid container">
+    <div class="info-card">
+        <ion-icon name="heart-outline" class="contact-icon"></ion-icon>
+        <h3 data-en="Why this work matters" data-es="Por qué es importante" data-fr="Pourquoi ce travail est important">Why this work matters</h3>
+        <p data-en="Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila."
+           data-es="Las playas más limpias ayudan a mantener la basura fuera del océano, reducen el daño a la vida marina y protegen los frágiles hábitats costeros de Utila." data-fr="Des plages plus propres permettent d'éloigner les déchets de l'océan, de réduire les dommages causés à la vie marine et de protéger les habitats côtiers fragiles autour d'Utila.">
+           Cleaner beaches help keep trash out of the ocean, reduce harm to marine life, and protect fragile coastal habitats around Utila.
+        </p>
+    </div>
+
+    <div class="info-card">
+        <ion-icon name="construct-outline" class="contact-icon"></ion-icon>
+        <h3 data-en="How we do it" data-es="Cómo lo hacemos" data-fr="Comment nous procédons">How we do it</h3>
+        <p data-en="We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting."
+           data-es="Coordinamos limpiezas semanales, proporcionamos materiales y logística, y realizamos un seguimiento del impacto medible a lo largo del tiempo a través de informes transparentes." data-fr="Nous coordonnons des nettoyages hebdomadaires, fournissons le matériel et la logistique, et suivons un impact mesurable dans le temps grâce à des rapports transparents.">
+           We coordinate weekly cleanups, provide materials and logistics, and track measurable impact over time through transparent reporting.
+        </p>
+    </div>
+
+</section>
+
+<section class="partners-section container">
+    <h2 data-en="Who We Work With" data-es="Con Quiénes Trabajamos" data-fr="Avec qui nous travaillons">Who We Work With</h2>
+    <p data-en="Our mission is made possible through the support of dedicated local partners and sponsors."
+       data-es="Nuestra misión es posible gracias al apoyo de socios y patrocinadores locales dedicados." data-fr="Notre mission est rendue possible grâce au soutien de partenaires et de sponsors locaux dévoués.">
+       Our mission is made possible through the support of dedicated local partners and sponsors.
+    </p>
+
+    <div class="partners-cta" style="margin-top: 30px; text-align: center;">
+        <a href="/partners" class="btn btn-partners" data-en="Learn More About Our Partners" data-es="Saber Más Sobre Nuestros Socios" data-fr="En savoir plus sur nos partenaires">
+            Learn More About Our Partners
+        </a>
+    </div>
+</section>
+
+    <Footer />
+</Layout>
