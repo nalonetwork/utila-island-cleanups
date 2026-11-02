@@ -15,6 +15,11 @@ function numberOrNull(id) {
   return val === '' ? null : Number(val);
 }
 
+function formatStatNumber(value) {
+  if (value == null) return '--';
+  return Number(value).toLocaleString('en-US', { maximumFractionDigits: 1 });
+}
+
 const loginSection = document.getElementById('admin-login');
 const dashboardSection = document.getElementById('admin-dashboard');
 const loginForm = document.getElementById('login-form');
@@ -77,6 +82,7 @@ function showDashboard() {
   loadCleanups();
   loadCleanupOptions();
   loadSignups();
+  loadImpactSummary();
 }
 
 function showLogin() {
@@ -114,6 +120,23 @@ logoutBtn.addEventListener('click', async () => {
   showLogin();
 });
 
+// --- Live Impact Summary ---
+
+async function loadImpactSummary() {
+  const { data, error } = await supabase.from('cleanup_totals').select('*').maybeSingle();
+
+  if (error) {
+    console.error('Error loading impact summary:', error.message);
+    return;
+  }
+  if (!data) return;
+
+  document.getElementById('admin-stat-bottles').textContent = formatStatNumber(data.total_bottles);
+  document.getElementById('admin-stat-weight-kg').textContent = formatStatNumber(data.total_weight_kg);
+  document.getElementById('admin-stat-weight-lbs').textContent = formatStatNumber(data.total_weight_lbs);
+  document.getElementById('admin-stat-cleanups').textContent = formatStatNumber(data.total_events);
+}
+
 // --- Section A: Log New Cleanup ---
 
 cleanupForm.addEventListener('submit', async (e) => {
@@ -142,6 +165,7 @@ cleanupForm.addEventListener('submit', async (e) => {
   cleanupForm.reset();
   loadCleanups();
   loadCleanupOptions();
+  loadImpactSummary();
 });
 
 // --- Section B: Past Cleanups ---
@@ -191,6 +215,7 @@ cleanupsTableBody.addEventListener('click', async (e) => {
   }
   loadCleanups();
   loadCleanupOptions();
+  loadImpactSummary();
 });
 
 // --- Section C: Volunteer Attendance ---

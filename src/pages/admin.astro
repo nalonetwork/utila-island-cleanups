@@ -27,6 +27,31 @@ import Layout from '../layouts/Layout.astro';
                 <button id="logout-btn" class="btn">Log Out</button>
             </header>
 
+            <section class="admin-impact-summary">
+                <div class="admin-impact-header">
+                    <h2>Our Live Impact</h2>
+                    <p class="admin-impact-subtitle">Real-time data from our weekly Wednesday cleanups</p>
+                </div>
+                <div class="admin-impact-grid">
+                    <div class="admin-stat-card">
+                        <span class="admin-stat-number" id="admin-stat-bottles">--</span>
+                        <span class="admin-stat-label">Plastic Bottles Removed</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <span class="admin-stat-number" id="admin-stat-weight-kg">--</span>
+                        <span class="admin-stat-label">Total Weight (KG)</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <span class="admin-stat-number" id="admin-stat-weight-lbs">--</span>
+                        <span class="admin-stat-label">Total Weight (LBS)</span>
+                    </div>
+                    <div class="admin-stat-card">
+                        <span class="admin-stat-number" id="admin-stat-cleanups">--</span>
+                        <span class="admin-stat-label">Successful Cleanups</span>
+                    </div>
+                </div>
+            </section>
+
             <div class="admin-tabs" role="tablist">
                 <button type="button" class="admin-tab active" data-tab="cleanups" role="tab" aria-selected="true">Cleanups &amp; Collections</button>
                 <button type="button" class="admin-tab" data-tab="volunteers" role="tab" aria-selected="false">Volunteer Attendance</button>
