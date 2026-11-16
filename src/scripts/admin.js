@@ -37,6 +37,12 @@ const rosterTableBody = document.getElementById('roster-table-body');
 const walkinForm = document.getElementById('walkin-form');
 const walkinFormStatus = document.getElementById('walkin-form-status');
 
+const wasteAdminTableBody = document.getElementById('waste-admin-table-body');
+const addWasteRowBtn = document.getElementById('add-waste-row-btn');
+const saveWasteBtn = document.getElementById('save-waste-btn');
+const wasteFormStatus = document.getElementById('waste-form-status');
+const wasteAutoSyncToggle = document.getElementById('waste-auto-sync');
+
 let selectedCleanupId = null;
 let currentRosterSignupIds = new Set();
 
@@ -83,6 +89,7 @@ function showDashboard() {
   loadCleanupOptions();
   loadSignups();
   loadImpactSummary();
+  loadWasteBreakdown();
 }
 
 function showLogin() {
@@ -123,18 +130,31 @@ logoutBtn.addEventListener('click', async () => {
 // --- Live Impact Summary ---
 
 async function loadImpactSummary() {
-  const { data, error } = await supabase.from('cleanup_totals').select('*').maybeSingle();
+  const [wasteResult, cleanupsResult] = await Promise.all([
+    supabase.from('waste_breakdown').select('category, total_weight_lbs, total_weight_kg, total_plastic_bottles_unit'),
+    supabase.from('cleanups').select('id', { count: 'exact', head: true }),
+  ]);
 
-  if (error) {
-    console.error('Error loading impact summary:', error.message);
-    return;
+  if (wasteResult.error) {
+    console.error('Error loading impact summary:', wasteResult.error.message);
+  } else {
+    const totals = (wasteResult.data || []).reduce((acc, row) => {
+      acc.total_bottles += row.total_plastic_bottles_unit || 0;
+      acc.total_weight_kg += row.total_weight_kg || 0;
+      acc.total_weight_lbs += row.total_weight_lbs || 0;
+      return acc;
+    }, { total_bottles: 0, total_weight_kg: 0, total_weight_lbs: 0 });
+
+    document.getElementById('admin-stat-bottles').textContent = formatStatNumber(totals.total_bottles);
+    document.getElementById('admin-stat-weight-kg').textContent = formatStatNumber(totals.total_weight_kg);
+    document.getElementById('admin-stat-weight-lbs').textContent = formatStatNumber(totals.total_weight_lbs);
   }
-  if (!data) return;
 
-  document.getElementById('admin-stat-bottles').textContent = formatStatNumber(data.total_bottles);
-  document.getElementById('admin-stat-weight-kg').textContent = formatStatNumber(data.total_weight_kg);
-  document.getElementById('admin-stat-weight-lbs').textContent = formatStatNumber(data.total_weight_lbs);
-  document.getElementById('admin-stat-cleanups').textContent = formatStatNumber(data.total_events);
+  if (cleanupsResult.error) {
+    console.error('Error loading cleanups count:', cleanupsResult.error.message);
+  } else {
+    document.getElementById('admin-stat-cleanups').textContent = formatStatNumber(cleanupsResult.count);
+  }
 }
 
 // --- Section A: Log New Cleanup ---
@@ -440,6 +460,114 @@ signupsTableBody.addEventListener('click', async (e) => {
 
   loadRoster();
   refreshVolunteersCount(selectedCleanupId);
+});
+
+// --- Section E: Waste Breakdown ---
+
+const WASTE_LBS_PER_KG = 0.45359237;
+
+function buildWasteRow(row = {}) {
+  const tr = document.createElement('tr');
+  if (row.id != null) tr.dataset.id = row.id;
+  tr.innerHTML = `
+    <td><input type="text" class="waste-input waste-category" value="${escapeHtml(row.category ?? '')}" placeholder="Category"></td>
+    <td><input type="number" class="waste-input waste-lbs" value="${row.total_weight_lbs ?? ''}" step="0.01" min="0"></td>
+    <td><input type="number" class="waste-input waste-kg" value="${row.total_weight_kg ?? ''}" step="0.01" min="0"></td>
+    <td><input type="number" class="waste-input waste-bottles" value="${row.total_plastic_bottles_unit ?? ''}" step="1" min="0"></td>
+    <td><button type="button" class="btn-delete waste-delete-row">Delete</button></td>
+  `;
+  return tr;
+}
+
+async function loadWasteBreakdown() {
+  const { data, error } = await supabase
+    .from('waste_breakdown')
+    .select('*')
+    .order('sort_order', { ascending: true });
+
+  if (error) {
+    wasteAdminTableBody.innerHTML = `<tr><td colspan="5">Error: ${escapeHtml(error.message)}</td></tr>`;
+    return;
+  }
+
+  wasteAdminTableBody.innerHTML = '';
+  (data || []).forEach(row => wasteAdminTableBody.appendChild(buildWasteRow(row)));
+  if (!data || data.length === 0) {
+    wasteAdminTableBody.appendChild(buildWasteRow());
+  }
+}
+
+addWasteRowBtn.addEventListener('click', () => {
+  wasteAdminTableBody.appendChild(buildWasteRow());
+});
+
+wasteAdminTableBody.addEventListener('input', (e) => {
+  if (!wasteAutoSyncToggle.checked || !e.target.classList.contains('waste-lbs')) return;
+
+  const kgInput = e.target.closest('tr').querySelector('.waste-kg');
+  const lbsValue = parseFloat(e.target.value);
+  if (!kgInput || Number.isNaN(lbsValue)) return;
+
+  kgInput.value = (lbsValue * WASTE_LBS_PER_KG).toFixed(2);
+});
+
+wasteAdminTableBody.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.waste-delete-row');
+  if (!btn) return;
+
+  const row = btn.closest('tr');
+  const id = row.dataset.id;
+
+  if (!id) {
+    row.remove();
+    return;
+  }
+
+  if (!window.confirm('Delete this waste category?')) return;
+
+  const { error } = await supabase.from('waste_breakdown').delete().eq('id', id);
+  if (error) {
+    window.alert(`Error deleting: ${error.message}`);
+    return;
+  }
+  row.remove();
+});
+
+saveWasteBtn.addEventListener('click', async () => {
+  wasteFormStatus.textContent = 'Saving...';
+
+  const rows = Array.from(wasteAdminTableBody.querySelectorAll('tr'));
+  const payload = rows.map((row, index) => {
+    const category = row.querySelector('.waste-category')?.value.trim();
+    if (!category) return null;
+
+    const lbsVal = row.querySelector('.waste-lbs').value;
+    const kgVal = row.querySelector('.waste-kg').value;
+    const bottlesVal = row.querySelector('.waste-bottles').value;
+
+    return {
+      category,
+      total_weight_lbs: lbsVal === '' ? null : Number(lbsVal),
+      total_weight_kg: kgVal === '' ? null : Number(kgVal),
+      total_plastic_bottles_unit: bottlesVal === '' ? null : Number(bottlesVal),
+      sort_order: index,
+    };
+  }).filter(Boolean);
+
+  if (payload.length === 0) {
+    wasteFormStatus.textContent = 'Add at least one category before saving.';
+    return;
+  }
+
+  const { error } = await supabase.from('waste_breakdown').upsert(payload, { onConflict: 'category' });
+
+  if (error) {
+    wasteFormStatus.textContent = `Error: ${error.message}`;
+    return;
+  }
+
+  wasteFormStatus.textContent = 'Waste breakdown saved.';
+  loadWasteBreakdown();
 });
 
 checkSession();

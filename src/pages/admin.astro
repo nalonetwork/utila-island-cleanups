@@ -18,13 +18,19 @@ import Layout from '../layouts/Layout.astro';
                 <button type="submit" class="btn">Sign In</button>
                 <p id="login-error" class="error-text"></p>
             </form>
+            <a href="/" class="back-to-site-link">← Back to Live Site</a>
         </section>
 
         <div id="admin-dashboard" hidden>
 
             <header class="admin-header">
-                <img src="/UICsquare.png" alt="Utila Island Cleanups" class="logo">
-                <button id="logout-btn" class="btn">Log Out</button>
+                <a href="/" title="Back to Live Site">
+                    <img src="/UICsquare.png" alt="Utila Island Cleanups" class="logo">
+                </a>
+                <div class="admin-header-actions">
+                    <a href="/" class="btn btn-secondary">← Back to Live Site</a>
+                    <button id="logout-btn" class="btn">Log Out</button>
+                </div>
             </header>
 
             <section class="admin-impact-summary">
@@ -55,6 +61,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="admin-tabs" role="tablist">
                 <button type="button" class="admin-tab active" data-tab="cleanups" role="tab" aria-selected="true">Cleanups &amp; Collections</button>
                 <button type="button" class="admin-tab" data-tab="volunteers" role="tab" aria-selected="false">Volunteer Attendance</button>
+                <button type="button" class="admin-tab" data-tab="waste" role="tab" aria-selected="false">Waste Breakdown</button>
             </div>
 
             <div class="admin-tab-panel" data-panel="cleanups">
@@ -199,6 +206,42 @@ import Layout from '../layouts/Layout.astro';
                             </tbody>
                         </table>
                     </div>
+                </section>
+
+            </div>
+
+            <div class="admin-tab-panel" data-panel="waste" hidden>
+
+                <section class="admin-section">
+                    <h2>Waste Breakdown</h2>
+
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="waste-auto-sync" checked>
+                        <label for="waste-auto-sync">Auto-calculate Kg from Lbs</label>
+                    </div>
+
+                    <div class="admin-table-wrap">
+                        <table class="admin-table admin-table-editable" id="waste-admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Total Weight (Lbs)</th>
+                                    <th>Total Weight (Kg)</th>
+                                    <th>Total Plastic Bottles Unit</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="waste-admin-table-body">
+                                <tr><td colspan="5">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admin-waste-actions">
+                        <button type="button" id="add-waste-row-btn" class="btn btn-secondary">+ Add Category</button>
+                        <button type="button" id="save-waste-btn" class="btn">Save Waste Breakdown</button>
+                    </div>
+                    <p id="waste-form-status" class="form-status"></p>
                 </section>
 
             </div>

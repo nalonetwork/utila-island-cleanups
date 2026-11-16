@@ -15,9 +15,24 @@ import Footer from '../components/Footer.astro';
     <header class="about-hero">
         <div class="hero-overlay">
             <h1 data-en="About Us" data-es="Sobre Nosotros" data-fr="À propos">About Us</h1>
-            <p data-en="Community-led coastal protection in Utila" data-es="Protección costera liderada por la comunidad en Utila" data-fr="Protection côtière menée par la communauté à Utila">
-                Community-led coastal protection in Utila
+            <p data-en="What started as a small passion project has grown into a community-wide movement, bringing people together one cleanup at a time around a shared goal: protecting our beautiful island shores."
+               data-es="Lo que comenzó como un pequeño proyecto personal se ha convertido en un movimiento comunitario, uniendo a las personas una limpieza a la vez en torno a un objetivo común: proteger las hermosas costas de nuestra isla."
+               data-fr="Ce qui a commencé comme un petit projet personnel est devenu un mouvement communautaire, rassemblant les gens, un nettoyage à la fois, autour d'un objectif commun : protéger les magnifiques rivages de notre île.">
+               What started as a small passion project has grown into a community-wide movement, bringing people together one cleanup at a time around a shared goal: protecting our beautiful island shores.
             </p>
+            <p data-en="But we want to do more than simply pick up garbage - we want to make sure it doesn’t end up back in our environment. Through partnerships with responsible waste management companies, we arrange for all the garbage we collect to be transported off the island and transformed into an alternative fuel source."
+               data-es="Pero queremos hacer algo más que simplemente recoger basura: queremos asegurarnos de que no termine de vuelta en nuestro entorno. A través de alianzas con empresas responsables de gestión de residuos, organizamos el transporte de toda la basura que recolectamos fuera de la isla para transformarla en una fuente de combustible alternativo."
+               data-fr="Mais nous voulons faire plus que simplement ramasser les déchets : nous voulons nous assurer qu'ils ne reviennent pas dans notre environnement. Grâce à des partenariats avec des entreprises responsables de la gestion des déchets, nous organisons le transport de tous les déchets que nous collectons hors de l'île afin qu'ils soient transformés en source de combustible alternatif.">
+               But we want to do more than simply pick up garbage - we want to make sure it doesn’t end up back in our environment. Through partnerships with responsible waste management companies, we arrange for all the garbage we collect to be transported off the island and transformed into an alternative fuel source.
+            </p>
+            <p data-en="Together, we're creating cleaner shores, giving waste a second purpose, and making a lasting difference for our island."
+               data-es="Juntos, estamos creando costas más limpias, dándole un segundo propósito a los residuos y generando un impacto duradero para nuestra isla."
+               data-fr="Ensemble, nous créons des rivages plus propres, donnons une seconde vie aux déchets et faisons une différence durable pour notre île.">
+               Together, we're creating cleaner shores, giving waste a second purpose, and making a lasting difference for our island.
+            </p>
+            <div class="hero-buttons">
+                <a href="/get-involved" class="btn btn-outline" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a>
+            </div>
         </div>
     </header>
 
@@ -31,13 +46,48 @@ import Footer from '../components/Footer.astro';
 
  <section class="content-block bg-alt">
     <h2 data-en="Our Mission" data-es="Nuestra Misión" data-fr="Notre mission">Our Mission</h2>
-    <p data-en="Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana."
-       data-es="Utila Island Cleanups está comprometida con la protección de las playas de Utila, Honduras, a través de limpiezas semanales y una gestión responsable de los residuos. Cada miércoles por la mañana, actuamos para preservar los ecosistemas costeros esenciales para nuestra comunidad y para la fauna que depende de ellos, incluyendo las tortugas marinas y la iguana endémica Swamper." data-fr="Utila Island Cleanups s'engage à protéger les plages d'Utila, au Honduras, grâce à des nettoyages hebdomadaires et à une gestion responsable des déchets. Chaque mercredi matin, nous agissons pour préserver les écosystèmes côtiers essentiels à notre communauté et à la faune qui en dépend, notamment les tortues marines et l'iguane endémique des marais.">
-       Utila Island Cleanups is committed to protecting the beaches of Utila, Honduras through weekly cleanups and responsible waste management. Every Wednesday morning, we take action to preserve vital coastal ecosystems for our community and for the wildlife that depends on them, including sea turtles and the endemic Swamper iguana.
+    <p data-en="Utila Island Cleanups is a grassroots, community-led conservation movement dedicated to the restoration & protection of our shorelines through hands-on cleanups, local collaboration, and responsible waste removal. We strive to create lasting change by raising awareness, inspiring community action, and keeping pollution out of our marine environment."
+       data-es="Utila Island Cleanups es un movimiento de conservación comunitario y de base, dedicado a la restauración y protección de nuestras costas a través de limpiezas prácticas, colaboración local y una gestión responsable de residuos. Nos esforzamos por crear un cambio duradero al generar conciencia, inspirar la acción comunitaria y mantener la contaminación fuera de nuestro entorno marino." data-fr="Utila Island Cleanups est un mouvement de conservation communautaire et populaire, dédié à la restauration et à la protection de notre littoral grâce à des nettoyages pratiques, une collaboration locale et une gestion responsable des déchets. Nous nous efforçons de créer un changement durable en sensibilisant, en inspirant l'action communautaire et en gardant la pollution hors de notre environnement marin.">
+       Utila Island Cleanups is a grassroots, community-led conservation movement dedicated to the restoration & protection of our shorelines through hands-on cleanups, local collaboration, and responsible waste removal. We strive to create lasting change by raising awareness, inspiring community action, and keeping pollution out of our marine environment.
     </p>
 </section>
 
+<section class="uic-values">
+    <div class="container">
+        <h2 data-en="The Values That Drive Us" data-es="Los Valores Que Nos Impulsan" data-fr="Les valeurs qui nous animent">
+            The Values That Drive Us
+        </h2>
 
+        <div class="values-grid">
+            <div class="value-card">
+                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                <h3 data-en="Accountability" data-es="Responsabilidad" data-fr="Responsabilité">Accountability</h3>
+                <p data-en="We don't just remove trash; we manage it. From our Island shores all the way to its final processing facility, we take full responsibility for every kilogram we collect."
+                   data-es="No solo retiramos la basura; la gestionamos. Desde las costas de nuestra isla hasta su instalación de procesamiento final, asumimos la responsabilidad total de cada kilogramo que recolectamos." data-fr="Nous ne nous contentons pas de retirer les déchets ; nous les gérons. Des rivages de notre île jusqu'à leur installation de traitement final, nous assumons l'entière responsabilité de chaque kilogramme collecté.">
+                   We don't just remove trash; we manage it. From our Island shores all the way to its final processing facility, we take full responsibility for every kilogram we collect.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <ion-icon name="people-outline"></ion-icon>
+                <h3 data-en="Community First" data-es="Comunidad Primero" data-fr="La communauté avant tout">Community First</h3>
+                <p data-en="Our movement belongs to Utila. We foster collaboration between locals, businesses, and international visitors to protect our shared home."
+                   data-es="Nuestro movimiento le pertenece a Utila. Fomentamos la colaboración entre locales, empresas y visitantes internacionales para proteger nuestro hogar compartido." data-fr="Notre mouvement appartient à Utila. Nous favorisons la collaboration entre les habitants, les entreprises et les visiteurs internationaux pour protéger notre foyer commun.">
+                   Our movement belongs to Utila. We foster collaboration between locals, businesses, and international visitors to protect our shared home.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <ion-icon name="stats-chart-outline"></ion-icon>
+                <h3 data-en="Radical Transparency" data-es="Transparencia Radical" data-fr="Transparence radicale">Radical Transparency</h3>
+                <p data-en="We believe trust starts with transparency. We're committed to being open about how we operate, how donations are used, and where the waste we collect ends up."
+                   data-es="Creemos que la confianza comienza con la transparencia. Estamos comprometidos a ser abiertos sobre cómo operamos, cómo se usan las donaciones y hacia dónde va la basura que recolectamos." data-fr="Nous croyons que la confiance commence par la transparence. Nous nous engageons à être transparents sur notre fonctionnement, l'utilisation des dons et la destination des déchets que nous collectons.">
+                   We believe trust starts with transparency. We're committed to being open about how we operate, how donations are used, and where the waste we collect ends up.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <div class="mission-image-container">
         <img src="/Community_Photos/mission.jpeg" alt="Utila Island Cleanups Community Action" class="mission-photo">
@@ -62,6 +112,60 @@ import Footer from '../components/Footer.astro';
         </p>
     </div>
 
+</section>
+
+<section class="about-team container">
+    <h2 data-en="Meet the Team" data-es="Conoce al Equipo" data-fr="Rencontrez l'équipe">Meet the Team</h2>
+
+    <h3 class="team-subheading" data-en="Founding Members" data-es="Miembros Fundadores" data-fr="Membres fondateurs">Founding Members</h3>
+
+    <div class="team-grid">
+        <div class="team-card">
+            <div class="team-photo-wrap">
+                <img src="/team-mariam.jpg" alt="Mariam Weyand" class="team-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="team-photo-fallback">MW</div>
+            </div>
+            <h4 class="team-name">Mariam Weyand</h4>
+            <p class="team-role" data-en="Marine Biologist & Ocean Lover" data-es="Bióloga Marina y Amante del Océano" data-fr="Biologiste marine et amoureuse de l'océan">Marine Biologist & Ocean Lover</p>
+            <p class="team-bio" data-en="Mariam is a marine biologist with a deep love for nature and a strong passion for protecting and regenerating the natural world. Her work has taken her from sea turtle conservation to marine education and extensive work as a professional diver, giving her a deep connection to the ocean and the ecosystems surrounding Utila. She created Reef Matters to help raise awareness about marine ecosystems and inspire people to better understand and protect the natural world around them."
+               data-es="Mariam es bióloga marina con un profundo amor por la naturaleza y una gran pasión por proteger y regenerar el mundo natural. Su trabajo la ha llevado desde la conservación de tortugas marinas hasta la educación marina y una extensa labor como buceadora profesional, lo que le ha dado una profunda conexión con el océano y los ecosistemas que rodean a Utila. Creó Reef Matters para ayudar a generar conciencia sobre los ecosistemas marinos e inspirar a las personas a comprender y proteger mejor el mundo natural que las rodea." data-fr="Mariam est une biologiste marine qui a un profond amour pour la nature et une forte passion pour la protection et la régénération du monde naturel. Son travail l'a menée de la conservation des tortues marines à l'éducation marine, en passant par un long parcours en tant que plongeuse professionnelle, lui donnant une connexion profonde avec l'océan et les écosystèmes autour d'Utila. Elle a créé Reef Matters pour aider à sensibiliser aux écosystèmes marins et inspirer les gens à mieux comprendre et protéger le monde naturel qui les entoure.">
+               Mariam is a marine biologist with a deep love for nature and a strong passion for protecting and regenerating the natural world. Her work has taken her from sea turtle conservation to marine education and extensive work as a professional diver, giving her a deep connection to the ocean and the ecosystems surrounding Utila. She created Reef Matters to help raise awareness about marine ecosystems and inspire people to better understand and protect the natural world around them.
+            </p>
+            <p class="team-bio" data-en="Mariam has always loved getting involved in beach cleanups—once she starts picking up trash, she finds it surprisingly hard to stop! Through Utila Island Cleanups, she hopes to turn that passion into action by bringing people together to keep Utila’s beaches and waters healthier, while encouraging greater awareness and responsibility for the island we all share."
+               data-es="A Mariam siempre le ha encantado participar en limpiezas de playa: una vez que empieza a recoger basura, le resulta sorprendentemente difícil detenerse. A través de Utila Island Cleanups, espera convertir esa pasión en acción, reuniendo a las personas para mantener las playas y aguas de Utila más saludables, mientras fomenta una mayor conciencia y responsabilidad por la isla que todos compartimos." data-fr="Mariam a toujours aimé participer aux nettoyages de plage — une fois qu'elle commence à ramasser les déchets, elle trouve étonnamment difficile d'arrêter ! Grâce à Utila Island Cleanups, elle espère transformer cette passion en action en rassemblant les gens pour garder les plages et les eaux d'Utila plus saines, tout en encourageant une plus grande conscience et responsabilité envers l'île que nous partageons tous.">
+               Mariam has always loved getting involved in beach cleanups—once she starts picking up trash, she finds it surprisingly hard to stop! Through Utila Island Cleanups, she hopes to turn that passion into action by bringing people together to keep Utila’s beaches and waters healthier, while encouraging greater awareness and responsibility for the island we all share.
+            </p>
+            <span class="team-highlight" data-en="Favorite ocean creature: Sea slugs" data-es="Criatura marina favorita: babosas de mar" data-fr="Créature marine préférée : limaces de mer">Favorite ocean creature: Sea slugs</span>
+        </div>
+
+        <div class="team-card">
+            <div class="team-photo-wrap">
+                <img src="/team-sabina.jpg" alt="Sabina Ibarra-Bolaños" class="team-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="team-photo-fallback">SI</div>
+            </div>
+            <h4 class="team-name">Sabina Ibarra-Bolaños</h4>
+            <p class="team-bio team-bio-placeholder" data-en="Bio coming soon." data-es="Biografía próximamente." data-fr="Biographie à venir.">Bio coming soon.</p>
+        </div>
+
+        <div class="team-card">
+            <div class="team-photo-wrap">
+                <img src="/team-elmer.jpg" alt="Elmer Funez" class="team-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div class="team-photo-fallback">EF</div>
+            </div>
+            <h4 class="team-name">Elmer Funez</h4>
+            <p class="team-bio team-bio-placeholder" data-en="Bio coming soon." data-es="Biografía próximamente." data-fr="Biographie à venir.">Bio coming soon.</p>
+        </div>
+    </div>
+
+    <h3 class="team-subheading" data-en="Advisory Board of Directors" data-es="Junta Asesora de Directores" data-fr="Conseil consultatif d'administration">Advisory Board of Directors</h3>
+
+    <div class="advisory-grid">
+        <span class="advisory-pill">Mariana</span>
+        <span class="advisory-pill">Sergio</span>
+        <span class="advisory-pill">Tenille</span>
+        <span class="advisory-pill">Joey</span>
+        <span class="advisory-pill">Casey</span>
+    </div>
 </section>
 
 <section class="partners-section container">

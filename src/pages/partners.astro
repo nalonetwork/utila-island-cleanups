@@ -8,79 +8,119 @@ import Footer from '../components/Footer.astro';
 
     <header class="about-hero">
         <div class="hero-overlay">
-            <h1 data-en="Our Partners & Sponsors" data-es="Nuestros Socios y Patrocinadores" data-fr="Nos partenaires et sponsors">Our Partners & Sponsors</h1>
-            <p data-en="Conservation is a team effort. Meet the local businesses and organizations that provide the fuel, tools, and hands for our missions."
-               data-es="La conservación es un esfuerzo de equipo. Conozca las empresas y organizaciones locales que proporcionan el combustible, las herramientas y las manos para nuestras misiones." data-fr="La conservation est un effort collectif. Découvrez les entreprises et organisations locales qui fournissent le carburant, les outils et la main-d'œuvre pour nos missions.">
+            <h1 data-en="OUR PARTNERS & SPONSORS" data-es="NUESTROS SOCIOS Y PATROCINADORES" data-fr="NOS PARTENAIRES ET SPONSORS">OUR PARTNERS & SPONSORS</h1>
+            <p data-en="Conservation is a team effort. Meet the local businesses and organizations who fuel our mission, provide the tools, and lend a helping hand to make our cleanups possible."
+               data-es="La conservación es un esfuerzo de equipo. Conozca a las empresas y organizaciones locales que impulsan nuestra misión, proporcionan las herramientas y nos brindan una mano amiga para hacer posibles nuestras limpiezas."
+               data-fr="La conservation est un effort collectif. Découvrez les entreprises et organisations locales qui alimentent notre mission, fournissent les outils et nous donnent un coup de main pour rendre nos nettoyages possibles.">
+               Conservation is a team effort. Meet the local businesses and organizations who fuel our mission, provide the tools, and lend a helping hand to make our cleanups possible.
             </p>
         </div>
     </header>
 
-    <section class="partners-grid-section container">
-    <div class="partners-detailed-grid">
+    <section class="main-partners-section container">
+        <h2 data-en="Main Partners" data-es="Socios Principales" data-fr="Partenaires Principaux">Main Partners</h2>
 
-        <div class="partner-card-large">
-            <div class="partner-logo">
-                <img src="/logos/OffTheDockLogo.webp" alt="Off the Dock AdventuCares">
-            </div>
-            <div class="partner-text">
-                <h3>Off the Dock AdventuCares</h3>
-                <p data-en="The philanthropic arm of Off the Dock Adventures, they provide the essential boat transportation for our North Shore Missions and logistical support for our weekly Wednesday operations."
-                   data-es="El brazo filantrópico de Off the Dock Adventures, proporcionan el transporte esencial en bote para nuestras Misiones de la Costa Norte y apoyo logístico." data-fr="Le bras philanthropique d'Off the Dock Adventures, ils assurent le transport en bateau essentiel pour nos Missions de la côte nord et un soutien logistique pour nos opérations hebdomadaires du mercredi.">
-                   The philanthropic arm of Off the Dock Adventures, providing essential boat transportation and logistical support.
+        <div class="main-partners-grid">
+
+            <div class="partner-card">
+                <div class="partner-logo-wrap">
+                    <img src="/logos/OffTheDockLogo.webp" alt="Off The Dock Adventures" class="partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h3 class="partner-name">Off The Dock Adventures</h3>
+                <p class="partner-desc" data-en="A local scuba diving charter company, they provide essential local knowledge of garbage hotspots, boat transportation for our North Shore missions and logistical support for our weekly Wednesday cleanups."
+                   data-es="Una empresa local de buceo y chárter, nos brindan conocimiento esencial de los puntos críticos de basura, transporte en bote para nuestras misiones en la Costa Norte y apoyo logístico para nuestras limpiezas semanales de los miércoles."
+                   data-fr="Une entreprise locale de charters de plongée, elle nous apporte une connaissance essentielle des points chauds de déchets, le transport en bateau pour nos missions de la côte nord et un soutien logistique pour nos nettoyages hebdomadaires du mercredi.">
+                   A local scuba diving charter company, they provide essential local knowledge of garbage hotspots, boat transportation for our North Shore missions and logistical support for our weekly Wednesday cleanups.
                 </p>
-                <a href="https://offthedockadventures.com/" target="_blank" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">
-                    Visit Website <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
+                <a href="https://offthedockadventures.com/" target="_blank" rel="noopener noreferrer" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">Visit Website <ion-icon name="arrow-forward-outline"></ion-icon></a>
             </div>
+
+            <div class="partner-card">
+                <div class="partner-logo-wrap">
+                    <img src="/logos/ReefMatters.webp" alt="Reef Matters" class="partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h3 class="partner-name">Reef Matters</h3>
+                <p class="partner-desc" data-en="Reef Matters brings marine science and education to our efforts, helping us track and understand the environmental impact of coastal pollution and why keeping Utila clean matters."
+                   data-es="Reef Matters aporta ciencia marina y educación a nuestros esfuerzos, ayudándonos a rastrear y comprender el impacto ambiental de la contaminación costera y por qué mantener Utila limpia es importante."
+                   data-fr="Reef Matters apporte la science marine et l'éducation à nos efforts, nous aidant à suivre et à comprendre l'impact environnemental de la pollution côtière et pourquoi il est important de garder Utila propre.">
+                   Reef Matters brings marine science and education to our efforts, helping us track and understand the environmental impact of coastal pollution and why keeping Utila clean matters.
+                </p>
+                <a href="https://www.reefmatters.org/" target="_blank" rel="noopener noreferrer" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">Visit Website <ion-icon name="arrow-forward-outline"></ion-icon></a>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo-wrap">
+                    <img src="/logos/ElmerFunesTransporte.png" alt="Transporte & Tours Elmer Funes" class="partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h3 class="partner-name">Transporte & Tours Elmer Funes</h3>
+                <p class="partner-desc" data-en="A valued community partner, they help bridge the gap between our organization and the local community by building connections and coordinating transportation."
+                   data-es="Un valioso socio comunitario, ayudan a cerrar la brecha entre nuestra organización y la comunidad local, construyendo conexiones y coordinando el transporte."
+                   data-fr="Un partenaire communautaire précieux, ils aident à combler l'écart entre notre organisation et la communauté locale en créant des liens et en coordonnant le transport.">
+                   A valued community partner, they help bridge the gap between our organization and the local community by building connections and coordinating transportation.
+                </p>
+            </div>
+
+            <div class="partner-card">
+                <div class="partner-logo-wrap">
+                    <img src="/logos/RecycleHonduras.jpg" alt="Recycle Honduras" class="partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h3 class="partner-name">Recycle Honduras</h3>
+                <p class="partner-desc" data-en="Our waste processing partner. They provide waste management solutions to the garbage that we collect."
+                   data-es="Nuestro socio de procesamiento de residuos. Proporcionan soluciones de gestión de residuos para la basura que recolectamos."
+                   data-fr="Notre partenaire de traitement des déchets. Ils fournissent des solutions de gestion des déchets pour les ordures que nous collectons.">
+                   Our waste processing partner. They provide waste management solutions to the garbage that we collect.
+                </p>
+                <a href="https://recyclehonduras.com/" target="_blank" rel="noopener noreferrer" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">Visit Website <ion-icon name="arrow-forward-outline"></ion-icon></a>
+            </div>
+
         </div>
 
-        <div class="partner-card-large">
-            <div class="partner-logo">
-                <img src="/UICsquare.png" alt="Elmer Funes">
-            </div>
-            <div class="partner-text">
-                <h3>Elmer Funes</h3>
-                <p data-en="A key local leader in the Utila community, Elmer Funes supports UIC by coordinating local resources and ensuring our efforts align with the needs of the island's residents."
-                   data-es="Un líder local clave en la comunidad de Utila, Elmer Funes apoya a UIC coordinando recursos locales." data-fr="Figure locale clé de la communauté d'Utila, Elmer Funes soutient UIC en coordonnant les ressources locales et en veillant à ce que nos efforts répondent aux besoins des habitants de l'île.">
-                   A key local leader supporting UIC by coordinating resources and community alignment.
-                </p>
-            </div>
+        <div class="main-partners-cta">
+            <a href="/get-involved" class="btn" data-en="Get Involved" data-es="Participa" data-fr="Participer">Get Involved</a>
         </div>
+    </section>
 
-        <div class="partner-card-large">
-            <div class="partner-logo">
-                <img src="/logos/ReefMatters.webp" alt="Reef Matters">
+    <section class="supporting-partners-section container">
+        <h2 data-en="Supporting Partners" data-es="Socios de Apoyo" data-fr="Partenaires de Soutien">Supporting Partners</h2>
+
+        <div class="supporting-partners-grid">
+
+            <div class="supporting-partner-card">
+                <div class="supporting-partner-logo-wrap">
+                    <img src="/partner-utila-power.png" alt="Utila Power Company" class="supporting-partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h4 class="supporting-partner-name">Utila Power Company</h4>
+                <p class="supporting-partner-role" data-en="Garbage transportation and freight logistics" data-es="Transporte de basura y logística de carga" data-fr="Transport des déchets et logistique de fret">Garbage transportation and freight logistics</p>
             </div>
-            <div class="partner-text">
-                <h3>Reef Matters</h3>
-                <p data-en="Focused on marine education and reef health, Reef Matters provides technical expertise and helps us track the impact of land-based pollution on Utila's coral ecosystems."
-                   data-es="Enfocado en la educación marina y la salud de los arrecifes, Reef Matters aporta experiencia técnica." data-fr="Axé sur l'éducation marine et la santé des récifs, Reef Matters apporte une expertise technique et nous aide à suivre l'impact de la pollution terrestre sur les écosystèmes coralliens d'Utila.">
-                   Provides technical expertise on reef health and the impact of pollution on coral ecosystems.
-                </p>
-                <a href="https://www.reefmatters.org/" target="_blank" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">
-                    Visit Website <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
+
+            <div class="supporting-partner-card">
+                <div class="supporting-partner-logo-wrap">
+                    <img src="/partner-iron-shore.png" alt="Iron Shore Freight" class="supporting-partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h4 class="supporting-partner-name">Iron Shore Freight</h4>
+                <p class="supporting-partner-role" data-en="Garbage transportation and freight logistics" data-es="Transporte de basura y logística de carga" data-fr="Transport des déchets et logistique de fret">Garbage transportation and freight logistics</p>
             </div>
+
+            <div class="supporting-partner-card">
+                <div class="supporting-partner-logo-wrap">
+                    <img src="/partner-kanahau.png" alt="Kanahau Wildlife Conservation" class="supporting-partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h4 class="supporting-partner-name">Kanahau Wildlife Conservation</h4>
+                <p class="supporting-partner-role" data-en="North Shore cleanup partnership & fundraising partnership" data-es="Alianza de limpieza en la Costa Norte y alianza de recaudación de fondos" data-fr="Partenariat de nettoyage de la côte nord et partenariat de collecte de fonds">North Shore cleanup partnership & fundraising partnership</p>
+            </div>
+
+            <div class="supporting-partner-card">
+                <div class="supporting-partner-logo-wrap">
+                    <img src="/partner-beach-relief.png" alt="Beach Relief" class="supporting-partner-logo-img" onerror="this.closest('.partner-logo-wrap, .supporting-partner-logo-wrap').style.display='none'">
+                </div>
+                <h4 class="supporting-partner-name">Beach Relief</h4>
+                <p class="supporting-partner-role" data-en="Advisory and manufacturer of our upcycled cleanup bags (made from net used to clean the Great Pacific Garbage Patch!)"
+                   data-es="Asesoría y fabricante de nuestras bolsas de limpieza recicladas (¡hechas con redes utilizadas para limpiar la Gran Mancha de Basura del Pacífico!)"
+                   data-fr="Conseil et fabricant de nos sacs de nettoyage recyclés (fabriqués à partir de filets utilisés pour nettoyer le Grand Vortex de déchets du Pacifique !)">Advisory and manufacturer of our upcycled cleanup bags (made from net used to clean the Great Pacific Garbage Patch!)</p>
+            </div>
+
         </div>
-
-        <div class="partner-card-large">
-    <div class="partner-logo">
-        <img src="/logos/RecycleHonduras.jpg" alt="Recycle Honduras">
-    </div>
-    <div class="partner-text">
-        <h3>Recycle Honduras</h3>
-        <p data-en="Our primary processing partner. They ensure that the plastic we collect is transported to the mainland to be recycled, rather than ending up in the island's landfill."
-           data-es="Nuestro principal socio de procesamiento. Aseguran que el plástico recolectado se transporte a tierra firme para ser reciclado, en lugar de terminar en el vertedero de la isla." data-fr="Notre partenaire principal de traitement. Ils veillent à ce que le plastique que nous collectons soit transporté vers le continent pour être recyclé, plutôt que de finir dans la décharge de l'île.">
-           Ensures collected plastic is transported to the mainland for responsible recycling.
-        </p>
-        <a href="https://recyclehonduras.com/" target="_blank" class="partner-link" data-en="Visit Website" data-es="Visitar Sitio Web" data-fr="Visiter le site Web">
-            Visit Website <ion-icon name="arrow-forward-outline"></ion-icon>
-        </a>
-    </div>
-</div>
-
-    </div>
-</section>
+    </section>
 
     <Footer />
 </Layout>

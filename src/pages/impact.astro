@@ -12,65 +12,147 @@ import Footer from '../components/Footer.astro';
 >
     <Navbar />
 
-    <header class="about-hero">
-        <h1 data-en="Our Measurable Impact" data-es="Nuestro Impacto Medible" data-fr="Notre impact mesurable">Our Measurable Impact</h1>
-    </header>
-
     <main class="container">
 
-
-        <section class="impact-hero-stats">
-    <div class="container">
-        <div class="impact-header">
-            <h2 data-en="Our Live Impact" data-es="Nuestro Impacto en Vivo" data-fr="Notre impact en direct">Our Live Impact</h2>
-            <p class="update-tag" data-en="Real-time data from our weekly Wednesday cleanups" data-es="Datos en tiempo real de nuestras limpiezas de los miércoles" data-fr="Données en temps réel de nos nettoyages hebdomadaires du mercredi">
-                Real-time data from our weekly Wednesday cleanups
-            </p>
-        </div>
-
-        <div class="stats-glass-grid">
-            <div class="glass-card">
-                <div class="icon-box bottle-bg">
-                    <ion-icon name="wine-outline"></ion-icon>
+        <section class="home-impact-dashboard impact-dashboard-top">
+            <div class="container">
+                <div class="dashboard-intro">
+                    <h2 data-en="Our Real-Time Impact" data-es="Nuestro Impacto en Tiempo Real" data-fr="Notre impact en temps réel">Our Real-Time Impact</h2>
+                    <p data-en="Every cleanup, we track every bottle and every pound removed from Utila's shores to protect our local wildlife."
+                       data-es="En cada limpieza, registramos cada botella y cada libra retirada de las costas de Utila para proteger nuestra fauna local." data-fr="À chaque nettoyage, nous comptabilisons chaque bouteille et chaque livre retirée des côtes d'Utila pour protéger notre faune locale.">
+                       Every cleanup, we track every bottle and every pound removed from Utila's shores to protect our local wildlife.
+                    </p>
                 </div>
-                <div class="stat-content">
-                    <h3 class="counter" id="count-bottles" data-target="13318">13318</h3>
-                    <p data-en="Plastic Bottles Removed" data-es="Botellas de Plástico Retiradas" data-fr="Bouteilles en plastique retirées">Plastic Bottles Removed</p>
+
+                <div class="impact-stats-row">
+                    <div class="metric-box">
+                        <div class="metric-value">
+                            <span class="counter" id="count-bottles" data-target="13318">13318</span>
+                        </div>
+                        <div class="metric-label" data-en="Bottles Removed" data-es="Botellas Retiradas" data-fr="Bouteilles retirées">
+                            Bottles Removed
+                        </div>
+                        <div class="metric-bar bottle-bar"></div>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-value">
+                            <span class="counter" id="count-weight-kg" data-target="2240.4">2240.4</span><small>kg</small>
+                        </div>
+                        <div class="metric-label" data-en="Weight (KG)" data-es="Peso (KG)" data-fr="Poids (KG)">
+                            Weight (KG)
+                        </div>
+                        <div class="metric-bar weight-bar"></div>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-value">
+                            <span class="counter" id="count-weight-lbs" data-target="4939.3">4939.3</span><small>lbs</small>
+                        </div>
+                        <div class="metric-label" data-en="Weight (LBS)" data-es="Peso (LBS)" data-fr="Poids (LBS)">
+                            Weight (LBS)
+                        </div>
+                        <div class="metric-bar weight-lbs-bar"></div>
+                    </div>
+
+                    <div class="metric-box">
+                        <div class="metric-value">
+                            <span class="counter" id="count-cleanups" data-target="17">17</span>
+                        </div>
+                        <div class="metric-label" data-en="Total Cleanups" data-es="Total de Limpiezas" data-fr="Nettoyages au total">
+                            Total Cleanups
+                        </div>
+                        <div class="metric-bar mission-bar"></div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="glass-card">
-                <div class="icon-box weight-bg">
-                    <ion-icon name="scale-outline"></ion-icon>
+        <section class="waste-breakdown-section">
+            <div class="container">
+                <div class="impact-header">
+                    <h2 data-en="Detail of the garbage we picked up since January 2026" data-es="Detalle de la basura que recolectamos desde enero de 2026" data-fr="Détail des déchets que nous avons ramassés depuis janvier 2026">Detail of the garbage we picked up since January 2026</h2>
+                    <p class="update-tag waste-subtitle" data-en="Without utensils and styrofoam" data-es="Sin utensilios ni poliestireno" data-fr="Sans ustensiles ni polystyrène">Without utensils and styrofoam</p>
                 </div>
-                <div class="stat-content">
-                    <h3 class="counter" id="count-weight-kg" data-target="2240.4">2240.4</h3>
-                    <p data-en="Total Weight (KG)" data-es="Peso Total (KG)" data-fr="Poids total (KG)">Total Weight (KG)</p>
+
+                <div class="waste-table-wrap">
+                    <table class="waste-table" id="waste-breakdown-table">
+                        <thead>
+                            <tr>
+                                <th data-en="Category" data-es="Categoría" data-fr="Catégorie">Category</th>
+                                <th class="num" data-en="Total Weight (Lbs)" data-es="Peso Total (Lbs)" data-fr="Poids total (Lbs)">Total Weight (Lbs)</th>
+                                <th class="num" data-en="Total Weight (Kg)" data-es="Peso Total (Kg)" data-fr="Poids total (Kg)">Total Weight (Kg)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="waste-breakdown-body">
+                            <tr data-category="Shoes"><td>Shoes</td><td class="num">2,001.93</td><td class="num">908.06</td></tr>
+                            <tr data-category="Plastic Bottles"><td>Plastic Bottles</td><td class="num">2,217.74</td><td class="num">1,005.95</td></tr>
+                            <tr data-category="Bottle Caps"><td>Bottle Caps</td><td class="num">242.46</td><td class="num">109.98</td></tr>
+                            <tr data-category="Utensils"><td>Utensils</td><td class="num">27.59</td><td class="num">12.51</td></tr>
+                            <tr data-category="Toxic Waste"><td>Toxic Waste</td><td class="num">1,836.36</td><td class="num">832.96</td></tr>
+                            <tr data-category="General"><td>General</td><td class="num">3,423.86</td><td class="num">1,553.04</td></tr>
+                            <tr data-category="Glass/metal"><td>Glass/metal</td><td class="num">44.20</td><td class="num">20.05</td></tr>
+                            <tr data-category="Styrofoam"><td>Styrofoam</td><td class="num">4.80</td><td class="num">2.18</td></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="waste-total-row">
+                                <td data-en="Total" data-es="Total" data-fr="Total">Total</td>
+                                <td class="num" id="waste-total-lbs">9,798.94</td>
+                                <td class="num" id="waste-total-kg">4,444.73</td>
+                            </tr>
+                            <tr class="waste-total-row waste-total-excl">
+                                <td data-en="Total (excl. Utensils &amp; Styrofoam)" data-es="Total (sin utensilios ni poliestireno)" data-fr="Total (hors ustensiles et polystyrène)">Total (excl. Utensils &amp; Styrofoam)</td>
+                                <td class="num" id="waste-total-excl-lbs">9,766.55</td>
+                                <td class="num" id="waste-total-excl-kg">4,430.04</td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
+        </section>
 
-            <div class="glass-card">
-                <div class="icon-box weight-lbs-bg">
-                    <ion-icon name="fitness-outline"></ion-icon>
-                </div>
-                <div class="stat-content">
-                    <h3 class="counter" id="count-weight-lbs" data-target="4939.3">4939.3</h3>
-                    <p data-en="Total Weight (LBS)" data-es="Peso Total (LBS)" data-fr="Poids total (LBS)">Total Weight (LBS)</p>
+        <section class="garbage-journey-section">
+            <div class="container">
+                <h2 data-en="What happens to the garbage we collect?" data-es="¿Qué sucede con la basura que recolectamos?" data-fr="Qu'advient-il des déchets que nous collectons?">What happens to the garbage we collect?</h2>
+                <p>
+                    <span data-en="One of the biggest challenges with beach and ocean pollution is that much of the garbage collected is too contaminated or unsuitable for conventional recycling. Finding a responsible, long-term solution wasn't easy, but through our partnership with " data-es="Uno de los mayores desafíos de la contaminación de playas y océanos es que gran parte de la basura recolectada está demasiado contaminada o no es apta para el reciclaje convencional. Encontrar una solución responsable y a largo plazo no fue fácil, pero a través de nuestra asociación con " data-fr="Un des plus grands défis de la pollution des plages et des océans est que la majeure partie des déchets collectés est trop contaminée ou inadaptée au recyclage conventionnel. Trouver une solution responsable à long terme n'a pas été facile, mais grâce à notre partenariat avec ">One of the biggest challenges with beach and ocean pollution is that much of the garbage collected is too contaminated or unsuitable for conventional recycling. Finding a responsible, long-term solution wasn't easy, but through our partnership with </span><a href="https://recyclehonduras.com/" target="_blank" rel="noopener noreferrer" class="recycle-honduras-link">Recycle Honduras</a><span data-en=", a waste management company based in San Pedro Sula, we've found an alternative." data-es=", una empresa de gestión de residuos con sede en San Pedro Sula, hemos encontrado una alternativa." data-fr=", une entreprise de gestion des déchets basée à San Pedro Sula, nous avons trouvé une alternative.">, a waste management company based in San Pedro Sula, we've found an alternative.</span>
+                </p>
+                <p data-en="Every three months, the garbage collected through our cleanups is transported off Utila to Recycle Honduras's processing facility, where it undergoes processing and is converted into an alternative fuel source. This process, known as waste-to-energy recovery, gives otherwise difficult-to-recycle waste a productive use and helps prevent it from being dumped or left to pollute our island and surrounding waters." data-es="Cada tres meses, la basura recolectada en nuestras limpiezas se transporta fuera de Utila hacia la planta de procesamiento de Recycle Honduras, donde se procesa y se convierte en una fuente de combustible alternativo. Este proceso, conocido como recuperación de energía a partir de residuos, le da un uso productivo a los desechos difíciles de reciclar y ayuda a evitar que sean arrojados o dejados para contaminar nuestra isla y las aguas circundantes." data-fr="Tous les trois mois, les déchets collectés lors de nos nettoyages sont transportés hors d'Utila vers l'usine de traitement de Recycle Honduras, où ils sont traités et convertis en source de combustible alternatif. Ce processus, connu sous le nom de valorisation énergétique des déchets, permet de donner une utilisation productive aux déchets difficiles à recycler et aide à éviter qu'ils ne soient déversés ou laissés polluer notre île et les eaux environnantes.">
+                    Every three months, the garbage collected through our cleanups is transported off Utila to Recycle Honduras's processing facility, where it undergoes processing and is converted into an alternative fuel source. This process, known as waste-to-energy recovery, gives otherwise difficult-to-recycle waste a productive use and helps prevent it from being dumped or left to pollute our island and surrounding waters.
+                </p>
+
+                <div class="journey-grid">
+                    <div class="journey-card">
+                        <div class="journey-photo-wrap">
+                            <img src="/trash-journey-map.jpg" alt="Trash Journey Map" class="journey-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <div class="journey-photo-fallback"><ion-icon name="map-outline"></ion-icon></div>
+                        </div>
+                        <p data-en="Trash Journey Map" data-es="Mapa del recorrido de la basura" data-fr="Carte du parcours des déchets">Trash Journey Map</p>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-photo-wrap">
+                            <img src="/garbage-recycling-center.jpg" alt="Garbage in recycling center" class="journey-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <div class="journey-photo-fallback"><ion-icon name="image-outline"></ion-icon></div>
+                        </div>
+                        <p data-en="Garbage in recycling center" data-es="Basura en el centro de reciclaje" data-fr="Déchets au centre de recyclage">Garbage in recycling center</p>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-photo-wrap">
+                            <img src="/garbage-barge.jpg" alt="Garbage in barge" class="journey-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <div class="journey-photo-fallback"><ion-icon name="boat-outline"></ion-icon></div>
+                        </div>
+                        <p data-en="Garbage in barge" data-es="Basura en la barcaza" data-fr="Déchets sur la barge">Garbage in barge</p>
+                    </div>
+                    <div class="journey-card">
+                        <div class="journey-photo-wrap">
+                            <img src="/garbage-recycle-honduras.jpg" alt="Garbage received by Recycle Honduras" class="journey-photo" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';">
+                            <div class="journey-photo-fallback"><ion-icon name="business-outline"></ion-icon></div>
+                        </div>
+                        <p data-en="Garbage received by Recycle Honduras" data-es="Basura recibida por Recycle Honduras" data-fr="Déchets reçus par Recycle Honduras">Garbage received by Recycle Honduras</p>
+                    </div>
                 </div>
             </div>
-
-            <div class="glass-card">
-                <div class="icon-box cleanup-bg">
-                    <ion-icon name="calendar-number-outline"></ion-icon>
-                </div>
-                <div class="stat-content">
-                    <h3 class="counter" id="count-cleanups" data-target="17">17</h3>
-                    <p data-en="Successful Cleanups" data-es="Limpiezas Exitosas" data-fr="Nettoyages réussis">Successful Cleanups</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
     </main>
 
@@ -78,5 +160,6 @@ import Footer from '../components/Footer.astro';
 
     <script>
         import '../scripts/live-counters.js';
+        import '../scripts/waste-breakdown.js';
     </script>
 </Layout>

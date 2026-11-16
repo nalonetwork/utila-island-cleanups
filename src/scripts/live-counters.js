@@ -32,12 +32,32 @@ function setCounterTargets(totals) {
 async function loadImpactTotals() {
   if (!document.querySelector('.counter')) return;
 
-  const { data, error } = await supabase.from('cleanup_totals').select('*').maybeSingle();
-  if (error) {
-    console.error('Error loading impact totals:', error.message);
-    return;
+  const [wasteResult, cleanupsResult] = await Promise.all([
+    supabase.from('waste_breakdown').select('category, total_weight_lbs, total_weight_kg, total_plastic_bottles_unit'),
+    supabase.from('cleanups').select('id', { count: 'exact', head: true }),
+  ]);
+
+  const totals = {};
+
+  if (wasteResult.error) {
+    console.error('Error loading waste breakdown totals:', wasteResult.error.message);
+  } else {
+    const sums = (wasteResult.data || []).reduce((acc, row) => {
+      acc.total_bottles += row.total_plastic_bottles_unit || 0;
+      acc.total_weight_kg += row.total_weight_kg || 0;
+      acc.total_weight_lbs += row.total_weight_lbs || 0;
+      return acc;
+    }, { total_bottles: 0, total_weight_kg: 0, total_weight_lbs: 0 });
+    Object.assign(totals, sums);
   }
-  if (data && setCounterTargets(data) && typeof window.initCounters === 'function') {
+
+  if (cleanupsResult.error) {
+    console.error('Error loading cleanups count:', cleanupsResult.error.message);
+  } else {
+    totals.total_events = cleanupsResult.count;
+  }
+
+  if (setCounterTargets(totals) && typeof window.initCounters === 'function') {
     window.initCounters();
   }
 }
