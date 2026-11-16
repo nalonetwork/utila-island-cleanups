@@ -5,7 +5,7 @@
     --bright-blue: #289dd2;
     --accent-gray: #c2cbcc;
     --white-alt: #f1f0eb;
-    --nav-height: 80px;
+    --nav-height: 110px;
 }
 
 * { 
@@ -48,13 +48,13 @@ body {
 }
 
 /* 3. NAVIGATION BAR */
-.navbar { 
-    background-color: var(--bg-light); /* Matches #f2f1ec from logo */ 
-    padding: 10px 5%; 
-    position: fixed; 
-    width: 100%; 
-    top: 0; 
-    z-index: 2000; 
+.navbar {
+    background-color: var(--bg-light); /* Matches #f2f1ec from logo */
+    padding: 10px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 2000;
     /* Subtle shadow removed for a "flatter" blend, or keep it for depth */
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
@@ -67,8 +67,8 @@ body {
     margin: 0 auto;
 }
 
-.logo { 
-    height: 70px; /* Slightly larger to showcase the logo detail */
+.logo {
+    height: 90px; /* Enlarged to fill the top banner more prominently */
     display: block;
 }
 
@@ -204,15 +204,23 @@ body {
 }
 
 @media (max-width: 768px) {
-    .hamburger { 
-        display: flex; 
+    :root {
+        --nav-height: 88px;
     }
 
-    .nav-links { 
-        display: none; 
-        position: absolute; 
-        top: 80px; 
-        right: 0; 
+    .hamburger {
+        display: flex;
+    }
+
+    .logo {
+        height: 68px; /* Scaled down so it doesn't crowd the hamburger menu */
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
         background-color: var(--bg-light); /* Ensures menu matches on mobile */ 
         width: 100%; 
         flex-direction: column; 
