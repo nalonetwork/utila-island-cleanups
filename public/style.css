@@ -5,7 +5,7 @@
     --bright-blue: #289dd2;
     --accent-gray: #c2cbcc;
     --white-alt: #f1f0eb;
-    --nav-height: 110px;
+    --nav-height: 112px;
 }
 
 * { 
@@ -68,7 +68,7 @@ body {
 }
 
 .logo {
-    height: 90px; /* Enlarged to fill the top banner more prominently */
+    height: 92px; /* Logo artwork cropped of its padding, so this fills the banner cleanly */
     display: block;
 }
 
@@ -205,7 +205,7 @@ body {
 
 @media (max-width: 768px) {
     :root {
-        --nav-height: 88px;
+        --nav-height: 90px;
     }
 
     .hamburger {
@@ -213,7 +213,7 @@ body {
     }
 
     .logo {
-        height: 68px; /* Scaled down so it doesn't crowd the hamburger menu */
+        height: 70px; /* Scaled down so it doesn't crowd the hamburger menu */
     }
 
     .nav-links {
@@ -482,8 +482,8 @@ body {
 }
 
 .footer-logo {
-    height: 80px;
-    margin-bottom: 15px;
+    height: 110px; /* Logo artwork cropped of its padding, so this balances above the slogan */
+    margin-bottom: 20px;
 }
 
 .footer-slogan {
