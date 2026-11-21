@@ -1207,7 +1207,7 @@ body {
 }
 
 /* Supporting Partners: horizontal logo row on desktop */
-.supporting-partners-grid {
+.supporting-partners-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
@@ -1251,7 +1251,7 @@ body {
     .main-partners-grid {
         grid-template-columns: 1fr;
     }
-    .supporting-partners-grid {
+    .supporting-partners-row {
         grid-template-columns: 1fr;
     }
 }
@@ -1260,7 +1260,7 @@ body {
     .main-partners-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .supporting-partners-grid {
+    .supporting-partners-row {
         grid-template-columns: repeat(2, 1fr);
     }
 }
