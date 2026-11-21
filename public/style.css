@@ -1989,6 +1989,17 @@ body {
     display: block;
 }
 
+.map-photo-wrap {
+    aspect-ratio: auto;
+}
+
+.map-photo-wrap .journey-photo {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
 .journey-photo-fallback {
     display: none;
     width: 100%;
