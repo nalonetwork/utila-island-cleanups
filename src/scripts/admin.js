@@ -43,6 +43,9 @@ const saveWasteBtn = document.getElementById('save-waste-btn');
 const wasteFormStatus = document.getElementById('waste-form-status');
 const wasteAutoSyncToggle = document.getElementById('waste-auto-sync');
 
+const instagramForm = document.getElementById('instagram-form');
+const instagramFormStatus = document.getElementById('instagram-form-status');
+
 let selectedCleanupId = null;
 let currentRosterSignupIds = new Set();
 
@@ -90,6 +93,7 @@ function showDashboard() {
   loadSignups();
   loadImpactSummary();
   loadWasteBreakdown();
+  loadInstagramPosts();
 }
 
 function showLogin() {
@@ -568,6 +572,55 @@ saveWasteBtn.addEventListener('click', async () => {
 
   wasteFormStatus.textContent = 'Waste breakdown saved.';
   loadWasteBreakdown();
+});
+
+// --- Section F: Instagram Feed ---
+
+function sanitizeInstagramUrl(raw) {
+  const value = (raw || '').trim();
+  if (!value) return null;
+
+  let clean = value.split('?')[0].split('#')[0];
+  if (!clean.endsWith('/')) clean += '/';
+  return clean;
+}
+
+async function loadInstagramPosts() {
+  const { data, error } = await supabase
+    .from('instagram_posts')
+    .select('slot, post_url')
+    .order('slot', { ascending: true });
+
+  if (error) {
+    console.error('Error loading Instagram posts:', error.message);
+    return;
+  }
+
+  (data || []).forEach(row => {
+    const input = document.getElementById(`instagram-slot-${row.slot}`);
+    if (input) input.value = row.post_url || '';
+  });
+}
+
+instagramForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  instagramFormStatus.textContent = 'Saving...';
+
+  const payload = [1, 2, 3].map(slot => ({
+    slot,
+    post_url: sanitizeInstagramUrl(document.getElementById(`instagram-slot-${slot}`).value),
+    updated_at: new Date().toISOString(),
+  }));
+
+  const { error } = await supabase.from('instagram_posts').upsert(payload, { onConflict: 'slot' });
+
+  if (error) {
+    instagramFormStatus.textContent = `Error: ${error.message}`;
+    return;
+  }
+
+  instagramFormStatus.textContent = 'Instagram feed saved.';
+  loadInstagramPosts();
 });
 
 checkSession();

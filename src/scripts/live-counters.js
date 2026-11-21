@@ -106,7 +106,77 @@ async function loadAnnouncement() {
   if (data) renderAnnouncement(data);
 }
 
+// --- Curated Instagram Feed ---
+
+const INSTAGRAM_PROFILE_URL = 'https://www.instagram.com/utila.island.cleanups/';
+let instagramEmbedScriptRequested = false;
+
+function loadInstagramEmbedScript() {
+  return new Promise((resolve) => {
+    if (window.instgrm) {
+      resolve();
+      return;
+    }
+    if (instagramEmbedScriptRequested) {
+      resolve();
+      return;
+    }
+    instagramEmbedScriptRequested = true;
+
+    const script = document.createElement('script');
+    script.src = 'https://www.instagram.com/embed.js';
+    script.async = true;
+    script.onload = resolve;
+    document.body.appendChild(script);
+  });
+}
+
+function renderInstagramFallback() {
+  return `
+    <a class="instagram-fallback-card" href="${INSTAGRAM_PROFILE_URL}" target="_blank" rel="noopener noreferrer">
+      <ion-icon name="logo-instagram"></ion-icon>
+      <span data-en="Follow us on Instagram" data-es="Síguenos en Instagram" data-fr="Suivez-nous sur Instagram">Follow us on Instagram</span>
+    </a>
+  `;
+}
+
+function renderInstagramEmbed(url) {
+  return `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(url)}" data-instgrm-version="14"></blockquote>`;
+}
+
+async function loadInstagramFeed() {
+  const grid = document.getElementById('instagram-feed-grid');
+  if (!grid) return;
+
+  const { data, error } = await supabase
+    .from('instagram_posts')
+    .select('slot, post_url')
+    .order('slot', { ascending: true });
+
+  if (error) {
+    console.error('Error loading Instagram posts:', error.message);
+    grid.innerHTML = renderInstagramFallback().repeat(3);
+    return;
+  }
+
+  const postUrlBySlot = new Map((data || []).map(row => [row.slot, row.post_url]));
+  const hasAnyPost = [1, 2, 3].some(slot => postUrlBySlot.get(slot));
+
+  grid.innerHTML = [1, 2, 3]
+    .map(slot => {
+      const url = postUrlBySlot.get(slot);
+      return url ? renderInstagramEmbed(url) : renderInstagramFallback();
+    })
+    .join('');
+
+  if (hasAnyPost) {
+    await loadInstagramEmbedScript();
+    if (window.instgrm) window.instgrm.Embeds.process();
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   loadImpactTotals();
   loadAnnouncement();
+  loadInstagramFeed();
 });

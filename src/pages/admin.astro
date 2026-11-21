@@ -62,6 +62,7 @@ import Layout from '../layouts/Layout.astro';
                 <button type="button" class="admin-tab active" data-tab="cleanups" role="tab" aria-selected="true">Cleanups &amp; Collections</button>
                 <button type="button" class="admin-tab" data-tab="volunteers" role="tab" aria-selected="false">Volunteer Attendance</button>
                 <button type="button" class="admin-tab" data-tab="waste" role="tab" aria-selected="false">Waste Breakdown</button>
+                <button type="button" class="admin-tab" data-tab="instagram" role="tab" aria-selected="false">Instagram Feed (3 Posts)</button>
             </div>
 
             <div class="admin-tab-panel" data-panel="cleanups">
@@ -242,6 +243,31 @@ import Layout from '../layouts/Layout.astro';
                         <button type="button" id="save-waste-btn" class="btn">Save Waste Breakdown</button>
                     </div>
                     <p id="waste-form-status" class="form-status"></p>
+                </section>
+
+            </div>
+
+            <div class="admin-tab-panel" data-panel="instagram" hidden>
+
+                <section class="admin-section">
+                    <h2>Instagram Feed (3 Posts)</h2>
+                    <p class="admin-section-hint">Paste up to 3 public Instagram post or reel URLs to feature on the homepage. Tracking parameters (like <code>?igsh=...</code>) are stripped automatically on save.</p>
+                    <form id="instagram-form">
+                        <div class="form-field">
+                            <label for="instagram-slot-1">Post 1 URL</label>
+                            <input type="url" id="instagram-slot-1" placeholder="https://www.instagram.com/p/.../">
+                        </div>
+                        <div class="form-field">
+                            <label for="instagram-slot-2">Post 2 URL</label>
+                            <input type="url" id="instagram-slot-2" placeholder="https://www.instagram.com/reel/.../">
+                        </div>
+                        <div class="form-field">
+                            <label for="instagram-slot-3">Post 3 URL</label>
+                            <input type="url" id="instagram-slot-3" placeholder="https://www.instagram.com/p/.../">
+                        </div>
+                        <button type="submit" class="btn">Save Instagram Feed</button>
+                        <p id="instagram-form-status" class="form-status"></p>
+                    </form>
                 </section>
 
             </div>
