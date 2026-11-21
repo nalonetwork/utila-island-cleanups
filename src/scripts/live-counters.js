@@ -144,13 +144,33 @@ function renderInstagramEmbed(url) {
   return `<div class="instagram-embed-clip"><blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(url)}" data-instgrm-version="14"></blockquote></div>`;
 }
 
+function renderInstagramCard(row) {
+  return `
+    <a class="ig-custom-card" href="${escapeHtml(row.post_url)}" target="_blank" rel="noopener noreferrer">
+      <div class="ig-card-top">
+        <span class="ig-card-username">utila.island.cleanups</span>
+        ${row.post_date ? `<span class="ig-card-date">${escapeHtml(row.post_date)}</span>` : ''}
+        <ion-icon name="logo-instagram"></ion-icon>
+      </div>
+      <img src="${escapeHtml(row.image_url)}" alt="" loading="lazy" class="ig-card-image">
+      <div class="ig-card-footer">
+        <div class="ig-card-icons">
+          <ion-icon name="heart-outline"></ion-icon>
+          <ion-icon name="chatbubble-outline"></ion-icon>
+        </div>
+        ${row.caption ? `<p class="ig-card-caption">${escapeHtml(row.caption)}</p>` : ''}
+      </div>
+    </a>
+  `;
+}
+
 async function loadInstagramFeed() {
   const grid = document.getElementById('instagram-feed-grid');
   if (!grid) return;
 
   const { data, error } = await supabase
     .from('instagram_posts')
-    .select('slot, post_url')
+    .select('slot, post_url, image_url, post_date, caption')
     .order('slot', { ascending: true });
 
   if (error) {
@@ -159,17 +179,20 @@ async function loadInstagramFeed() {
     return;
   }
 
-  const postUrlBySlot = new Map((data || []).map(row => [row.slot, row.post_url]));
-  const hasAnyPost = [1, 2, 3].some(slot => postUrlBySlot.get(slot));
+  const postBySlot = new Map((data || []).map(row => [row.slot, row]));
+  let needsEmbedScript = false;
 
   grid.innerHTML = [1, 2, 3]
     .map(slot => {
-      const url = postUrlBySlot.get(slot);
-      return url ? renderInstagramEmbed(url) : renderInstagramFallback();
+      const row = postBySlot.get(slot);
+      if (!row || !row.post_url) return renderInstagramFallback();
+      if (row.image_url) return renderInstagramCard(row);
+      needsEmbedScript = true;
+      return renderInstagramEmbed(row.post_url);
     })
     .join('');
 
-  if (hasAnyPost) {
+  if (needsEmbedScript) {
     await loadInstagramEmbedScript();
     if (window.instgrm) window.instgrm.Embeds.process();
   }

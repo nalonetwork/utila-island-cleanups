@@ -251,19 +251,74 @@ import Layout from '../layouts/Layout.astro';
 
                 <section class="admin-section">
                     <h2>Instagram Feed (3 Posts)</h2>
-                    <p class="admin-section-hint">Paste up to 3 public Instagram post or reel URLs to feature on the homepage. Tracking parameters (like <code>?igsh=...</code>) are stripped automatically on save.</p>
+                    <p class="admin-section-hint">Fill in up to 3 posts to feature on the homepage. Upload an image for the custom card layout, or leave it blank to fall back to the embedded post. Tracking parameters (like <code>?igsh=...</code>) are stripped from URLs automatically on save.</p>
                     <form id="instagram-form">
-                        <div class="form-field">
-                            <label for="instagram-slot-1">Post 1 URL</label>
-                            <input type="url" id="instagram-slot-1" placeholder="https://www.instagram.com/p/.../">
-                        </div>
-                        <div class="form-field">
-                            <label for="instagram-slot-2">Post 2 URL</label>
-                            <input type="url" id="instagram-slot-2" placeholder="https://www.instagram.com/reel/.../">
-                        </div>
-                        <div class="form-field">
-                            <label for="instagram-slot-3">Post 3 URL</label>
-                            <input type="url" id="instagram-slot-3" placeholder="https://www.instagram.com/p/.../">
+                        <div class="instagram-slots-grid">
+                            <div class="instagram-slot-field">
+                                <h3>Post 1</h3>
+                                <div class="form-field">
+                                    <label for="instagram-slot-1">Post URL</label>
+                                    <input type="url" id="instagram-slot-1" placeholder="https://www.instagram.com/p/.../">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-file-1">Post Image</label>
+                                    <input type="file" id="instagram-file-1" accept="image/*">
+                                    <input type="hidden" id="instagram-image-1">
+                                    <img class="instagram-image-preview" id="instagram-preview-1" alt="" hidden>
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-date-1">Post Date</label>
+                                    <input type="text" id="instagram-date-1" placeholder="Nov 21, 2026">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-caption-1">Caption</label>
+                                    <textarea id="instagram-caption-1" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="instagram-slot-field">
+                                <h3>Post 2</h3>
+                                <div class="form-field">
+                                    <label for="instagram-slot-2">Post URL</label>
+                                    <input type="url" id="instagram-slot-2" placeholder="https://www.instagram.com/reel/.../">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-file-2">Post Image</label>
+                                    <input type="file" id="instagram-file-2" accept="image/*">
+                                    <input type="hidden" id="instagram-image-2">
+                                    <img class="instagram-image-preview" id="instagram-preview-2" alt="" hidden>
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-date-2">Post Date</label>
+                                    <input type="text" id="instagram-date-2" placeholder="Nov 21, 2026">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-caption-2">Caption</label>
+                                    <textarea id="instagram-caption-2" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="instagram-slot-field">
+                                <h3>Post 3</h3>
+                                <div class="form-field">
+                                    <label for="instagram-slot-3">Post URL</label>
+                                    <input type="url" id="instagram-slot-3" placeholder="https://www.instagram.com/p/.../">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-file-3">Post Image</label>
+                                    <input type="file" id="instagram-file-3" accept="image/*">
+                                    <input type="hidden" id="instagram-image-3">
+                                    <img class="instagram-image-preview" id="instagram-preview-3" alt="" hidden>
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-date-3">Post Date</label>
+                                    <input type="text" id="instagram-date-3" placeholder="Nov 21, 2026">
+                                </div>
+                                <div class="form-field">
+                                    <label for="instagram-caption-3">Caption</label>
+                                    <textarea id="instagram-caption-3" rows="3"></textarea>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn">Save Instagram Feed</button>
                         <p id="instagram-form-status" class="form-status"></p>

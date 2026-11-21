@@ -576,6 +576,8 @@ saveWasteBtn.addEventListener('click', async () => {
 
 // --- Section F: Instagram Feed ---
 
+const INSTAGRAM_BUCKET = 'instagram-posts';
+
 function sanitizeInstagramUrl(raw) {
   const value = (raw || '').trim();
   if (!value) return null;
@@ -585,10 +587,49 @@ function sanitizeInstagramUrl(raw) {
   return clean;
 }
 
+async function handleInstagramFileUpload(slot, file) {
+  if (!file) return;
+
+  const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
+  const path = `slot-${slot}-${Date.now()}.${ext}`;
+
+  instagramFormStatus.textContent = 'Uploading image...';
+
+  const { error: uploadError } = await supabase.storage
+    .from(INSTAGRAM_BUCKET)
+    .upload(path, file, { upsert: true });
+
+  if (uploadError) {
+    instagramFormStatus.textContent = `Error uploading image: ${uploadError.message}`;
+    return;
+  }
+
+  const { data } = supabase.storage.from(INSTAGRAM_BUCKET).getPublicUrl(path);
+
+  const imageInput = document.getElementById(`instagram-image-${slot}`);
+  if (imageInput) imageInput.value = data.publicUrl;
+
+  const preview = document.getElementById(`instagram-preview-${slot}`);
+  if (preview) {
+    preview.src = data.publicUrl;
+    preview.hidden = false;
+  }
+
+  instagramFormStatus.textContent = 'Image uploaded.';
+}
+
+[1, 2, 3].forEach(slot => {
+  const fileInput = document.getElementById(`instagram-file-${slot}`);
+  if (!fileInput) return;
+  fileInput.addEventListener('change', () => {
+    handleInstagramFileUpload(slot, fileInput.files && fileInput.files[0]);
+  });
+});
+
 async function loadInstagramPosts() {
   const { data, error } = await supabase
     .from('instagram_posts')
-    .select('slot, post_url')
+    .select('slot, post_url, image_url, post_date, caption')
     .order('slot', { ascending: true });
 
   if (error) {
@@ -597,8 +638,28 @@ async function loadInstagramPosts() {
   }
 
   (data || []).forEach(row => {
-    const input = document.getElementById(`instagram-slot-${row.slot}`);
-    if (input) input.value = row.post_url || '';
+    const urlInput = document.getElementById(`instagram-slot-${row.slot}`);
+    if (urlInput) urlInput.value = row.post_url || '';
+
+    const imageInput = document.getElementById(`instagram-image-${row.slot}`);
+    if (imageInput) imageInput.value = row.image_url || '';
+
+    const preview = document.getElementById(`instagram-preview-${row.slot}`);
+    if (preview) {
+      if (row.image_url) {
+        preview.src = row.image_url;
+        preview.hidden = false;
+      } else {
+        preview.hidden = true;
+        preview.removeAttribute('src');
+      }
+    }
+
+    const dateInput = document.getElementById(`instagram-date-${row.slot}`);
+    if (dateInput) dateInput.value = row.post_date || '';
+
+    const captionInput = document.getElementById(`instagram-caption-${row.slot}`);
+    if (captionInput) captionInput.value = row.caption || '';
   });
 }
 
@@ -609,6 +670,9 @@ instagramForm.addEventListener('submit', async (e) => {
   const payload = [1, 2, 3].map(slot => ({
     slot,
     post_url: sanitizeInstagramUrl(document.getElementById(`instagram-slot-${slot}`).value),
+    image_url: document.getElementById(`instagram-image-${slot}`).value.trim() || null,
+    post_date: document.getElementById(`instagram-date-${slot}`).value.trim() || null,
+    caption: document.getElementById(`instagram-caption-${slot}`).value.trim() || null,
     updated_at: new Date().toISOString(),
   }));
 

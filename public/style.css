@@ -805,15 +805,6 @@ body {
     }
 }
 
-@media (max-width: 600px) {
-    .instagram-feed-header {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-    }
-}
-
-
 /* Mobile Responsiveness */
 @media (max-width: 992px) {
     .impact-stats-row {
@@ -910,37 +901,103 @@ body {
 }
 
 .instagram-feed-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    max-width: 1200px;
+    max-width: 700px;
     margin: 0 auto;
-    text-align: left;
+}
+
+.instagram-eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--bright-blue);
 }
 
 .instagram-feed-header h2 {
     margin: 0;
 }
 
-.btn-instagram-follow {
-    display: inline-flex;
+.instagram-profile-bar {
+    max-width: 1140px;
+    margin: 36px auto 16px;
+    display: flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 0;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+}
+
+.instagram-profile-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.instagram-profile-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
     flex-shrink: 0;
 }
 
-.btn-instagram-follow ion-icon {
-    font-size: 1.2rem;
+.instagram-profile-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.instagram-profile-handle {
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+
+.instagram-profile-subtitle {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.btn-instagram-follow {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 8px 20px;
+    border-radius: 6px;
+    background: var(--bright-blue);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.btn-instagram-follow:hover {
+    background: var(--dark-blue);
 }
 
 .instagram-feed-grid {
+    max-width: 1140px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto 0;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #e5e5e5;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .instagram-feed-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .instagram-profile-bar {
+        flex-wrap: wrap;
+    }
 }
 
 .instagram-feed-grid .instagram-media {
@@ -950,6 +1007,71 @@ body {
 .instagram-feed-loading {
     grid-column: 1 / -1;
     color: #666;
+    padding: 50px 0;
+}
+
+.ig-custom-card {
+    display: block;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+}
+
+.ig-card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+}
+
+.ig-card-username {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--dark-blue);
+}
+
+.ig-card-date {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.ig-card-top ion-icon {
+    margin-left: auto;
+    font-size: 1.1rem;
+    color: #c7c7c7;
+}
+
+.ig-card-image {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ig-card-footer {
+    padding: 12px 14px;
+}
+
+.ig-card-icons {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 8px;
+}
+
+.ig-card-icons ion-icon {
+    font-size: 1.3rem;
+    color: #666;
+}
+
+.ig-card-caption {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #444;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .instagram-embed-clip {
@@ -1410,6 +1532,34 @@ body {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 20px;
+}
+
+.instagram-slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.instagram-slot-field {
+    padding: 16px;
+    border: 1px solid var(--accent-gray);
+    border-radius: 8px;
+}
+
+.instagram-slot-field h3 {
+    color: var(--dark-blue);
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.instagram-image-preview {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--accent-gray);
 }
 
 .admin-table-wrap {

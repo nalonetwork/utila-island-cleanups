@@ -228,14 +228,25 @@ import Footer from '../components/Footer.astro';
     <section class="instagram-feed-section">
         <div class="container">
             <div class="instagram-feed-header">
+                <p class="instagram-eyebrow" data-en="FOLLOW ALONG" data-es="SÍGUENOS" data-fr="SUIVEZ-NOUS">FOLLOW ALONG</p>
                 <h2 data-en="Latest From Instagram" data-es="Lo Último en Instagram" data-fr="Derniers posts Instagram">
                     Latest From Instagram
                 </h2>
-                <a class="btn btn-instagram-follow" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" rel="noopener noreferrer">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                    <span data-en="Follow" data-es="Síguenos" data-fr="Suivre">Follow</span>
+            </div>
+
+            <div class="instagram-profile-bar">
+                <div class="instagram-profile-identity">
+                    <img src="/UICsquare.png" alt="Utila Island Cleanups" class="instagram-profile-avatar">
+                    <div class="instagram-profile-text">
+                        <span class="instagram-profile-handle">utila.island.cleanups</span>
+                        <span class="instagram-profile-subtitle">Utila, Honduras</span>
+                    </div>
+                </div>
+                <a class="btn-instagram-follow" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" rel="noopener noreferrer" data-en="Follow" data-es="Síguenos" data-fr="Suivre">
+                    Follow
                 </a>
             </div>
+
             <div class="instagram-feed-grid" id="instagram-feed-grid">
                 <div class="instagram-feed-loading">Loading...</div>
             </div>
