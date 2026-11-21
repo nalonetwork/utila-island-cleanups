@@ -1756,6 +1756,7 @@ body {
     width: 140px;
     height: 140px;
     object-fit: cover;
+    object-position: center 20%;
     border-radius: 50%;
     display: block;
 }
