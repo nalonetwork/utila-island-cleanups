@@ -32,9 +32,10 @@ function setCounterTargets(totals) {
 async function loadImpactTotals() {
   if (!document.querySelector('.counter')) return;
 
-  const [wasteResult, cleanupsResult] = await Promise.all([
+  const [wasteResult, cleanupsResult, settingsResult] = await Promise.all([
     supabase.from('waste_breakdown').select('category, total_weight_lbs, total_weight_kg, total_plastic_bottles_unit'),
     supabase.from('cleanups').select('id', { count: 'exact', head: true }),
+    supabase.from('site_settings').select('total_cleanups_override').eq('id', 1).maybeSingle(),
   ]);
 
   const totals = {};
@@ -51,7 +52,10 @@ async function loadImpactTotals() {
     Object.assign(totals, sums);
   }
 
-  if (cleanupsResult.error) {
+  const totalCleanupsOverride = settingsResult.error ? null : settingsResult.data?.total_cleanups_override;
+  if (totalCleanupsOverride != null) {
+    totals.total_events = totalCleanupsOverride;
+  } else if (cleanupsResult.error) {
     console.error('Error loading cleanups count:', cleanupsResult.error.message);
   } else {
     totals.total_events = cleanupsResult.count;

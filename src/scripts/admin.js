@@ -42,6 +42,7 @@ const addWasteRowBtn = document.getElementById('add-waste-row-btn');
 const saveWasteBtn = document.getElementById('save-waste-btn');
 const wasteFormStatus = document.getElementById('waste-form-status');
 const wasteAutoSyncToggle = document.getElementById('waste-auto-sync');
+const wasteTotalCleanupsInput = document.getElementById('waste-total-cleanups');
 
 const instagramForm = document.getElementById('instagram-form');
 const instagramFormStatus = document.getElementById('instagram-form-status');
@@ -134,9 +135,10 @@ logoutBtn.addEventListener('click', async () => {
 // --- Live Impact Summary ---
 
 async function loadImpactSummary() {
-  const [wasteResult, cleanupsResult] = await Promise.all([
+  const [wasteResult, cleanupsResult, settingsResult] = await Promise.all([
     supabase.from('waste_breakdown').select('category, total_weight_lbs, total_weight_kg, total_plastic_bottles_unit'),
     supabase.from('cleanups').select('id', { count: 'exact', head: true }),
+    supabase.from('site_settings').select('total_cleanups_override').eq('id', 1).maybeSingle(),
   ]);
 
   if (wasteResult.error) {
@@ -157,7 +159,8 @@ async function loadImpactSummary() {
   if (cleanupsResult.error) {
     console.error('Error loading cleanups count:', cleanupsResult.error.message);
   } else {
-    document.getElementById('admin-stat-cleanups').textContent = formatStatNumber(cleanupsResult.count);
+    const override = settingsResult.error ? null : settingsResult.data?.total_cleanups_override;
+    document.getElementById('admin-stat-cleanups').textContent = formatStatNumber(override ?? cleanupsResult.count);
   }
 }
 
@@ -484,10 +487,12 @@ function buildWasteRow(row = {}) {
 }
 
 async function loadWasteBreakdown() {
-  const { data, error } = await supabase
-    .from('waste_breakdown')
-    .select('*')
-    .order('sort_order', { ascending: true });
+  const [wasteResult, settingsResult] = await Promise.all([
+    supabase.from('waste_breakdown').select('*').order('sort_order', { ascending: true }),
+    supabase.from('site_settings').select('total_cleanups_override').eq('id', 1).maybeSingle(),
+  ]);
+
+  const { data, error } = wasteResult;
 
   if (error) {
     wasteAdminTableBody.innerHTML = `<tr><td colspan="5">Error: ${escapeHtml(error.message)}</td></tr>`;
@@ -498,6 +503,12 @@ async function loadWasteBreakdown() {
   (data || []).forEach(row => wasteAdminTableBody.appendChild(buildWasteRow(row)));
   if (!data || data.length === 0) {
     wasteAdminTableBody.appendChild(buildWasteRow());
+  }
+
+  if (settingsResult.error) {
+    console.error('Error loading total cleanups override:', settingsResult.error.message);
+  } else {
+    wasteTotalCleanupsInput.value = settingsResult.data?.total_cleanups_override ?? '';
   }
 }
 
@@ -563,10 +574,20 @@ saveWasteBtn.addEventListener('click', async () => {
     return;
   }
 
-  const { error } = await supabase.from('waste_breakdown').upsert(payload, { onConflict: 'category' });
+  const totalCleanupsVal = wasteTotalCleanupsInput.value;
+  const totalCleanupsOverride = totalCleanupsVal === '' ? null : Number(totalCleanupsVal);
 
-  if (error) {
-    wasteFormStatus.textContent = `Error: ${error.message}`;
+  const [wasteSaveResult, settingsSaveResult] = await Promise.all([
+    supabase.from('waste_breakdown').upsert(payload, { onConflict: 'category' }),
+    supabase.from('site_settings').upsert({ id: 1, total_cleanups_override: totalCleanupsOverride }, { onConflict: 'id' }),
+  ]);
+
+  if (wasteSaveResult.error) {
+    wasteFormStatus.textContent = `Error: ${wasteSaveResult.error.message}`;
+    return;
+  }
+  if (settingsSaveResult.error) {
+    wasteFormStatus.textContent = `Error: ${settingsSaveResult.error.message}`;
     return;
   }
 

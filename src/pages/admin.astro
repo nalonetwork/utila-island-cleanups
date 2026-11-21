@@ -216,6 +216,12 @@ import Layout from '../layouts/Layout.astro';
                 <section class="admin-section">
                     <h2>Waste Breakdown</h2>
 
+                    <div class="form-field">
+                        <label for="waste-total-cleanups">Total Cleanups</label>
+                        <input type="number" id="waste-total-cleanups" min="0" step="1" placeholder="Auto (from Cleanups table)">
+                        <p class="admin-section-hint">Leave blank to use the automatic count from the Cleanups table. Enter a number to override the live impact ticker on the homepage/Impact page.</p>
+                    </div>
+
                     <div class="checkbox-row">
                         <input type="checkbox" id="waste-auto-sync" checked>
                         <label for="waste-auto-sync">Auto-calculate Kg from Lbs</label>
