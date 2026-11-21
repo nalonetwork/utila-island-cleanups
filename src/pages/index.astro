@@ -227,9 +227,15 @@ import Footer from '../components/Footer.astro';
 
     <section class="instagram-feed-section">
         <div class="container">
-            <h2 class="text-center" data-en="Latest From Instagram" data-es="Lo Último en Instagram" data-fr="Derniers posts Instagram">
-                Latest From Instagram
-            </h2>
+            <div class="instagram-feed-header">
+                <h2 data-en="Latest From Instagram" data-es="Lo Último en Instagram" data-fr="Derniers posts Instagram">
+                    Latest From Instagram
+                </h2>
+                <a class="btn btn-instagram-follow" href="https://www.instagram.com/utila.island.cleanups/" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                    <span data-en="Follow" data-es="Síguenos" data-fr="Suivre">Follow</span>
+                </a>
+            </div>
             <div class="instagram-feed-grid" id="instagram-feed-grid">
                 <div class="instagram-feed-loading">Loading...</div>
             </div>

@@ -805,6 +805,14 @@ body {
     }
 }
 
+@media (max-width: 600px) {
+    .instagram-feed-header {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+}
+
 
 /* Mobile Responsiveness */
 @media (max-width: 992px) {
@@ -901,11 +909,38 @@ body {
     text-align: center;
 }
 
+.instagram-feed-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.instagram-feed-header h2 {
+    margin: 0;
+}
+
+.btn-instagram-follow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    flex-shrink: 0;
+}
+
+.btn-instagram-follow ion-icon {
+    font-size: 1.2rem;
+}
+
 .instagram-feed-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    max-width: 1200px;
+    margin: 40px auto 0;
 }
 
 .instagram-feed-grid .instagram-media {
@@ -915,6 +950,17 @@ body {
 .instagram-feed-loading {
     grid-column: 1 / -1;
     color: #666;
+}
+
+.instagram-embed-clip {
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #dbdbdb;
+    background: #fff;
+}
+
+.instagram-embed-clip .instagram-media {
+    margin-top: -54px !important;
 }
 
 .instagram-fallback-card {

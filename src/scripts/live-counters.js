@@ -141,7 +141,7 @@ function renderInstagramFallback() {
 }
 
 function renderInstagramEmbed(url) {
-  return `<blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(url)}" data-instgrm-version="14"></blockquote>`;
+  return `<div class="instagram-embed-clip"><blockquote class="instagram-media" data-instgrm-permalink="${escapeHtml(url)}" data-instgrm-version="14"></blockquote></div>`;
 }
 
 async function loadInstagramFeed() {
