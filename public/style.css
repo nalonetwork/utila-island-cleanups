@@ -1915,13 +1915,6 @@ body {
     color: var(--dark-blue);
 }
 
-.waste-total-row.waste-total-excl td {
-    border-top: 1px solid var(--accent-gray);
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--bright-blue);
-}
-
 @media (max-width: 600px) {
     .waste-table-wrap {
         margin-left: 0;

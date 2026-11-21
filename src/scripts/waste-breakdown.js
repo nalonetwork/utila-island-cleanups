@@ -1,7 +1,5 @@
 import { supabase } from './supabase.js';
 
-const EXCLUDED_CATEGORIES = ['Utensils', 'Styrofoam'];
-
 function escapeHtml(value) {
   if (value == null) return '';
   return String(value)
@@ -14,7 +12,7 @@ function escapeHtml(value) {
 
 function formatWeight(value) {
   if (value == null) return '—';
-  return Number(value).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return Math.round(Number(value)).toLocaleString('en-US');
 }
 
 function setText(id, text) {
@@ -40,7 +38,6 @@ function computeTotals() {
   if (!tbody) return;
 
   let totalLbs = 0, totalKg = 0;
-  let exclLbs = 0, exclKg = 0;
 
   tbody.querySelectorAll('tr').forEach(row => {
     const cells = row.querySelectorAll('td');
@@ -49,17 +46,10 @@ function computeTotals() {
 
     totalLbs += lbs;
     totalKg += kg;
-
-    if (!EXCLUDED_CATEGORIES.includes(row.dataset.category)) {
-      exclLbs += lbs;
-      exclKg += kg;
-    }
   });
 
   setText('waste-total-lbs', formatWeight(totalLbs));
   setText('waste-total-kg', formatWeight(totalKg));
-  setText('waste-total-excl-lbs', formatWeight(exclLbs));
-  setText('waste-total-excl-kg', formatWeight(exclKg));
 }
 
 async function loadWasteBreakdown() {
