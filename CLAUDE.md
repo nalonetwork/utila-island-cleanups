@@ -70,6 +70,5 @@ is responsive.
 - Internal links must use clean, extensionless paths (`/about`, not
   `about.html`); asset `src`/`href` values must be root-absolute (see
   `public/` note above).
-- This branch (`feature/site-redesign`) is for redesign work in isolation
-  from `main`, which reflects the live production site — don't merge to
-  `main` without review.
+- `main` is the single active branch and reflects the live production
+  site, deployed on every push — commit and push directly to `main`.
