@@ -127,24 +127,31 @@ body {
 }
 
 /* 4. HERO SECTIONS */
-.hero { 
-    height: 80vh; 
-    background: url('banner.jpg') no-repeat center center/cover; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
+.hero {
+    height: auto;
+    min-height: calc(100svh - var(--nav-height));
+    background: url('banner.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     color: white;
+    padding: calc(var(--nav-height) + 28px) 20px 36px;
 }
 
 .hero-overlay {
     background: rgba(54, 91, 109, 0.6);
-    padding: 40px;
+    padding: 28px 22px;
     border-radius: 8px;
-    width: 80%;
+    width: 100%;
+    max-width: 540px;
+    margin: 0 auto;
 }
 
-.hero-overlay h1 {
+.hero-overlay h1,
+.about-hero h1 {
+    font-size: clamp(1.75rem, 6vw, 2.75rem);
+    line-height: 1.25;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
@@ -185,10 +192,6 @@ body {
 }
 
 @media (max-width: 600px) {
-    .hero-overlay {
-        padding: 30px 20px;
-    }
-
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
@@ -254,21 +257,35 @@ body {
 }
 
 /* 6. RESPONSIVE DESIGN (MOBILE) */
-.hamburger { 
-    display: none; 
-    cursor: pointer; 
+.hamburger {
+    display: none;
+    cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
-    height: 25px;
+    width: 44px; /* 44x44 touch target; padding keeps the visible icon at its original 30x25 size */
+    height: 44px;
+    padding: 9px 7px;
+    box-sizing: border-box;
 }
 
-.hamburger span { 
-    display: block; 
-    width: 100%; 
-    height: 3px; 
-    background-color: var(--dark-blue); 
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-blue);
     transition: all 0.3s ease;
+}
+
+.hamburger.is-active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.is-active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -302,9 +319,35 @@ body {
         animation: slideDown 0.3s ease-out;
     }
 
-    .nav-links li { 
-        margin: 15px 0; 
+    .nav-links li {
+        margin: 15px 0;
         margin-left: 0;
+    }
+
+    /* The dropdown menu has room to spare, so grow the lang buttons to a
+       real 44px touch target here without crowding the fixed header bar. */
+    .lang-switcher {
+        gap: 8px;
+        padding: 6px;
+    }
+
+    .lang-option {
+        padding: 12px 18px;
+        min-height: 44px;
+        min-width: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 50px 5%;
+    }
+
+    .bg-alt {
+        padding: 40px 5%;
     }
 }
 
@@ -460,6 +503,10 @@ body {
     .comparison-grid {
         grid-template-columns: 1fr;
     }
+
+    .slider-container {
+        height: 320px;
+    }
 }
 /* Contact Page Specifics */
 .contact-grid {
@@ -605,6 +652,11 @@ body {
 .footer-icons a {
     color: var(--dark-blue);
     transition: transform 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .footer-icons a:hover {
@@ -1902,6 +1954,7 @@ body {
 .waste-table td.num,
 .waste-table th.num {
     text-align: right;
+    white-space: nowrap;
 }
 
 .waste-table tbody tr:hover {
