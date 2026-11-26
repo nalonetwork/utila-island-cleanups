@@ -129,14 +129,15 @@ body {
 /* 4. HERO SECTIONS */
 .hero {
     height: auto;
-    min-height: calc(100svh - var(--nav-height));
+    min-height: clamp(540px, 78vh, 820px);
+    margin-top: var(--nav-height);
     background: url('banner.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: white;
-    padding: calc(var(--nav-height) + 28px) 20px 36px;
+    padding: 60px 20px;
 }
 
 .hero-overlay {
@@ -144,7 +145,7 @@ body {
     padding: 28px 22px;
     border-radius: 8px;
     width: 100%;
-    max-width: 540px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
@@ -192,6 +193,14 @@ body {
 }
 
 @media (max-width: 600px) {
+    .hero {
+        min-height: calc(100svh - var(--nav-height));
+    }
+
+    .hero-overlay {
+        max-width: 540px;
+    }
+
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
